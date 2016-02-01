@@ -4,28 +4,13 @@
 
 说明
 
-	【需求者】申请某个dataitem的白名单。
-	【管理员】给用户发消息。
-	【管理员】发站内广播消息
+	【管理员】给用户发消息 / 发站内广播消息
 
 输入参数说明：	
 	
 	type: 消息类型，必选
+	receiver:接收用户列表或者*(表示群发)
 	data: （不同type有各自不同的data）
-	
-输入样例(申请订购通知)：
-
-	POST /notifications HTTP/1.1
-	Accept: application/json
-	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	
-	{
-		"type": "apply_whitelist",
-		"data": {
-			"repname": "repo001",
-			"itemname": "item123"
-		}
-	}
 	
 输入样例(管理员给用户发消息，最多同时100个用户)：
 
@@ -73,33 +58,10 @@
 		"total": 100,
 		"results": [
 			{
-				"messageid": 11,
-				"type": "subs_event",
-				"time": "2015-11-10T15:06:09Z08:00",
-				"data": {
-					"subscriptionid": 1234567,
-					"sellername": "li4@example.com"
-					"repname":"NBA",
-					"itemname":"bear",
-					"supply_style":"batch",
-					"signtime":"2015-11-10T15:04:05Z08:00",
-					"expiretime":"2016-01-15T11:28:21Z",
-					"freezetime":"2015-12-11T10:51:11Z",
-					"finishtime":"2016-01-10T10:51:11Z",
-					"phase":1,
-					"plan":{
-						"money":5,
-						"units":3,
-						"used":0,
-						"limit":0,
-						"subs":1,
-						"expire":30
-					}
-				}
-			},
-			{
 				"messageid": 12,
 				"type": "item_event",
+				"level": 0,
+				"status": 1,
 				"time": "2015-11-10T15:04:09Z08:00",
 				"data": {
 					"event": "tag_added",
@@ -112,6 +74,8 @@
 			{
 				"messageid": 19,
 				"type": "subsapply_event",
+				"level": 50,
+				"status": 0,
 				"time": "2015-11-10T15:06:09Z08:00",
 				"data": {
 					"subscriptionid": 1234567,
@@ -156,9 +120,7 @@
 	{
 		"subsapply_event": 6,
 		"item_event": 20,
-		"subs_event": 2,
 		"vip_remind": 1,
-		"apply_whitelist": 1,
 		"admin_message": 1,
 		"comment_reply": 2
 	}
@@ -167,9 +129,7 @@
 
 	subsapply_event: 订购申请事件
 	item_event: data item事件
-	subs_event: 订购事件
 	vip_remind: 会员续费提醒
-	apply_whitelist: 申请白名单
 	admin_message: 管理员消息
 	comment_reply: 留言被回复消息
 
@@ -345,53 +305,15 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	level=0: general
 	level=50: 需要用户进一步处理
 
-### 网站广播
-
-	{
-		"type": "site_broadcast",
-		"receiver": "zhang3@example.com",
-		"sender": "",
-		"time": "2015-11-10T15:06:09Z08:00",
-		"data": {
-			"content": "bla bla ..."
-		}
-	}
-
 ### 管理员消息
 	
 	{
 		"type": "admin_message",
-		"receiver": "zhang3@example.com li4@example.com john@example.com",
+		"receiver": "zhang3@example.com",
 		"sender": "admin@hub.dataio.com",
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"content": "bla bla ..."
-		}
-	}
-
-### 私信
-
-	{
-		"type": "private_message",
-		"receiver": "zhang3@example.com",
-		"sender": "li4@example.com",
-		"time": "2015-11-10T15:06:09Z08:00",
-		"data": {
-			"content": "bla bla ..."
-		}
-	}
-
-### apply white list
-	
-	{
-		"type": "apply_whitelist",
-		"receiver": "zhang3@example.com",
-		"sender": "li4@example.com",
-		"level": 50,
-		"time": "2015-11-10T15:06:09Z08:00",
-		"data": {
-			"repname": "repo001",
-			"itemname": "item123"
 		}
 	}
 	
@@ -405,6 +327,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"commentid": 1234567,
+			"repname": "repo00", 
+			"itemname": "item01",
 			"username": "li4@bbb.com",
 			"nickname", "小李",
 			"createtime": "2015-11-10T15:04:05Z08:00",
@@ -424,7 +348,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"sender": "",
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
-			"event": "tag_deleted",
+			"event": "tag_added",
 			"repname": "repo1",
 			"itemname": "item2",
 			"tag": "tag3"
@@ -443,43 +367,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		}
 	}
 	
-	event可能为tag_added, tag_deleted, item_deleted
-
-### 订购事件
-
-	{
-		"type": "subs_event",
-		"receiver": "zhang3@example.com",
-		"sender": "",
-		"time": "2015-11-10T15:06:09Z08:00",
-		"data": {
-			"subscriptionid": 1234567,
-			"sellername": "li4@example.com"
-			"repname":"NBA",
-			"itemname":"bear",
-			"supply_style":"batch",
-			"signtime":"2015-11-10T15:04:05Z08:00",
-			"expiretime":"2016-01-15T11:28:21Z",
-			"freezetime":"2015-12-11T10:51:11Z",
-			"finishtime":"2016-01-10T10:51:11Z",
-			"phase":1,
-			"plan":{
-				"money":5,
-				"units":3,
-				"used":0,
-				"limit":0,
-				"subs":1,
-				"expire":30
-			}
-		}
-	}
-	
-	phase可能为：
-		freezed: 2, 
-		cancelled: 5, 
-		removed: 6
-	
-	其它字段含意请参考(/subscription.md/)
+	event可能为tag_added, item_deleted
 
 ### 订购申请事件
 
@@ -507,16 +395,60 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 			}
 		}
 	}
+
+	{
+		"type": "subsapply_event",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"subscriptionid": 1234567,
+			"sellername": "li4@example.com"
+			"repname":"NBA",
+			"itemname":"bear",
+			"supply_style":"batch",
+			"signtime":"2015-11-10T15:04:05Z08:00",
+			"expiretime":"2016-11-17T15:04:05Z08:00",
+			"phase":110,
+			"plan":{
+				"money":5,
+				"units":3,
+				"used":0,
+				"limit":0,
+				"subs":1,
+				"expire":30
+			}
+		}
+	}
+
+	{
+		"type": "subsapply_event",
+		"receiver": "zhang3@example.com",
+		"sender": "",
+		"time": "2015-11-10T15:06:09Z08:00",
+		"data": {
+			"subscriptionid": 1234567,
+			"sellername": "li4@example.com"
+			"repname":"NBA",
+			"itemname":"bear",
+			"supply_style":"batch",
+			"agreetime":"2015-11-10T15:04:05Z08:00",
+			"phase":10,
+			"plan":{
+				"money":5,
+				"units":3,
+				"used":0,
+				"limit":0,
+				"subs":1,
+				"expire":30
+			}
+		}
+	}
 	
 	phase可能为：
 		applying: 7, 
-		wthdrawn: 8, 
-		denied: 9, 
 		agreed_but_insufficient_balance: 10
-		agreed: 110,
-		agreed_but_failed_to_subscribe: 112
-	
-	其它字段含意请参考(/subscription.md/)
+		agreed: 110
 		
 ### 会员续费提醒
 
@@ -528,12 +460,12 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"level": 4
-			"invalide": 7
+			"invalid": 7
 		}
 	}
 	
 	level：用户会员级别
-	invalide：会员还有几天到期
+	invalid：会员还有几天到期
 
 ## topic: to_emails.json
 
@@ -585,3 +517,28 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00"
 	}
 
+## topic: to_users.json
+
+### 管理员群发消息
+
+	{
+		"type": "0x00030000",
+		"sender": "admin@example.com",
+		"level": 0,
+		"data": {
+			"content": "bla bla ..."
+		}
+	}
+
+	message服务期望user服务的返回格式(to_notifications.json)：
+	(加一个receiver, 改type为admin_message)
+	
+	{
+		"type": "admin_message",
+		"receiver": "zhang3@example.com",
+		"sender": "admin@example.com",
+		"level": 0,
+		"data": {
+			"content": "bla bla ..."
+		}
+	}

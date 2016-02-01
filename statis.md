@@ -89,7 +89,7 @@
 		{
 			"service":"subscriptions",
 			"date":"2015-01-02",
-			"table":"dataitem_numsubs",
+			"table":"dataitem_numstars",
 			"columns":[
 				{
 					"column_name":"id",
@@ -181,7 +181,7 @@
 		{
 			"service":"transactions",
 			"date":"2015-01-02",
-			"table":"itemtag_numpulls",
+			"table":"dataitem_numpulls",
 			"columns":[
 				{
 					"column_name":"id",
@@ -196,11 +196,6 @@
 					"column_name":"DATAITEM_NAME",
 					"column_type":"string",
 					"column_length":64
-				},		
-				{
-					"column_name":"TAG",
-					"column_type":"string",
-					"column_length":64
 				},	
 				{
 					"column_name":"NUM_PULLS",
@@ -212,14 +207,12 @@
 					"id":1,
 					"REPOSITORY_NAME":"repo01",
 					"DATAITEM_NAME":"item02",
-					"TAG":"tag003",
 					"NUM_PULLS":3
 				},	
 				{
 					"id":2,
 					"REPOSITORY_NAME":"repo07",
 					"DATAITEM_NAME":"item07",
-					"TAG":"tag009",
 					"NUM_PULLS":4
 				}
 				]
