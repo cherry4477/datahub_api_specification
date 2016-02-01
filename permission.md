@@ -3,11 +3,11 @@
 	
 - [GET] [PUT] /permission/:repname
 
-- [GET] [PUT] /permission/:repname/:itemname
+- [GET] [DELETE] [PUT] /permission/:repname/:itemname
 
-- [DELETE] /permission/repository/:repname/whitelist/:username
+- [DELETE] /permission/:repname/whitelist/:username
 
-- [DELETE] /permission/repository/:repname/cooperator/:username
+- [DELETE] /permission/:repname/cooperator/:username
 
 	
 ----------
@@ -70,7 +70,7 @@ Example Request：
 	
 	无
 		
-## 3 指令：DELETE /permission/repository/:repname/whitelist/:username
+## 3 指令：DELETE /permission/:repname/whitelist/:username
 
 说明：
 	
@@ -82,16 +82,16 @@ Example Request：
    
 Example Request：
 
-	DELETE /permission/repository/rep001/whitelist/peter HTTP/1.1
+	DELETE /permission/rep001/whitelist/peter HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
-	DELETE /permission/repository/rep001/whitelist/peter?delall=1 HTTP/1.1
+	DELETE /permission/rep001/whitelist/peter?delall=1 HTTP/1.1
     Accept: application/json
     Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
 
-## 4 指令： DELETE /permission/repository/:repname/cooperator/:username
+## 4 指令： DELETE /permission/:repname/cooperator/:username
 
 说明：
 
@@ -103,11 +103,11 @@ Example Request：
 
 Example Request：
 
-	DELETE /permission/repository/rep001/cooperator/peter HTTP/1.1
+	DELETE /permission/rep001/cooperator/peter HTTP/1.1
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-	DELETE /permission/repository/rep001/cooperator/peter?delall=1 HTTP/1.1
+	DELETE /permission/rep001/cooperator/peter?delall=1 HTTP/1.1
     Accept: application/json
     Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
