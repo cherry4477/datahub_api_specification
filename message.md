@@ -378,7 +378,7 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 		"time": "2015-11-10T15:06:09Z08:00",
 		"data": {
 			"subscriptionid": 1234567,
-			"sellername": "li4@example.com"
+			"buyername": "li4@example.com"
 			"repname":"NBA",
 			"itemname":"bear",
 			"supply_style":"batch",
