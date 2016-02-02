@@ -447,8 +447,8 @@ json消息格式被视为自定义格式。json将被转化为bytes进行传输�
 	
 	phase可能为：
 		applying: 7, 
+		agreed: 1,
 		agreed_but_insufficient_balance: 10
-		agreed: 110
 		
 ### 会员续费提醒
 
