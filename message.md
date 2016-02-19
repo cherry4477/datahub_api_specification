@@ -99,15 +99,15 @@
 		]
 	}
 
-### GET /notification_stat
+### GET /notification_stat?category=[category]
 
 说明
 
-	【用户】 取得自己的提醒汇总统计
+	【用户】 取得自己的未读消息汇总统计
 
 输入参数说明：	
 	
-	无
+	category: （可选，默认为type）分类方法，支持 type | level
 
 输入样例：
 
@@ -115,7 +115,7 @@
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
-输出样例：
+输出样例1（category=type）：
 
 	{
 		"subsapply_event": 6,
@@ -123,6 +123,13 @@
 		"vip_remind": 1,
 		"admin_message": 1,
 		"comment_reply": 2
+	}
+
+输出样例2（catrgory=level）：
+
+	{
+		"0": 6,
+		"50": 20,
 	}
 	
 输出样例说明：
