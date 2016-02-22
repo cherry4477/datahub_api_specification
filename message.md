@@ -125,7 +125,7 @@
 		"comment_reply": 2
 	}
 
-输出样例2（catrgory=level）：
+输出样例2（category=level）：
 
 	{
 		"0": 6,
