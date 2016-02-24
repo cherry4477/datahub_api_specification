@@ -414,19 +414,24 @@
 ## topic: to_repositories.json
 
 ### 增加repository rank
-
+    
+    key: add_statis_rank_rep
+	
 	{
 		"repname": "repo001",
-        "rank": 10.5		
+        "rank": 10.5,
+        "time": "2016-1-24 23-12-12"		
 	}
 	注意:rank不是字符串
 
 ### 增加dataitem rank
-
+    
+    key: add_statis_rank_rep
 	{
 		"repname": "repo001",
 		"itemname": "item002",
-        "rank": 10.2		
+        "rank": 10.2,
+        "time": "2016-1-24 23-12-12"		
 	}	
 	注意:rank不是字符串
         
