@@ -426,7 +426,7 @@
 
 ### 增加dataitem rank
     
-    key: add_statis_rank_rep
+    key: add_statis_rank_item
 	{
 		"repname": "repo001",
 		"itemname": "item002",
