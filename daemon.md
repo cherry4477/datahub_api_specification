@@ -5,6 +5,7 @@
 - [GET] /daemon/ep/:user 获取user的entrypoint，普通用户只能获取自己的entrypoint。
 - [GET] /daemon/log/:index 获取登陆用户的log。
 - [GET] /daemon/status 获取登陆用户的daemon status以及entrypoint。
+- [GET] /daemon/status/:repname？itemname={itemname}&tagname={tagname}&page={page}&size={size} 获取tag状态
 
 ----------
 
@@ -130,4 +131,22 @@ Example Request：
         ]
     }
 
+
+## 指令：GET /daemon/status/:repname？itemname={itemname}&tagname={tagname}&page={page}&size={size} 获取tag的状态
+
+说明：
+	【任意】根据请求参数不同，查询不同tag的健康状态
+
+输入参数说明：
+	page: (可选) 第几页，最小值为1
+	size: (可选) 每页最多返回多少条数据
+
+输入样例：
+
+	GET /daemon/status/testrepository?itemname=testitem&tagname=testtag HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+
+输出样例(itemname=testitem&tagname=testtag)：
+(未完)
 

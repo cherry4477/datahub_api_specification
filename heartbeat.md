@@ -14,9 +14,10 @@
 输入参数说明：
 	
 	daemonid: DaemonID，从网页端获取的安装脚本中获取。用于识别用户。
-    entrypoint: Daemon提供的入口信息。
-    log: daemon要上传的日志。
-
+   	entrypoint: Daemon提供的入口信息。
+    	log: daemon要上传的日志。
+	role: daemon的角色，0为数据下载方，1为数据提供方
+	errortag: daemon本地健康检查发现出错的tag
 
 Example Request：
 
@@ -29,7 +30,7 @@ Example Request：
         "daemonid":"0aef69daefb06d0afbe6c",
         "entrypoint":[
             "http://211.10.23.23:35800"
-        ]
+        ]，
         "log":[
         "2015/12/07 09:45:12 testlog11",
         "2015/12/07 09:45:12 testlog12",
@@ -37,7 +38,13 @@ Example Request：
         "2015/12/07 09:45:12 testlog14",
         "2015/12/07 09:45:12 testlog15",
         "2015/12/07 09:45:12 testlog16"
-        ]
+        ]，
+        "role":1,
+        "errortag":[
+        "repo1/item1/tag1",
+        "repo2/item2/tag2",
+        "repo3/item3/tag3"
+        ]	
     }
 
 返回数据说明：
@@ -76,3 +83,5 @@ Example Request：
     {
         "status":"online",
     }
+
+	
