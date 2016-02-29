@@ -17,7 +17,7 @@
    	entrypoint: Daemon提供的入口信息。
     	log: daemon要上传的日志。
 	role: daemon的角色，0为数据下载方，1为数据提供方
-	errortag: daemon本地健康检查发现出错的tag
+	abnormaltags: daemon本地健康检查发现出错的tag
 
 Example Request：
 
@@ -40,7 +40,7 @@ Example Request：
         "2015/12/07 09:45:12 testlog16"
         ]，
         "role":1,
-        "errortag":[
+        "abnormaltags":[
         "repo1/item1/tag1",
         "repo2/item2/tag2",
         "repo3/item3/tag3"
