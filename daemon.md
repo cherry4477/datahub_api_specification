@@ -153,7 +153,7 @@ Example Request：
 输出样例：
 
 {
-        "status": "abnormal",
+        "status": "ABNORMAL",
         "total": 3,
         "results": [
                 abnormaltag1,
@@ -172,7 +172,7 @@ Example Request：
 输出样例：
 
 {
-        "status": "normal",
-        "total": 1,
-        "results": [testtag]
+        "status": "NORMAL",
+        "total": 0,
+        "results": null
 }
