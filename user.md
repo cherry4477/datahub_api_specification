@@ -185,7 +185,6 @@
 		PUT /users/foo HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8
 		Authorization: token
-		Authorization: token
  
 		{
 			"userstatus":3,
@@ -263,6 +262,22 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
+
+##指令：PUT /users/:loginname/resend/active 重新发送激活邮件
+	说明：
+		【任意】忘记密码发邮件
+	输入参数说明：
+		无
+	Example Request：
+		PUT /users/liuxy10/resend/active HTTP/1.1 
+		Content-Type: application/json;charset=UTF-8
+                  
+	返回数据说明
+		code:状态码 0：密码正确，1001：其他系统异常
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
 ##指令：GET /quota/:loginname/repository 获取用户的repo配额（87）
 	说明：
 		【自己或者管理员】获取用户的配额信息
@@ -442,7 +457,7 @@
 		Authorization: token
 
 		{
-			"quota":20000,
+			"quota":20000
 		}	
 	返回数据说明
 		code:状态码
@@ -478,7 +493,7 @@
 		Content-Type: application/json;charset=UTF-8
 		Authorization: token
 		{
-			"quota":300000,
+			"quota":300000
 		}
 	返回数据说明
 		code:状态码

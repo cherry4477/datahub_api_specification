@@ -69,7 +69,8 @@ Example Request：
 
 输入参数说明：
 
-	items							查询repname的所有dataitem开关
+	items							查询repname的所有dataitem开关[1 ]
+	relatedItems                    查询repname的相关dataitem开关[1 ]
 	page (分页页数) : 				1 - N，  默认=1（page=1可以不传）
 	size（页面大小）: 				1 - N，  默认=6 (-1 返回全部)
 	
