@@ -222,7 +222,7 @@
 	数据说明
 		REPOSITORY_NAME string(64) 
 		DATAITEM_NAME string(64)
-		NUM_COMMENTS int 总订购数
+		NUM_COMMENTS int 总留言数
 	Example
 		{
 			"service":"subscriptions",
