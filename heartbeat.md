@@ -30,7 +30,7 @@ Example Request：
         "daemonid":"0aef69daefb06d0afbe6c",
         "entrypoint":[
             "http://211.10.23.23:35800"
-        ]，
+        ],
         "log":[
         "2015/12/07 09:45:12 testlog11",
         "2015/12/07 09:45:12 testlog12",
@@ -38,7 +38,7 @@ Example Request：
         "2015/12/07 09:45:12 testlog14",
         "2015/12/07 09:45:12 testlog15",
         "2015/12/07 09:45:12 testlog16"
-        ]，
+        ],
         "role":1,
         "abnormaltags":[
         "repo1/item1/tag1",
@@ -69,7 +69,7 @@ Example Request：
 
 Example Request：
 
-	GET /daemon/status HTTP/1.1 
+	GET /heartbeat/status/testuser@asiainfo.com HTTP/1.1 
 	Accept: application/json 
 	Content-Type: application/json 
 	
