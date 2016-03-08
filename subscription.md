@@ -92,12 +92,14 @@
 				"repname":"CBA",
 				"itemname":"triger",
 				"supply_style":"batch",
+				"sorttime":"2015-11-01T15:04:05Z08:00",
 				"signtime":"2015-11-01T15:04:05Z08:00",
 				"expiretime":"2015-12-01T15:04:05Z08:00"
 				"freezetime":"2015-11-22T15:04:05Z08:00",
 				"finishtime":"2016-01-22T15:04:05Z08:00",
 				"phase":1,
 				"plan":{
+					“id": "123423525252",
 					"money":5,
 					"units":3,
 					"used":0,
@@ -115,9 +117,11 @@
 	repname: repository name
 	itemname: data item name
 	supply_style: flow | batch 
+	sorttime: 排序时间
 	signtime: 订购时间
 	expiretime: 自动过期时间
 	phase: 1-3, 5-10 (意义：consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)
+	plan.id: 价格计划id
 	plan.money: 交易金额
 	plan.units: 最大下载次数（supply_style=batch）,最大下载天数（supply_style=flow)
 	plan.used: 已经使用量　
@@ -125,17 +129,18 @@
 	plan.subs: 当前订购次数
 	plan.expire: 交易有效期（天数）
 	
-	不同的时间只在特定phase有效
+	不同的时间只在特定phase有效。sorttime在所有phase有效，但在不同的phase有不同的含义。
 
-	consuming, 1: signtime, expiretime 有效
-	freezed, 2: signtime, expiretime, freezetime 有效
-	finished, 3: signtime, expiretime, freezetime, finishtime 有效
-	cancelled, 5: signtime, expiretime, canceltime 有效
-	removed, 6: signtime, expiretime, freezetime, removetime 有效
-	applying, 7: applytime, expiretime 有效
-	wthdrawn, 8: applytime, withdrawtime 有效
-	denied, 9: applytime, denytime 有效
-	agreed_but_insufficient_balance, 10: applytime, agreetime 有效
+	consuming, 1: signtime, expiretime 有效。 (sorttime==signtime)
+	freezed, 2: signtime, expiretime, freezetime 有效。 (sorttime==freezetime)
+	finished, 3: signtime, expiretime, freezetime, finishtime 有效。 (sorttime==finishtime)
+	cancelled, 5: signtime, expiretime, canceltime 有效。 (sorttime==canceltime)
+	removed, 6: signtime, expiretime, freezetime, removetime 有效。 (sorttime==removetime)
+	applying, 7: applytime, expiretime 有效。 (sorttime==applytime)
+	wthdrawn, 8: applytime, withdrawtime 有效。 (sorttime==withdrawtime)
+	denied, 9: applytime, denytime 有效。 (sorttime==denytime)
+	agreed_but_insufficient_balance, 10: applytime, agreetime 有效。 (sorttime==agreetime)
+	
 
 ### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
 
