@@ -72,8 +72,8 @@
 				"repname":"NBA",
 				"itemname":"bear",
 				"supply_style":"batch",
-				"sorttime":"2015-11-10T15:04:05Z08:00",
-				"signtime":"2015-11-10T15:04:05Z08:00",
+				"sorttime":"2015-11-10T15:04:05Z",
+				"signtime":"2015-11-10T15:04:05Z",
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
@@ -94,11 +94,11 @@
 				"repname":"CBA",
 				"itemname":"triger",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-12-01T15:04:05Z08:00"
-				"freezetime":"2015-11-22T15:04:05Z08:00",
-				"finishtime":"2016-01-22T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-12-01T15:04:05Z"
+				"freezetime":"2015-11-22T15:04:05Z",
+				"finishtime":"2016-01-22T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "123423525252",
@@ -173,8 +173,8 @@
 				"sellername": "zhang3@example.com",
 				"itemname":"bear",
 				"supply_style":"batch",
-				"sorttime":"2015-11-10T15:04:05Z08:00",
-				"signtime":"2015-11-10T15:04:05Z08:00",
+				"sorttime":"2015-11-10T15:04:05Z",
+				"signtime":"2015-11-10T15:04:05Z",
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
@@ -194,11 +194,11 @@
 				"sellername": "zhang3@example.com",
 				"itemname":"triger",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "33333333",
@@ -228,7 +228,7 @@
 
 输入样例：
 
-	GET /subscriptions/pull HTTP/1.1 
+	GET /subscriptions/pull/repo001/item002 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
@@ -241,8 +241,8 @@
 				"subscriptionid": 1234567,
 				"sellername": "li4@example.com",
 				"supply_style":"batch",
-				"sorttime":"2015-11-10T15:04:05Z08:00",
-				"signtime":"2015-11-10T15:04:05Z08:00",
+				"sorttime":"2015-11-10T15:04:05Z",
+				"signtime":"2015-11-10T15:04:05Z",
 				"expiretime":"2016-01-15T11:28:21Z",
 				"freezetime":"2015-12-11T10:51:11Z",
 				"finishtime":"2016-01-10T10:51:11Z",
@@ -261,11 +261,11 @@
 				"subscriptionid": 1234568,
 				"sellername": li4@example.com",
 				"supply_style":"flow",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "33333333",
@@ -310,11 +310,11 @@
 				"repname":"NBA",
 				"itemname":"bear",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "2222222",
@@ -332,11 +332,11 @@
 				"repname":"CBA",
 				"itemname":"triger",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "33333333",
@@ -384,11 +384,11 @@
 				"buyername":"zhang3@example.com",
 				"itemname":"bear",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "222222222",
@@ -405,11 +405,11 @@
 				"buyername":"li4@example.com",
 				"itemname":"triger",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "33333333",
@@ -452,11 +452,11 @@
 				"subscriptionid": 1234567,
 				"buyername":"zhang3@example.com",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "2222222",
@@ -472,11 +472,11 @@
 				"subscriptionid": 1234568,
 				"buyername":"li4@example.com",
 				"supply_style":"batch",
-				"sorttime":"2015-11-01T15:04:05Z08:00",
-				"signtime":"2015-11-01T15:04:05Z08:00",
-				"expiretime":"2015-11-04T15:04:05Z08:00"
-				"freezetime":"2015-12-04T15:04:05Z08:00",
-				"finishtime":"2016-01-04T15:04:05Z08:00",
+				"sorttime":"2015-11-01T15:04:05Z",
+				"signtime":"2015-11-01T15:04:05Z",
+				"expiretime":"2015-11-04T15:04:05Z"
+				"freezetime":"2015-12-04T15:04:05Z",
+				"finishtime":"2016-01-04T15:04:05Z",
 				"phase":1,
 				"plan":{
 					“id": "333333333",
@@ -531,7 +531,7 @@
         
 	{
 		"subscriptionid": 1234568,
-		"applytime":"2015-11-01T15:04:05Z08:00",
+		"applytime":"2015-11-01T15:04:05Z",
 	}
 
 输出样例2：
@@ -558,7 +558,7 @@
         
 	{
 		"subscriptionid": 1234567890,
-		“signtime": "2015-09-10T15:04:05Z08:00"
+		“signtime": "2015-09-10T15:04:05Z"
 	}
 
 返回数据说明：
@@ -586,7 +586,7 @@
         
 	{
 		"subscriptionid": 1234567890,
-		“applytime": "2015-09-10T15:04:05Z08:00"
+		“applytime": "2015-09-10T15:04:05Z"
 	}
 
 返回数据说明：
@@ -626,7 +626,7 @@
 		"repname":"NBA",
 		"itemname":"bear",
 		"supply_style":"batch",
-		"signtime":"2015-11-10T15:04:05Z08:00",
+		"signtime":"2015-11-10T15:04:05Z",
 		"expiretime":"2016-01-15T11:28:21Z",
 		"freezetime":"2015-12-11T10:51:11Z",
 		"finishtime":"2016-01-10T10:51:11Z",
@@ -676,8 +676,8 @@
 		"repname":"NBA",
 		"itemname":"bear",
 		"supply_style":"batch",
-		"applytime":"2015-11-10T15:04:05Z08:00",
-		"expiretime":"2016-11-17T15:04:05Z08:00",
+		"applytime":"2015-11-10T15:04:05Z",
+		"expiretime":"2016-11-17T15:04:05Z",
 		"phase":7,
 		"plan":{
 			"money":5,
