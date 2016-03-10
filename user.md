@@ -19,8 +19,6 @@
 
 - [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
 
-- [PUT] /users/exist 验证用户存在
-
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
 - [POST] /quota/:loginname/repository 创建repo配额信息
@@ -49,15 +47,13 @@
 
 - [PUT] /vip/:loginname 修改会员信息
 
-- [POST] /massage/send 发送信息
+- [POST] /groupSend/send 发送信息
 
-- [POST] /massage/save 保存草稿
+- [DELETE] /groupSend/:loginname 删除信息
 
-- [DELETE] /massage/:massageId/draft 删除草稿
+- [PUT] /groupSend/:massageId/update 更新信息
 
-- [PUT] /massage/:massageId/update 更新信息
-
-- [GET] /massage/queryMassage 查询信息
+- [GET] /groupSend/query 查询信息
 
 
 	
@@ -89,6 +85,7 @@
 	返回数据示例
 		{"data":{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
 
+
 ##指令：GET /users/search/user 查询用户列表
 	说明
 		【管理员】 分页查询用户列表（查询条件可选）
@@ -97,13 +94,10 @@
 		size:每页数据量
 		loginName:登录名，（模糊匹配）
 		userName:真实名称，（模糊匹配）
-		userType：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
-		userNameCompare：（1：等于，2：不等于，3：包含，4：不包含）注：默认为包含
-		loginNameCompare：（1：等于，2：不等于，3：包含，4：不包含）注：默认为包含
-		userTypeCompare：（1：等于，2：不等于，3：包含，4：不包含）注：默认为包含
 	Example Request：
-		GET /users/search/user?page=1&size=20&loginName=asiainfo&userName=foo&userType=1&userNameCompare=3&loginNameCompare=3&userTypeCompare=1 HTTP/1.1 
+		GET /users/search/user?page=1&size=20&loginName=a&userName=b HTTP/1.1 
 		Accept: application/json;charset=UTF-8
+		Authorization: token
 
 	返回数据说明：
 		code:状态码
@@ -113,14 +107,13 @@
 		comment：描述信息
 		invalidTime:失效时间
 		nickname：昵称 
-		loginName：登录名
 		registTime:注册时间
 		userId:用户id
 		username:真实名称
 		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 	返回数据示例
-		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","loginName":"guolq3@asiainfo.com","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
@@ -280,31 +273,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 		
-##指令：PUT /users/exist 验证用户存在
-	说明
-		【管理员】 验证用户存在
-	输入参数说明：
-		page:当前页数
-		size:每页数据量
-		loginNames:登录名集合
-	Example Request：
-		GET /users/exist HTTP/1.1 
-		Accept: application/json;charset=UTF-8
-		Content-Type: application/json;charset=UTF-8
-		{
-			"page":1
-			"size":20
-			"loginNames":["guolq3@asiainfo.com","bac"]
-		}
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-		total：总记录数
-		data：数据集合 
-		loginNames:不存在的用户
-	返回数据示例  
-		{"data":{"total":86,"results":[{"loginNames":["guolq3@asiainfo.com","bac"]}]},"code":0,"msg":"ok"}
-		
+
 ##指令：PUT /users/:loginname/resend/active 重新发送激活邮件
 	说明：
 		【任意】忘记密码发邮件
@@ -618,54 +587,27 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
-		
-##指令：POST /massage/send 发送信息
+
+##指令：POST /groupSend/send 发送信息
     说明：
 		【管理员角色】发送信息
 	输入参数说明：
-        	users：收件人
-		title：信息的标题
-        	content：信息的内容
-		massageType:信息的类型（1：消息，2：邮件，3:全选）
-		sendMode:发送方式（1：立即发送，2：定时发送）
-		time：定时时间（立即发送为空）
-	Example Request：
-		POST /massage/send
-		Content-Type: application/json;charset=UTF-8
-		{
-			"users":["guolq3@asiainfo.com","bac"]
-			"title":信息的标题
-        		"content":信息的内容
-        		"massageType":1
-			"sendMode":2
-			"time":"2016-3-10 13:22:22"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-
-##指令：POST /massage/save 保存草稿
-    说明：
-		【管理员角色】保存草稿
-	输入参数说明：
         users：收件人
 		title：信息的标题
-        	content:信息的内容
-	 	massageType:信息的类型（1：消息，2：邮件，3：全选）
-		sendMode:是否定时发送（1：立即发送，2：定时发送）
-		time：定时时间（立即发送为空）
+        content：信息的内容
+        type:信息的类型（1：消息，2：邮件）
+		sendMode:发送方式（1：立即发送，2：定时发送）
+		time：定时时间
 	Example Request：
-		POST /massage/save
+		POST /groupSend/send
 		Content-Type: application/json;charset=UTF-8
 		{
-			"users":["guolq3@asiainfo.com","bac"]
-			"title":信息的标题
-        		"content":信息的内容
-        		"massageType":2
-			"sendMode":1
-			"time":"2016-3-10 13:22:11"
+			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
+			"title"：信息的标题,
+        	"content"：信息的内容,
+        	"type":信息的类型（1：消息，2：邮件）,
+			"sendMode":发送方式（1：立即发送，2：定时发送）,
+			"time"：定时时间
 		}	
 	返回数据说明：
 		code:状态码
@@ -673,13 +615,13 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：DELETE /massage/:massageId/draft 删除草稿
+##指令：DELETE /groupSend/:loginname 删除信息
 	说明：
-		【管理员角色】删除草稿
+		【管理员角色】删除信息
 	输入参数说明：
 		无
 	Example Request：
-		DELETE /massage/1/draft HTTP/1.1 
+		DELETE /groupSend/1 HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8     
 	返回数据说明
 		code:状态码
@@ -687,24 +629,24 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：PUT /massage/:massageId/update 更新信息
+##指令：PUT /groupSend/:massageId/update 更新信息
     说明：
 		【管理员角色】更新信息
 	输入参数说明：
+        users：收件人
 		title：信息的标题
-        	content：信息的内容
-        	massageType:信息的类型（1：消息，2：邮件，3：全选）
-		sendMode:发送方式（1：立即发送，2：定时发送）
+        content：信息的内容
+        type:信息的类型（1：消息，2：邮件，3：全选）
 		time：定时时间
 	Example Request：
-		PUT /massage/1/update
+		PUT /groupSend/1/update
 		Content-Type: application/json;charset=UTF-8
 		{
-			"title":信息的标题
-        		"content":信息的内容
-        		"massageType":2
-			"sendMode":2
-			"time"：2016-3-10 13:20:10
+			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
+			"title"：信息的标题,
+        	"content"：信息的内容,
+        	"type":1,
+			"time"：定时时间
 		}	
 	返回数据说明：
 		code:状态码
@@ -712,26 +654,26 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：GET /massage/queryMassage 查询信息
-	说明
+##指令：GET /groupSend/query 查询信息
+    说明：
 		【管理员】 查询信息
 	输入参数说明：
 		page:当前页数
-		size:每页数据量
-		massageState:信息状态（1：已发送 2：草稿）
+    	size:每页数据量
 	Example Request：
-		GET /users/queryMassage?page=1&size=20&massageState=1 HTTP/1.1 
-		Accept: application/json;charset=UTF-8
-
+		GET /groupSend/query?page=1&size=20 HTTP/1.1 
+        Accept: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
-		msg:操作信息，用来记录失败信息
-		total：总记录数
-		data：数据集合 
-		title：标题
-		user:用户名
-		sendTime:发送时间
-		createTime：创建时间
-		massagetype：信息类型(1：消息，2：邮件，3：全选)
-	返回数据示例  
-		{"data":{"total":86,"results":[{"title":"abc","user":"张三","sendTime":"2015-12-01 13：22：22","createtime":"2015-12-01 13：22：22","userType":1}]},"code":0,"msg":"ok"}
+    	msg:操作信息，用来记录失败信息
+    	total：总记录数
+    	data：数据集合 
+    	title：标题
+		content：信息的内容
+    	users:用户群
+    	sendTime:发送时间
+    	massagetype：信息类型(1：消息，2：邮件，3：全选)
+		massageState:信息状态（1：已发送 2：发送未成功 3：发送用户不存在 4：未发送）
+		time：定时时间
+	返回数据示例
+		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13：22：22","massageType":1,"massageState":4,"time":2015-12-01 13：22:22}]},"code":0,"msg":"ok"}
