@@ -84,7 +84,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			},
@@ -106,7 +105,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			}
@@ -185,7 +183,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			},
@@ -206,7 +203,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			}
@@ -253,7 +249,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			},
@@ -273,7 +268,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			}
@@ -322,7 +316,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			},
@@ -344,7 +337,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			}
@@ -396,7 +388,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			},
@@ -417,7 +408,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			}
@@ -464,7 +454,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			},
@@ -484,7 +473,6 @@
 					"units":3,
 					"used":0,
 					"limit":0,
-					"subs":1,
 					"expire":30
 				}
 			}
