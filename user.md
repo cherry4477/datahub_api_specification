@@ -19,7 +19,7 @@
 
 - [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
 
-- [GET] /users/filtrate 查询不存在用户
+- [PUT] /users/filtrate 查询不存在用户
 
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
