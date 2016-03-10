@@ -43,7 +43,8 @@
 					"id":"2",					
 					"login_name":"bb@126.com",
 					"user_type":4}
-				]
+				}
+			]
 		}
 
 ###user服务
@@ -76,7 +77,8 @@
 					"id":2,
 					"login_name":"bb@126.com",
 					"user_type":4}
-				]
+				}
+			]
 		}
 
 	
@@ -98,12 +100,12 @@
 				{
 					"column_name":"REPOSITORY_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"DATAITEM_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"NUM_STARS",
@@ -122,13 +124,17 @@
 					"REPOSITORY_NAME":"repo07",
 					"DATAITEM_NAME":"item07",
 					"NUM_STARS":4
-				]
+				}
+			]
 		}
 
 ###subscription服务
+
+#### dataitem订购数
+
 	数据说明
-		REPOSITORY_NAME string(64) 
-		DATAITEM_NAME string(64)
+		REPOSITORY_NAME string(255) 
+		DATAITEM_NAME string(255)
 		NUM_SUBS int 总订购数
 	Example
 		{
@@ -143,12 +149,12 @@
 				{
 					"column_name":"REPOSITORY_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"DATAITEM_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"NUM_SUBS",
@@ -166,15 +172,160 @@
 					"id":2,
 					"REPOSITORY_NAME":"repo07",
 					"DATAITEM_NAME":"item07",
-					"NUM_SUBS":4}
-				]
+					"NUM_SUBS":4
+				}
+			]
+		}
+		
+
+#### user 订购数
+
+	数据说明
+		USERNAME string(255) 
+		NUM_SUBS int 总订购数
+	Example
+		{
+			"service":"subscriptions",
+			"date":"2015-01-02",
+			"table":"dataitem_numsubs",
+			"columns":[
+				{
+					"column_name":"id",
+					"column_type":"int"
+				},	
+				{
+					"column_name":"USERNAME",
+					"column_type":"string",
+					"column_length":255
+				},	
+				{
+				{
+					"column_name":"NUM_SUBS",
+					"column_type":"int"
+				}
+			], 
+		   "result":[
+				{
+					"id":1,
+					"USERNAME":"zhang3@example.com",
+					"NUM_SUBS":3
+				},	
+				{
+					"id":2,
+					"USERNAME":"li4@example.com",
+					"NUM_SUBS":4
+				}
+		}
+
+#### 未完成的订购列表
+
+	数据说明
+		SUBSCRIPTION_ID long 总订购数
+		REPOSITORY_NAME string(255) repo名
+		DATAITEM_NAME string(255) item名
+		SUPPLY_STYLE string(64) item类型
+		PULL_USER_NAME string(64) 订购者
+		PUSH_USER_NAME string(64) 拥有者
+		SIGN_TIME string(32) 签署时间
+		EXPIRE_TIME string(32) 过期时间
+		PLAN_ID string(64) 价格计划id
+		PLAN_MONEY int 价格
+		PLAN_UNITS int 可pull次数
+		PLAN_USED int 已pull次数
+		
+	Example
+		{
+			"service":"subscriptions",
+			"date":"2015-01-02",
+			"table":"dataitem_numsubs",
+			"columns":[
+				{
+					"column_name":"id",
+					"column_type":"int"
+				},
+				{
+					"column_name":"SUBSCRIPTION_ID",
+					"column_type":"long"
+				},	
+				{
+					"column_name":"REPOSITORY_NAME",
+					"column_type":"string",
+					"column_length":255
+				},
+				{
+					"column_name":"DATAITEM_NAME",
+					"column_type":"string",
+					"column_length":255
+				},	
+				{
+					"column_name":"SUPPLY_STYLE",
+					"column_type":"string",
+					"column_length":64
+				},
+				{
+					"column_name":"PULL_USER_NAME",
+					"column_type":"string",
+					"column_length":64
+				},
+				{
+					"column_name":"PUSH_USER_NAME",
+					"column_type":"string",
+					"column_length":64
+				},
+				{
+					"column_name":"SIGN_TIME",
+					"column_type":"string",
+					"column_length":32
+				},		
+				{
+					"column_name":"EXPIRE_TIME",
+					"column_type":"string",
+					"column_length":32
+				},	
+				{
+					"column_name":"PLAN_ID",
+					"column_type":"string",
+					"column_length":64
+				},
+				{
+					"column_name":"PLAN_MONEY",
+					"column_type":"int"
+				},
+				{
+					"column_name":"PLAN_UNITS",
+					"column_type":"int"
+				},	
+				{
+					"column_name":"PLAN_USED",
+					"column_type":"int"
+				}
+			], 
+		   "result":[
+				{
+					"id":1,
+					"SUBSCRIPTION_ID":1234567,
+					"REPOSITORY_NAME":"repo01",
+					"DATAITEM_NAME":"item02",
+					"SUPPLY_STYLE":"batch",
+					"PULL_USER_NAME":"zhang3@example.com",
+					"PUSH_USER_NAME":"li4@example.com",
+					"SIGN_TIME":"2016-01-02 10:56:23",
+					"EXPIRE_TIME":"2016-02-02 10:56:23",
+					"PLAN_ID":"100000000000",
+					"NUM_SUBS":10
+					"PLAN_UNITS":100
+					"PLAN_USED":91
+				}
+			]
 		}
 
 	
 ###transaction服务
+
+#### dataitem 下载量
 	数据说明
-		REPOSITORY_NAME string(64) 
-		DATAITEM_NAME string(64)
+		REPOSITORY_NAME string(255) 
+		DATAITEM_NAME string(255)
 		TAG string(64)
 		NUM_PULLS int 总下载数
 	Example
@@ -190,12 +341,12 @@
 				{
 					"column_name":"REPOSITORY_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"DATAITEM_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"NUM_PULLS",
@@ -215,13 +366,54 @@
 					"DATAITEM_NAME":"item07",
 					"NUM_PULLS":4
 				}
-				]
+			]
+		}
+		
+
+#### user 下载量
+
+	数据说明
+		USERNAME string(255) 
+		NUM_SUBS int 总订购数
+	Example
+		{
+			"service":"subscriptions",
+			"date":"2015-01-02",
+			"table":"dataitem_numsubs",
+			"columns":[
+				{
+					"column_name":"id",
+					"column_type":"int"
+				},	
+				{
+					"column_name":"USERNAME",
+					"column_type":"string",
+					"column_length":255
+				},	
+				{
+				{
+					"column_name":"NUM_SUBS",
+					"column_type":"int"
+				}
+			], 
+		   "result":[
+				{
+					"id":1,
+					"USERNAME":"zhang3@example.com",
+					"NUM_SUBS":3
+				},	
+				{
+					"id":2,
+					"USERNAME":"li4@example.com",
+					"NUM_SUBS":4
+				}
+			}
 		}
 
 ###comment服务
 	数据说明
-		REPOSITORY_NAME string(64) 
-		DATAITEM_NAME string(64)
+		REPOSITORY_NAME string(255) 
+		DATAITEM_NAME string(255)
 		NUM_COMMENTS int 总留言数
 	Example
 		{
@@ -236,12 +428,12 @@
 				{
 					"column_name":"REPOSITORY_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"DATAITEM_NAME",
 					"column_type":"string",
-					"column_length":64
+					"column_length":255
 				},	
 				{
 					"column_name":"NUM_COMMENTS",
@@ -268,9 +460,9 @@
 ###heartbeat服务
 	数据说明
 		id 			int 
-		user 		string(128)
+		user 		string(255)
 		daemonid 	string(48)
-		entrypoint	string(128)		"", "http://54.223.72.171:35800"
+		entrypoint	string(255)		"", "http://54.223.72.171:35800"
 		status		string(16) 		"online","offline"
 		role		int 			0:puller, 1:publisher
 		stattime	time 			millisecond
@@ -287,7 +479,7 @@
 				{
 					"column_name":"user",
 					"column_type":"string",
-					"column_length":128
+					"column_length":255
 				},	
 				{
 					"column_name":"daemonid",
@@ -297,7 +489,7 @@
 				{
 					"column_name":"entrypoint",
 					"column_type":"string"
-					"column_length":128
+					"column_length":255
 				},
 				{
 					"column_name":"status",
