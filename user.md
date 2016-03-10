@@ -653,7 +653,7 @@
         users：收件人
 		title：信息的标题
         	content:信息的内容
-	 	massageType:信息的类型（1：消息，2：邮件）
+	 	massageType:信息的类型（1：消息，2：邮件，3：全选）
 		sendMode:是否定时发送（1：立即发送，2：定时发送）
 		time：定时时间（立即发送为空）
 	Example Request：
@@ -663,7 +663,7 @@
 			"users":["guolq3@asiainfo.com","bac"]
 			"title":信息的标题
         		"content":信息的内容
-        		"type":2
+        		"massageType":2
 			"timing":1
 			"time":"2016-3-10 13:22:11"
 		}	
@@ -695,7 +695,7 @@
         	users：收件人
 		title：信息的标题
         	content：信息的内容
-        	massageType:信息的类型（1：消息，2：邮件）
+        	massageType:信息的类型（1：消息，2：邮件，3：全选）
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间
 	Example Request：
