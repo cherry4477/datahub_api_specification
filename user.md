@@ -53,9 +53,9 @@
 
 - [POST] /massage/save 保存草稿
 
-- [DELETE] /massage/draft 删除草稿
+- [DELETE] /:massageId/draft 删除草稿
 
-- [PUT] /massage/update 更新信息
+- [PUT] /:massageId/update 更新信息
 
 - [GET] /massage/queryMassage 查询信息
 
@@ -303,7 +303,7 @@
 		data：数据集合 
 		loginNames:不存在的用户
 	返回数据示例  
-		{"data":{"total":86,"results":[{"loginNames":["guolq3@asiainfo.com"，"bac"]}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"loginNames":["guolq3@asiainfo.com","bac"]}]},"code":0,"msg":"ok"}
 		
 ##指令：PUT /users/:loginname/resend/active 重新发送激活邮件
 	说明：
@@ -638,7 +638,7 @@
         		"content":信息的内容
         		"massageType":1
 			"sendMode":2
-			"time":2016-3-10
+			"time":"2016-3-10 13:22:22"
 		}	
 	返回数据说明：
 		code:状态码
@@ -651,20 +651,20 @@
 		【管理员角色】保存草稿
 	输入参数说明：
         users：收件人
-		title:信息的标题
+		title：信息的标题
         	content:信息的内容
-	 	massageType:信息的类型（1:消息，2:邮件，3:全选）
-		sendMode:发送方式（1:立即发送，2:定时发送）
+	 	massageType:信息的类型（1：消息，2：邮件）
+		sendMode:是否定时发送（1：立即发送，2：定时发送）
 		time：定时时间（立即发送为空）
 	Example Request：
-		POST /massage/save
+		POST /massage/guolq3@asiainfo.com/save
 		Content-Type: application/json;charset=UTF-8
 		{
 			"users":["guolq3@asiainfo.com","bac"]
 			"title":信息的标题
         		"content":信息的内容
-        		"massageType":2
-			"sendMode":1
+        		"type":2
+			"timing":1
 			"time":"2016-3-10 13:22:11"
 		}	
 	返回数据说明：
@@ -677,9 +677,9 @@
 	说明：
 		【管理员角色】删除草稿
 	输入参数说明：
-	        无
+		无
 	Example Request：
-		DELETE /1021/draft HTTP/1.1 
+		DELETE /1/draft?massageId=1 HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8     
 	返回数据说明
 		code:状态码
@@ -691,22 +691,24 @@
     说明：
 		【管理员角色】更新信息
 	输入参数说明：
+		massageId：信息Id
         	users：收件人
 		title：信息的标题
         	content：信息的内容
-        	massageType:信息的类型（1：消息，2：邮件，3：全选）
+        	massageType:信息的类型（1：消息，2：邮件）
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间
 	Example Request：
-		PUT /1021/update
+		PUT /1/update
 		Content-Type: application/json;charset=UTF-8
 		{
+			"massageId":1
 			"users":["guolq3@asiainfo.com","bac"]
 			"title":信息的标题
         		"content":信息的内容
         		"massageType":2
 			"sendMode":2
-			"time":"2016-3-10 13:20:10"
+			"time"：2016-3-10 13:20:10
 		}	
 	返回数据说明：
 		code:状态码
@@ -720,20 +722,20 @@
 	输入参数说明：
 		page:当前页数
 		size:每页数据量
-		massageState:信息状态(1：已发送，2：草稿)
+		massageState:信息状态（1：已发送 2：草稿）
 	Example Request：
 		GET /users/queryMassage?page=1&size=20&massageState=1 HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
-		code：状态码
-		msg：操作信息，用来记录失败信息
+		code:状态码
+		msg:操作信息，用来记录失败信息
 		total：总记录数
 		data：数据集合 
 		title：标题
-		user：用户名
-		sendTime：发送时间
+		user:用户名
+		sendTime:发送时间
 		createTime：创建时间
 		massagetype：信息类型(1：消息，2：邮件，3：全选)
 	返回数据示例  
-		{"data":{"total":86,"results":[{"title":"abc","user":"张三","sendTime":"2015-12-01 13:22:22","createtime":"2015-12-01 13:22:22","userType":1}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"title":"abc","user":"张三","sendTime":"2015-12-01 13：22：22","createtime":"2015-12-01 13：22：22","userType":1}]},"code":0,"msg":"ok"}
