@@ -705,8 +705,8 @@
 			"massageId":1
 			"users"：["guolq3@asiainfo.com"，"bac"]
 			"title"：信息的标题
-        	"content"：信息的内容
-        	"type":2
+        		"content"：信息的内容
+        		"type":2
 			"sendMode":2
 			"time"：2016-3-10 13:20:10
 		}	
