@@ -691,7 +691,6 @@
     说明：
 		【管理员角色】更新信息
 	输入参数说明：
-        	users：收件人
 		title：信息的标题
         	content：信息的内容
         	massageType:信息的类型（1：消息，2：邮件，3：全选）
@@ -701,7 +700,6 @@
 		PUT /massage/1/update
 		Content-Type: application/json;charset=UTF-8
 		{
-			"users":["guolq3@asiainfo.com","bac"]
 			"title":信息的标题
         		"content":信息的内容
         		"massageType":2
@@ -714,7 +712,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：GET /users/queryMassage 查询信息
+##指令：GET /massage/queryMassage 查询信息
 	说明
 		【管理员】 查询信息
 	输入参数说明：
