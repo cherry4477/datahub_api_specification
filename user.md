@@ -673,7 +673,11 @@
     	users:用户群
     	sendTime:发送时间
     	massagetype：信息类型(1：消息，2：邮件，3：全选)
-		massageState:信息状态（1：已发送 2：发送未成功 3：发送用户不存在 4：未发送）
+		massageState：（1：定时发送，2立即发送）
+		send:发送成功的用户群(默认值为空)
+		sendFail:发送失败的用户群(默认值为空)
+		userIsNull：不存在的用户(默认值为空)
 		time：定时时间
 	返回数据示例
-		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13：22：22","massageType":1,"massageState":4,"time":2015-12-01 13：22:22}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13：22：22","massageType":1,"massageState":1,"send":"[]","sendFail":"[]","userIsNull":"[]","time":2015-12-01 13：22:22}]},"code":0,"msg":"ok"}
+
