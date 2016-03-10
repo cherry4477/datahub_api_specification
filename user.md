@@ -47,6 +47,22 @@
 
 - [PUT] /vip/:loginname 修改会员信息
 
+- [POST] /users/send 发送信息
+
+- [POST] /users/save 保存草稿
+
+- [DELETE] /users/draft 删除草稿
+
+- [PUT] /users/update 更新消息
+
+- [GET] /users/querySend 查询发件箱
+
+- [GET] /users/queryDraft 查询草稿箱
+
+- [GET]  /users/exist 验证用户存在
+
+- [GET] /users/filtrate 筛选用户
+
 	
 ----------
 
@@ -576,3 +592,192 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
+#指令：POST /users/send 发送信息
+    	说明：
+		【管理员角色】发送消息
+	输入参数说明：
+        users：收件人
+		title：信息的标题
+        content：信息的内容
+        type:信息的类型（1：消息，2：邮件）可复选
+		sendMode:发送方式（1：立即发送，2：定时发送）
+		time：定时时间（立即发送为空）
+	Example Request：
+		POST /users/send
+		Content-Type: application/json;charset=UTF-8
+		{
+			"users"：guolq3@asiainfo.com
+			"title"：信息的标题
+        	"content"：信息的内容
+        	"type":1
+			"sendMode":2
+			"time"：2016-3-10
+		}	
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
+#指令：POST /users/save 保存草稿
+    	说明：
+		【管理员角色】保存草稿
+	输入参数说明：
+        users：收件人
+		title：信息的标题
+        content：信息的内容
+        type:信息的类型（1：消息，2：邮件）
+		timing:是否定时发送（1：是，2：不是）
+		time：定时时间
+	Example Request：
+		POST /users/guolq3@asiainfo.com/save
+		Content-Type: application/json;charset=UTF-8
+		{
+			"users"：guolq3@asiainfo.com
+			"title"：信息的标题
+        	"content"：信息的内容
+        	"type":2
+			"timing":1
+			"time"：2016-3-10
+		}	
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
+#指令：DELETE /users/draft 删除草稿
+	说明：
+		【管理员角色】删除草稿
+	输入参数说明：
+		massageId：消息id
+	Example Request：
+		DELETE /users/draft？massageId=1 HTTP/1.1 
+		Content-Type: application/json;charset=UTF-8     
+	返回数据说明
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
+#指令：PUT /users/update 更新消息
+    	说明：
+		【管理员角色】更新消息
+	输入参数说明：
+		massageId：消息Id
+        users：收件人
+		title：信息的标题
+        content：信息的内容
+        type:信息的类型（1：消息，2：邮件）
+		sendMode:发送方式（1：立即发送，2：定时发送）
+		time：定时时间
+	Example Request：
+		PUT /users/update
+		Content-Type: application/json;charset=UTF-8
+		{
+			"massageId":1
+			"users"：guolq3@asiainfo.com
+			"title"：信息的标题
+        	"content"：信息的内容
+        	"type":2
+			"sendMode":2
+			"time"：2016-3-10 13:20:10
+		}	
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		{"code":0,"msg":"ok"}
+
+#指令：GET /users/querySend 查询发件箱
+	说明
+		【管理员】 分页查询已发送
+	输入参数说明：
+		page:当前页数
+		size:每页数据量
+		loginName:登录名
+	Example Request：
+		GET /users/querySend?page=1&size=20 HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		total：总记录数
+		data：数据集合 
+		title：标题
+		user:用户名
+		sendTime:发送时间
+		massagetype：信息类型(1：消息，2：邮件)
+	返回数据示例  
+		{"data":{"total":86,"results":[{"title":"abc","user":"张三","sendTime":"2015-12-01","userType":1}]},"code":0,"msg":"ok"}
+
+#指令：GET /users/queryDraft 查询草稿箱
+	说明
+		【管理员】 分页查询草稿
+	输入参数说明：
+		page:当前页数
+		size:每页数据量
+		loginName:登录名
+	Example Request：
+		GET /users/queryDraft?page=1&size=20 HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		total：总记录数
+		data：数据集合 
+		title：标题
+		crateTime：创建时间
+		massageId:信息id
+		massageType：信息类型(1：消息，2：邮件)
+		massageState:信息状态(1:待编辑，2：发送失败，3：定时发送)
+	返回数据示例  
+		{"data":{"total":86,"results":[{"title":"abc","crateTime":2015-12-01 ,"userId":1025,"userType":1,massageState:1}]},"code":0,"msg":"ok"}
+
+#指令：GET /users/exist 验证用户存在
+	说明
+		【管理员】 验证用户存在
+	输入参数说明：
+		page:当前页数
+		size:每页数据量
+		loginNames:登录名集合
+	Example Request：
+		GET /users/exist?page=1&size=20&loginNames= "guolq3@asiainfo.com"HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		total：总记录数
+		data：数据集合 
+		loginNames:存在的用户
+	返回数据示例  
+		{"data":{"total":86,"results":[{"loginNames":guolq3@asiainfo.com}]},"code":0,"msg":"ok"}
+
+#指令：GET /users/filtrate 筛选用户
+	说明
+		【管理员】 筛选用户
+	输入参数说明：
+		page:当前页数
+		size:每页数据量
+		loginName:登录名（模糊匹配）
+		userName:用户名（模糊匹配）
+		userType：用户类型（1：普通用户，2:认证会员,3：金卡会员，4钻石会员）
+		userNameCompare：（1：等于，2：不等于，3：包含，4：不包含）
+		loginNameCompare：（1：等于，2：不等于，3：包含，4：不包含）
+		userTypeCompare：（1：等于，2：不等于，3：包含，4：不包含）
+	Example Request：
+		GET /users/filtrate?page=1&size=20&loginName="asiainfo"&userName"上海"&userType=1&userNameCompare=3&loginNameCompare=3&userTypeCompare=1 HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		total：总记录数
+		data：数据集合 
+		userName：用户名
+		loginName：登录名
+		nickName:昵称
+	返回数据示例  
+		{"data":{"total":86,"results":[{"userName":"上海用户","loginName":"guolq3@asiainfo.com","nickName":"昵称"}]},"code":0,"msg":"ok"}
