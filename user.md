@@ -664,7 +664,7 @@
 			"title":信息的标题
         		"content":信息的内容
         		"massageType":2
-			"timing":1
+			"sendMode":1
 			"time":"2016-3-10 13:22:11"
 		}	
 	返回数据说明：
