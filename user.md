@@ -19,7 +19,7 @@
 
 - [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
 
-- [PUT] /users/filtrate 查询不存在用户
+- [PUT] /users/exist 验证用户存在
 
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
@@ -53,9 +53,9 @@
 
 - [POST] /massage/save 保存草稿
 
-- [DELETE] /:massageId/draft 删除草稿
+- [DELETE] /massage/:massageId/draft 删除草稿
 
-- [PUT] /:massageId/update 更新信息
+- [PUT] /massage/:massageId/update 更新信息
 
 - [GET] /massage/queryMassage 查询信息
 
@@ -98,9 +98,9 @@
 		loginName:登录名，（模糊匹配）
 		userName:真实名称，（模糊匹配）
 		userType：用户类型（1：普通用户，2:认证会员,3：金卡会员，4钻石会员）
-		userNameCompare：（1：等于，2：不等于，3：包含，4：不包含，5：无）
-		loginNameCompare：（1：等于，2：不等于，3：包含，4：不包含，5：无）
-		userTypeCompare：（1：等于，2：不等于，3：包含，4：不包含，5：无）
+		userNameCompare：（1：等于，2：不等于，3：包含，4：不包含）注：默认为包含
+		loginNameCompare：（1：等于，2：不等于，3：包含，4：不包含）注：默认为包含
+		userTypeCompare：（1：等于，2：不等于，3：包含，4：不包含）注：默认为包含
 	Example Request：
 		GET /users/search/user?page=1&size=20&loginName=asiainfo&userName=foo&userType=1&userNameCompare=3&loginNameCompare=3&userTypeCompare=1 HTTP/1.1 
 		Accept: application/json;charset=UTF-8
@@ -280,9 +280,9 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 		
-##指令：PUT /users/exist 查询不存在用户
+##指令：PUT /users/exist 验证用户存在
 	说明
-		【管理员】 查询不存在用户
+		【管理员】 验证用户存在
 	输入参数说明：
 		page:当前页数
 		size:每页数据量
@@ -657,7 +657,7 @@
 		sendMode:是否定时发送（1：立即发送，2：定时发送）
 		time：定时时间（立即发送为空）
 	Example Request：
-		POST /massage/guolq3@asiainfo.com/save
+		POST /massage/save
 		Content-Type: application/json;charset=UTF-8
 		{
 			"users":["guolq3@asiainfo.com","bac"]
@@ -673,13 +673,13 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：DELETE /:massageId/draft 删除草稿
+##指令：DELETE /massage/:massageId/draft 删除草稿
 	说明：
 		【管理员角色】删除草稿
 	输入参数说明：
 		无
 	Example Request：
-		DELETE /1/draft?massageId=1 HTTP/1.1 
+		DELETE /massage/1/draft HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8     
 	返回数据说明
 		code:状态码
@@ -687,11 +687,10 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：PUT /:massageId/update 更新信息
+##指令：PUT /massage/:massageId/update 更新信息
     说明：
 		【管理员角色】更新信息
 	输入参数说明：
-		massageId：信息Id
         	users：收件人
 		title：信息的标题
         	content：信息的内容
@@ -699,10 +698,9 @@
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间
 	Example Request：
-		PUT /1/update
+		PUT /massage/1/update
 		Content-Type: application/json;charset=UTF-8
 		{
-			"massageId":1
 			"users":["guolq3@asiainfo.com","bac"]
 			"title":信息的标题
         		"content":信息的内容
