@@ -98,9 +98,9 @@
 		loginName:登录名，（模糊匹配）
 		userName:真实名称，（模糊匹配）
 		userType：用户类型（1：普通用户，2:认证会员,3：金卡会员，4钻石会员）
-		userNameCompare：（1：等于，2：不等于，3：包含，4：不包含）
-		loginNameCompare：（1：等于，2：不等于，3：包含，4：不包含）
-		userTypeCompare：（1：等于，2：不等于，3：包含，4：不包含）
+		userNameCompare：（1：等于，2：不等于，3：包含，4：不包含，5：无）
+		loginNameCompare：（1：等于，2：不等于，3：包含，4：不包含，5：无）
+		userTypeCompare：（1：等于，2：不等于，3：包含，4：不包含，5：无）
 	Example Request：
 		GET /users/search/user?page=1&size=20&loginName=asiainfo&userName=foo&userType=1&userNameCompare=3&loginNameCompare=3&userTypeCompare=1 HTTP/1.1 
 		Accept: application/json;charset=UTF-8
@@ -294,7 +294,7 @@
 		{
 			"page":1
 			"size":20
-			"loginNames"：["guolq3@asiainfo.com"，"bac"]
+			"loginNames":["guolq3@asiainfo.com","bac"]
 		}
 	返回数据说明：
 		code:状态码
@@ -626,19 +626,19 @@
         	users：收件人
 		title：信息的标题
         	content：信息的内容
-		type:信息的类型（1：消息，2：邮件，3:全选）
+		massageType:信息的类型（1：消息，2：邮件，3:全选）
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间（立即发送为空）
 	Example Request：
 		POST /massage/send
 		Content-Type: application/json;charset=UTF-8
 		{
-			"users"：["guolq3@asiainfo.com"，"bac"]
-			"title"：信息的标题
-        		"content"：信息的内容
-        		"type":1
+			"users":["guolq3@asiainfo.com","bac"]
+			"title":信息的标题
+        		"content":信息的内容
+        		"massageType":1
 			"sendMode":2
-			"time"：2016-3-10
+			"time":2016-3-10
 		}	
 	返回数据说明：
 		code:状态码
@@ -651,21 +651,21 @@
 		【管理员角色】保存草稿
 	输入参数说明：
         users：收件人
-		title：信息的标题
-        	content：信息的内容
-	 	type:信息的类型（1：消息，2：邮件）
-		sendMode:是否定时发送（1：立即发送，2：定时发送）
+		title:信息的标题
+        	content:信息的内容
+	 	massageType:信息的类型（1:消息，2:邮件，3:全选）
+		sendMode:发送方式（1:立即发送，2:定时发送）
 		time：定时时间（立即发送为空）
 	Example Request：
-		POST /massage/guolq3@asiainfo.com/save
+		POST /massage/save
 		Content-Type: application/json;charset=UTF-8
 		{
-			"users"：["guolq3@asiainfo.com"，"bac"]
-			"title"：信息的标题
-        		"content"：信息的内容
-        		"type":2
-			"timing":1
-			"time"：2016-3-10 13:22:11
+			"users":["guolq3@asiainfo.com","bac"]
+			"title":信息的标题
+        		"content":信息的内容
+        		"massageType":2
+			"sendMode":1
+			"time":"2016-3-10 13:22:11"
 		}	
 	返回数据说明：
 		code:状态码
@@ -673,13 +673,13 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：DELETE /massage/draft 删除草稿
+##指令：DELETE /:massageId/draft 删除草稿
 	说明：
 		【管理员角色】删除草稿
 	输入参数说明：
-		massageId：信息id
+	        无
 	Example Request：
-		DELETE /massage/draft？massageId=1 HTTP/1.1 
+		DELETE /1021/draft HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8     
 	返回数据说明
 		code:状态码
@@ -687,28 +687,26 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：PUT /massage/update 更新信息
+##指令：PUT /:massageId/update 更新信息
     说明：
 		【管理员角色】更新信息
 	输入参数说明：
-		massageId：信息Id
         	users：收件人
 		title：信息的标题
         	content：信息的内容
-        	type:信息的类型（1：消息，2：邮件）
+        	massageType:信息的类型（1：消息，2：邮件，3：全选）
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间
 	Example Request：
-		PUT /massage/update
+		PUT /1021/update
 		Content-Type: application/json;charset=UTF-8
 		{
-			"massageId":1
-			"users"：["guolq3@asiainfo.com"，"bac"]
-			"title"：信息的标题
-        		"content"：信息的内容
-        		"type":2
+			"users":["guolq3@asiainfo.com","bac"]
+			"title":信息的标题
+        		"content":信息的内容
+        		"massageType":2
 			"sendMode":2
-			"time"：2016-3-10 13:20:10
+			"time":"2016-3-10 13:20:10"
 		}	
 	返回数据说明：
 		code:状态码
@@ -722,20 +720,20 @@
 	输入参数说明：
 		page:当前页数
 		size:每页数据量
-		massageState:信息状态（1：已发送 2：未发送）
+		massageState:信息状态(1：已发送，2：草稿)
 	Example Request：
-		GET /users/queryMassage?page=1&size=20&massageState=1HTTP/1.1 
+		GET /users/queryMassage?page=1&size=20&massageState=1 HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
+		code：状态码
+		msg：操作信息，用来记录失败信息
 		total：总记录数
 		data：数据集合 
 		title：标题
-		user:用户名
-		sendTime:发送时间
+		user：用户名
+		sendTime：发送时间
 		createTime：创建时间
-		massagetype：信息类型(1：消息，2：邮件)
+		massagetype：信息类型(1：消息，2：邮件，3：全选)
 	返回数据示例  
-		{"data":{"total":86,"results":[{"title":"abc","user":"张三","sendTime":"2015-12-01 13：22：22","createtime":"2015-12-01 13：22：22","userType":1}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"title":"abc","user":"张三","sendTime":"2015-12-01 13:22:22","createtime":"2015-12-01 13:22:22","userType":1}]},"code":0,"msg":"ok"}
