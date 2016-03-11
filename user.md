@@ -638,7 +638,7 @@
         users：收件人列表
 		title：信息的标题
         content：信息的内容
-        type:信息的类型（1：消息，2：邮件，3：全选）
+        massagetype:信息的类型（1：消息，2：邮件，3：全选）
 		time：定时时间
 	Example Request：
 		PUT /broadcasts/1
@@ -647,7 +647,7 @@
 			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
 			"title"："信息的标题",
         	"content"："信息的内容",
-        	"type":1,
+        	"massagetype":1,
 			"time"："2016-04-20 22:22"
 		}	
 	返回数据说明：
