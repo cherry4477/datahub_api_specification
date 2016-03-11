@@ -653,9 +653,8 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-		data:broadcastId
 	返回数据示例
-		正确 {"code":0,"msg":"ok",data:{"broadcastId"="123456"}}
+		正确 {"code":0,"msg":"ok"}
 
 #指令：GET /broadcasts?Id=:broadcastId 查询群发任务
     说明：
@@ -688,3 +687,5 @@
 		 }
 	返回数据示例
 		{"data":{"total":86,"results":[{"broadcastId":"1","title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"sendSuccess":"[]","sendFail":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
+
+
