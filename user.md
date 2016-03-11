@@ -629,7 +629,7 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
-		错误 {"code":1001,"msg":"unknown error"}
+		错误 {"code":8013,"msg":"This broadcasts can not be deleted"}
 
 #指令：PUT /broadcasts/:broadcastId 更新群发任务
     说明：
@@ -655,7 +655,8 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
-
+		错误 {"code":8014,"msg":"This broadcasts can not be update"}
+		
 #指令：GET /broadcasts?Id=:broadcastId 查询群发任务
     说明：
 		【管理员】 查询群发任务
