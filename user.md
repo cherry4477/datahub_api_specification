@@ -661,7 +661,7 @@
     说明：
 		【管理员】 查询群发任务
 	输入参数说明：
-		broadcastID （可选）
+		broadcastId （可选）
 		complete (可选 0：所有未发 1:已经发送）
 		page:当前页数
     	size:每页数据量
@@ -674,7 +674,7 @@
     	data:{
     	  total：总记录数
     	  results：数据集合  {
-    	    broadcastID 群发任务id
+    	    broadcastId 群发任务id
     	    title：标题
 		    content：信息的内容
     	    users:用户群
@@ -687,4 +687,4 @@
 		  }
 		 }
 	返回数据示例
-		{"data":{"total":86,"results":[{"broadcastID":"1","title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"sendSuccess":"[]","sendFail":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"broadcastId":"1","title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"sendSuccess":"[]","sendFail":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
