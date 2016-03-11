@@ -41,9 +41,9 @@ Example Request：
         ],
         "role":1,
         "abnormaltags":[
-        "repo1/item1/tag1",
-        "repo2/item2/tag2",
-        "repo3/item3/tag3"
+        "repo1/item1:tag1",
+        "repo2/item2:tag2",
+        "repo3/item3:tag3"
         ]	
     }
 
