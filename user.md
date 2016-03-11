@@ -49,7 +49,7 @@
 
 - [POST] /groupSend/send 发送信息
 
-- [DELETE] /groupSend/:loginname 删除信息
+- [DELETE] /groupSend/:massageId 删除信息
 
 - [PUT] /groupSend/:massageId/update 更新信息
 
@@ -595,7 +595,7 @@
         users：收件人
 		title：信息的标题
         content：信息的内容
-        type:信息的类型（1：消息，2：邮件）
+        massagetype:信息的类型(1：消息，2：邮件，3：全选)
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间
 	Example Request：
@@ -603,11 +603,11 @@
 		Content-Type: application/json;charset=UTF-8
 		{
 			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
-			"title"：信息的标题,
-        	"content"：信息的内容,
-        	"type":信息的类型（1：消息，2：邮件）,
-			"sendMode":发送方式（1：立即发送，2：定时发送）,
-			"time"：定时时间
+			"title"："信息的标题",
+        	"content"："信息的内容",
+        	"massagetype":1,
+			"sendMode":2,
+			"time"："2016-3-11 13：22"
 		}	
 	返回数据说明：
 		code:状态码
@@ -615,7 +615,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：DELETE /groupSend/:loginname 删除信息
+##指令：DELETE /groupSend/:massageId 删除信息
 	说明：
 		【管理员角色】删除信息
 	输入参数说明：
@@ -636,17 +636,17 @@
         users：收件人
 		title：信息的标题
         content：信息的内容
-        type:信息的类型（1：消息，2：邮件，3：全选）
+        massagetype:信息的类型（1：消息，2：邮件，3：全选）
 		time：定时时间
 	Example Request：
 		PUT /groupSend/1/update
 		Content-Type: application/json;charset=UTF-8
 		{
 			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
-			"title"：信息的标题,
-        	"content"：信息的内容,
-        	"type":1,
-			"time"：定时时间
+			"title"："信息的标题",
+        	"content"："信息的内容",
+        	"massagetype":1,
+			"time"："2016-3-11 14:22"
 		}	
 	返回数据说明：
 		code:状态码
@@ -679,5 +679,5 @@
 		userIsNull：不存在的用户(默认值为空)
 		time：定时时间
 	返回数据示例
-		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13：22：22","massageType":1,"massageState":1,"send":"[]","sendFail":"[]","userIsNull":"[]","time":2015-12-01 13：22:22}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"send":"[]","sendFail":"[]","userIsNull":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
 
