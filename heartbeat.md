@@ -6,9 +6,10 @@
 
 ----------
 
-## 指令：POST /heartbeat 发送心跳信息
+##1 指令：POST /heartbeat 发送心跳信息
 
-说明
+说明：
+
 	心跳信息由Daemon根据配置的心跳周期发送给Server，作用之一为新Daemon上线后向Server注册；二为汇报Daemon的健康情况，上报自己的entrypoint；三为上传daemon的日志。
 
 输入参数说明：
@@ -58,9 +59,10 @@ Example Request：
 	Content-Type: application/json 
 
 
-## 指令：GET /heartbeat/status/:user 获取user的daemon status。
+##2 指令：GET /heartbeat/status/:user 获取user的daemon status。
 
-说明
+说明：
+
 	返回user的datahub daemon在线状态：online，offline。
 
 输入参数说明：
