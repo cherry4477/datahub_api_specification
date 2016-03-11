@@ -588,9 +588,9 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 
-##指令：POST /groupSend/send 发送信息
+##指令：POST /broadcasts 创建群发任务
     说明：
-		【管理员角色】发送信息
+		【管理员角色】创建群发任务
 	输入参数说明：
         users：收件人列表
 		title：信息的标题
@@ -599,7 +599,7 @@
 		sendMode:发送方式（1：立即发送，2：定时发送）
 		time：定时时间
 	Example Request：
-		POST /groupSend/send
+		POST /broadcasts
 		Content-Type: application/json;charset=UTF-8
 		{
 			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
@@ -612,60 +612,61 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
-		data:broadcastID
+		data:broadcastId
 	返回数据示例
-		{"code":0,"msg":"ok",data:{"broadcastID"="123456"}}
-
-##指令：DELETE /groupSend/:massageId 删除信息
+		{"code":0,"msg":"ok",data:{"broadcastId"="123456"}}
+		
+#指令：DELETE /broadcasts/:broadcastId 删除群发任务
 	说明：
-		【管理员角色】删除信息
+		【管理员角色】删除群发任务
 	输入参数说明：
 		无
 	Example Request：
-		DELETE /groupSend/1 HTTP/1.1 
+		DELETE /broadcasts/1 HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8     
 	返回数据说明
 		code:状态码
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
-		错误 {"code":9002,"msg":"broad cast job is complete,can not cancel"}
+		错误 {"code":1001,"msg":"unknown error"}
 
-##指令：PUT /groupSend/:massageId/update 更新信息
+#指令：PUT /broadcasts/:broadcastId 更新群发任务
     说明：
-		【管理员角色】更新信息
+		【管理员角色】更新群发任务
 	输入参数说明：
         users：收件人
 		title：信息的标题
         content：信息的内容
-        massagetype:信息的类型（1：消息，2：邮件，3：全选）
+        type:信息的类型（1：消息，2：邮件，3：全选）
 		time：定时时间
 	Example Request：
-		PUT /groupSend/1/update
+		PUT /broadcasts/1
 		Content-Type: application/json;charset=UTF-8
 		{
 			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
 			"title"："信息的标题",
         	"content"："信息的内容",
-        	"massagetype":1,
-			"time"："2016-3-11 14:22"
+        	"type":1,
+			"time"："2016-04-20 22:22"
 		}	
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
+		data:broadcastId
 	返回数据示例
-		{"code":0,"msg":"ok"}
+		正确 {"code":0,"msg":"ok",data:{"broadcastId"="123456"}}
 
-##指令：GET /groupSend/query 查询信息
+#指令：GET /broadcasts?Id=:broadcastId 查询群发任务
     说明：
-		【管理员】 查询信息
+		【管理员】 查询群发任务
 	输入参数说明：
 		broadcastID （可选）
 		complete (可选 0：所有未发 1:已经发送）
 		page:当前页数
     	size:每页数据量
 	Example Request：
-		GET /groupSend/query?page=1&size=20 HTTP/1.1 
+		GET /broadcasts?page=1&size=20&Id=1&complete=1 HTTP/1.1 
         Accept: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
@@ -673,7 +674,7 @@
     	data:{
     	  total：总记录数
     	  results：数据集合  {
-    	    broadcastID
+    	    broadcastID 群发任务id
     	    title：标题
 		    content：信息的内容
     	    users:用户群
@@ -686,5 +687,4 @@
 		  }
 		 }
 	返回数据示例
-		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"send":"[]","sendFail":"[]","userIsNull":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
-
+		{"data":{"total":86,"results":[{"broadcastID":"1","title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"sendSuccess":"[]","sendFail":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
