@@ -21,7 +21,7 @@
 		无
 	Example Request：
 		GET /bill/foo/info HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 	返回数据说明：
 		actualBalance:余额
@@ -100,7 +100,7 @@
 		channel:渠道
 	Example Request：
 		PUT /bill/foo/recharge HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 		{
 			"order_id":"recharge_11",
@@ -121,7 +121,7 @@
 		creditLimit:信用额度（可透支金额）
 	Example Request：
 		PUT /bill/foo/creditLimit HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 		{
 			"creditLimit":"1000"
@@ -144,7 +144,7 @@
 		trade_user:卖方
 	Example Request：
 		PUT /bill/foo/trade/init HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 		{
 			"order_id":"trade_11",
@@ -171,7 +171,7 @@
 		status：账单状态，1：交易成功；2:交易失败；3：交易生效
 	Example Request：
 		PUT /bill/foo/trade/commit HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 		USER:admin
 		{
@@ -191,7 +191,7 @@
 		order_id:取消交易的订单ID
 	Example Request：
 		PUT /bill/foo/trade/cancel HTTP/1.1 
-		Accept: text/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8
 		Authorization: token
 		{
 			"order_id":"110"
