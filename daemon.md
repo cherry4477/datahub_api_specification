@@ -138,6 +138,7 @@ Example Request：
 	【任意】根据请求参数不同，查询tag的健康状态。多条查询时，返回item下异常的tags。
 
 输入参数说明：
+
 	repname:(必选) repository的名字
 	itemname:(必选) item的名字
 	tagname:(可选) 查询具体某个tag的状态
