@@ -47,13 +47,13 @@
 
 - [PUT] /vip/:loginname 修改会员信息
 
-- [POST] /groupSend/send 发送信息
+- [POST] /broadcasts 创建群发任务
 
-- [DELETE] /groupSend/:massageId 删除信息
+- [DELETE] /broadcasts/:broadcastId 删除群发任务
 
-- [PUT] /groupSend/:massageId/update 更新信息
+- [PUT] /broadcasts/:broadcastId 更新群发任务
 
-- [GET] /groupSend/query 查询信息
+- [GET] /broadcasts?Id=:broadcastId 查询群发任务
 
 
 	
@@ -592,7 +592,7 @@
     说明：
 		【管理员角色】发送信息
 	输入参数说明：
-        users：收件人
+        users：收件人列表
 		title：信息的标题
         content：信息的内容
         massagetype:信息的类型(1：消息，2：邮件，3：全选)
@@ -612,8 +612,9 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
+		data:broadcastID
 	返回数据示例
-		{"code":0,"msg":"ok"}
+		{"code":0,"msg":"ok",data:{"broadcastID"="123456"}}
 
 ##指令：DELETE /groupSend/:massageId 删除信息
 	说明：
@@ -627,7 +628,8 @@
 		code:状态码
 		msg:操作信息，用来记录失败信息
 	返回数据示例
-		{"code":0,"msg":"ok"}
+		正确 {"code":0,"msg":"ok"}
+		错误 {"code":9002,"msg":"broad cast job is complete,can not cancel"}
 
 ##指令：PUT /groupSend/:massageId/update 更新信息
     说明：
@@ -658,6 +660,8 @@
     说明：
 		【管理员】 查询信息
 	输入参数说明：
+		broadcastID （可选）
+		complete (可选 0：所有未发 1:已经发送）
 		page:当前页数
     	size:每页数据量
 	Example Request：
@@ -666,18 +670,21 @@
 	返回数据说明：
 		code:状态码
     	msg:操作信息，用来记录失败信息
-    	total：总记录数
-    	data：数据集合 
-    	title：标题
-		content：信息的内容
-    	users:用户群
-    	sendTime:发送时间
-    	massagetype：信息类型(1：消息，2：邮件，3：全选)
-		massageState：（1：定时发送，2立即发送）
-		send:发送成功的用户群(默认值为空)
-		sendFail:发送失败的用户群(默认值为空)
-		userIsNull：不存在的用户(默认值为空)
-		time：定时时间
+    	data:{
+    	  total：总记录数
+    	  results：数据集合  {
+    	    broadcastID
+    	    title：标题
+		    content：信息的内容
+    	    users:用户群
+    	    sendTime:发送时间
+    	    massagetype：信息类型(1：消息，2：邮件，3：全选)
+		    massageState：（1：定时发送，2立即发送）
+		    sendSuccess:发送成功的用户群(默认值为空)
+		    sendFail:发送失败的用户群(默认值为空)
+		    time：定时时间
+		  }
+		 }
 	返回数据示例
 		{"data":{"total":86,"results":[{"title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"massageState":1,"send":"[]","sendFail":"[]","userIsNull":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
 
