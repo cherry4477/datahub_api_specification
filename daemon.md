@@ -9,9 +9,10 @@
 
 ----------
 
-## 指令：GET /daemon/id/ 获取登陆用户的daemonid。
+##1 指令：GET /daemon/id/ 获取登陆用户的daemonid。
 
-说明
+说明：
+
 	给用户分配一个唯一标识并返回，用于在用户安装Daemon并启动时向server表明自己的身份。
 
 输入参数说明：
@@ -38,9 +39,10 @@ Example Request：
 
 
 
-## 指令：GET /daemon/ep/:user 获取user的入口地址，普通用户只能获取自己的entrypoint。
+##2 指令：GET /daemon/ep/:user 获取user的入口地址，普通用户只能获取自己的entrypoint。
 
-说明
+说明：
+
 	返回作为数据提供方user的入口地址。
 
 输入参数说明：
@@ -69,9 +71,10 @@ Example Request：
 
 
 
-## 指令：GET /daemon/log/:index 获取登陆用户的daemon日志。
+##3 指令：GET /daemon/log/:index 获取登陆用户的daemon日志。
 
-说明
+说明：
+
 	返回以index为起始索引的用户daemon日志，索引范围为[index, index+9]。
 
 输入参数说明：
@@ -100,9 +103,10 @@ Example Request：
     }
 
 
-## 指令：GET /daemon/status/ 获取登陆user的daemon status。
+##4 指令：GET /daemon/status/ 获取登陆user的daemon status。
 
-说明
+说明：
+
 	返回登陆用户的datahub daemon在线状态：online，offline， 以及entrypoint。
 
 输入参数说明：
@@ -132,9 +136,10 @@ Example Request：
     }
 
 
-## 指令：GET /daemon/tags/status?repname={repname}&itemname={itemname}&tagname={tagname}&page={page}&size={size} 获取tags的状态
+##5 指令：GET /daemon/tags/status?repname={repname}&itemname={itemname}&tagname={tagname}&page={page}&size={size} 获取tags的状态
 
 说明：
+
 	【任意】根据请求参数不同，查询tag的健康状态。多条查询时，返回item下异常的tags。
 
 输入参数说明：
