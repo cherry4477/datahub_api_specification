@@ -682,7 +682,7 @@
     	    users:用户群
     	    sendTime:发送时间
     	    massagetype：信息类型(1：消息，2：邮件，3：全选)
-		    sendMode：发送方式（1：定时发送，2立即发送）
+		    sendMode：发送方式（1：立即发送，2定时发送）
 		    sendSuccess:发送成功的用户群(默认值为空)
 		    sendFail:发送失败的用户群(默认值为空)
 		    time：定时时间
