@@ -42,7 +42,7 @@
 
 ## APIs
 
-### (40) GET /subscriptions/pull?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
+### (40) GET /subscriptions/pull?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -50,10 +50,11 @@
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	groupbydate: (可选，默认为0) 是否按日期分组。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
+	page: (可选, 默认为1) 第几页，最小值为1。
+	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 
 输入样例：
 
@@ -142,7 +143,7 @@
 	agreed_but_insufficient_balance, 10: applytime, agreetime 有效。 (sorttime==agreetime)
 	
 
-### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
+### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -150,10 +151,11 @@
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	groupbydate: (可选，默认为0) 是否按日期分组。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
+	page: (可选, 默认为1) 第几页，最小值为1。
+	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 
 输入样例：
 
@@ -209,7 +211,7 @@
 		]
 	}
 
-### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
+### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -217,10 +219,11 @@
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	groupbydate: (可选，默认为0) 是否按日期分组。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
+	page: (可选, 默认为1) 第几页，最小值为1。
+	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 
 输入样例：
 
@@ -274,7 +277,7 @@
 		]
 	}
 
-### (43) GET /subscriptions/push?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
+### (43) GET /subscriptions/push?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -282,10 +285,11 @@
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	groupbydate: (可选，默认为0) 是否按日期分组。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
+	page: (可选, 默认为1) 第几页，最小值为1。
+	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 
 输入样例：
 
@@ -347,7 +351,7 @@
 
 	buyername: 数据消费者
 
-### (44) GET /subscriptions/push/:repname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
+### (44) GET /subscriptions/push/:repname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -355,10 +359,11 @@
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	groupbydate: (可选，默认为0) 是否按日期分组。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
+	page: (可选, 默认为1) 第几页，最小值为1。
+	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 
 输入样例：
 
@@ -414,7 +419,7 @@
 		]
 	}
 
-### (45) GET /subscriptions/push/:repname/:itemname?groupbydate=[0|1]&phase={phase}&page={page}&size={size}
+### (45) GET /subscriptions/push/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
 
 说明
 
@@ -422,10 +427,11 @@
 
 输入参数说明：
 	
-	groupbydate: (可选，默认为0) 是否按日期分组
-	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, complained: 10)。
-	page: (可选) 第几页，最小值为1
-	size: (可选) 每页最多返回多少条数据
+	groupbydate: (可选，默认为0) 是否按日期分组。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
+	page: (可选, 默认为1) 第几页，最小值为1。
+	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 
 输入样例：
 
@@ -546,7 +552,7 @@
         
 	{
 		"subscriptionid": 1234567890,
-		“signtime": "2015-09-10T15:04:05Z"
+		“signtime": "2015-09-10T15:04:05Z+08:00"
 	}
 
 返回数据说明：
@@ -574,7 +580,7 @@
         
 	{
 		"subscriptionid": 1234567890,
-		“applytime": "2015-09-10T15:04:05Z"
+		“applytime": "2015-09-10T15:04:05Z+08:00"
 	}
 
 返回数据说明：
