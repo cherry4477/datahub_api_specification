@@ -485,7 +485,7 @@
 		]
 	}
 
-### (46) GET /subscription/:repname/:itemname
+### (46) GET /subscription/:repname/:itemname (将废除，请用42代替)
 
 说明
 
@@ -505,7 +505,7 @@
         
 	true
 
-### (46b) GET /subscription/:repname/:itemname/apply
+### (46b) GET /subscription/:repname/:itemname/apply (将废除，请用42代替)
 
 说明
 
