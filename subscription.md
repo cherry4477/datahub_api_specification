@@ -829,7 +829,7 @@
 
 说明
 
-	【提供者】查询自己所有订购的date items, 按signtime降序排列
+	【需求者】查询自己所有订购的date items, 按signtime降序排列
 
 输入参数说明：
 	
