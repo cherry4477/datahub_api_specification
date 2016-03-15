@@ -605,7 +605,7 @@
 			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
 			"title"："信息的标题",
         	"content"："信息的内容",
-        	"massagetype":1,
+        	"massageType":1,
 			"sendMode":2,
 			"time"："2016-3-11 13：22"
 		}	
@@ -664,7 +664,7 @@
 		【管理员】 查询群发任务
 	输入参数说明：
 		broadcastId （可选）
-		complete (可选 0：所有未发 1:已经发送）
+		complete (可选  1:已经发送 2：所有未发）
 		page:当前页数
     	size:每页数据量
 	Example Request：
