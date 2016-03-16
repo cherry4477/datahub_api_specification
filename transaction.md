@@ -57,18 +57,16 @@
 
 说明
 
-	【拥有者】校验该access_token的有效性，此access_token被需求者的私有证书加密
-	注意：本组api接口只有这个不需要验证用户身份。
-	注意：tag需要UTF8编码
+	【拥有者】校验该cypt_accesstoken的有效性，此cypt_accesstoken被需求者的私有证书加密（但目前并未实现加密）
 
 输入参数说明：
 	
-	accesstoken: 需求者的access token
+	cypt_accesstoken: 需求者的access token 
 	username: 需求者用户名
 
 样例输入：
 
-	GET /transaction/repo1/item123/tag2 HTTP/1.1 
+	GET /transaction/repo1/item123/tag2?cypt_accesstoken=a1b1c1d2abcdadas&username=zhang3@example.com HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 
