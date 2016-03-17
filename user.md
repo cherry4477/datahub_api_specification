@@ -94,8 +94,9 @@
 		size:每页数据量
 		loginName:登录名，（模糊匹配）
 		userName:真实名称，（模糊匹配）
+		nickName:昵称，（模糊匹配）
 	Example Request：
-		GET /users/search/user?page=1&size=20&loginName=a&userName=b HTTP/1.1 
+		GET /users/search/user?page=1&size=20&loginName=a&userName=b&nickName=c HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 
