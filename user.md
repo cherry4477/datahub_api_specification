@@ -19,6 +19,8 @@
 
 - [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
 
+- [GET] /users/:loginname/validateLink  验证连接是否有效
+
 - [GET] /quota/:loginname/repository 获取repo配额信息
 
 - [POST] /quota/:loginname/repository 创建repo配额信息
@@ -62,7 +64,7 @@
 ##指令：GET /users/:loginname 查询用户(81)
 	说明
 		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如何是其他人，获得基本情况
-		loginname可以传入nickname
+		loginname可以传入昵称
 	输入参数说明：
 		无
 	Example Request：
@@ -290,6 +292,25 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		{"code":0,"msg":"ok"}
+
+##指令：GET /users/:loginname/validateLink 查询用户(81)
+	说明
+		【任意】 返回测试连接是否还有效
+	输入参数说明：
+		无
+	Example Request：
+		GET /users/foo/validateLink?sid=abc HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		data：数据结果
+		result:(1：有效，2：无效)
+		
+	返回数据示例
+		{"data":{"result":1},"code":0,"msg":"ok"}
+
 
 ##指令：GET /quota/:loginname/repository 获取用户的repo配额（87）
 	说明：
