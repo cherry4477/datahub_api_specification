@@ -62,6 +62,7 @@
 ##指令：GET /users/:loginname 查询用户(81)
 	说明
 		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如何是其他人，获得基本情况
+		loginname可以传入nickname
 	输入参数说明：
 		无
 	Example Request：
