@@ -637,7 +637,7 @@
 		msg:操作信息，用来记录失败信息
 		data:broadcastId
 	返回数据示例
-		{"code":0,"msg":"ok",data:{"broadcastId"="123456"}}
+		{"code":0,"msg":"ok",data:{"broadcastId":"123456"}}
 		
 #指令：DELETE /broadcasts/:broadcastId 删除群发任务
 	说明：
