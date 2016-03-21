@@ -293,7 +293,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 
-##指令：GET /users/:loginname/validateLink 查询用户(81)
+##指令：GET /users/:loginname/validateLink 查询连接是否有效(81)
 	说明
 		【任意】 返回测试连接是否还有效
 	输入参数说明：
