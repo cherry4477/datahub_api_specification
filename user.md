@@ -625,9 +625,9 @@
 		POST /broadcasts
 		Content-Type: application/json;charset=UTF-8
 		{
-			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
-			"title"："信息的标题",
-        	"content"："信息的内容",
+			"users":["guolq3@asiainfo.com","771435128@qq.com"],
+			"title":"信息的标题",
+        	"content":"信息的内容",
         	"massageType":1,
 			"sendMode":2,
 			"time":"2016-03-11 13:22"
@@ -668,12 +668,12 @@
 		PUT /broadcasts/1
 		Content-Type: application/json;charset=UTF-8
 		{
-			"users"：["guolq3@asiainfo.com","771435128@qq.com"],
-			"title"："信息的标题",
-        	"content"："信息的内容",
+			"users":["guolq3@asiainfo.com","771435128@qq.com"],
+			"title":"信息的标题",
+        	"content":"信息的内容",
         	"massagetype":1,
 			"sendMode":2,
-			"time"："2016-04-20 22:22"
+			"time":"2016-04-20 22:22"
 		}	
 	返回数据说明：
 		code:状态码
@@ -697,10 +697,10 @@
 		code:状态码
     	msg:操作信息，用来记录失败信息
     	data:{
-    	  total：总记录数
-    	  results：数据集合  {
+    	  total:总记录数
+    	  results:数据集合  {
     	    broadcastId 群发任务id
-    	    title：标题
+    	    title:标题
 		    content：信息的内容
     	    users:用户群
     	    sendTime:发送时间
