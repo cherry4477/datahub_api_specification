@@ -69,7 +69,7 @@ Example Request：
 
 输入参数说明：
 
-	items							查询repname的所有dataitem开关[1 ]
+	items							查询repname的所有dataitem开关[1 update_time_up:更新时间升序 update_time_down:更新时间降序 rank_up:rank升序 rank_down:rank降序]
 	relatedItems                    查询repname的相关dataitem开关[1 ]
 	myRelease                       查询我的发布
 	page (分页页数) : 				1 - N，  默认=1（page=1可以不传）
@@ -89,7 +89,8 @@ Example Request：
 	optime				更新时间
 	items				dataitem数量	
 	label				标签
-	dataitems			dataitem的名称集	
+	dataitems			dataitem的名称集
+	itemsize            dataitem结果总数,用于分页
 	
 返回值示例
 
