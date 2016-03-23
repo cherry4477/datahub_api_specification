@@ -78,6 +78,7 @@
 
 		comment：描述信息
 		invalidTime:失效时间
+		loginname:登录名
 		nickname：昵称 
 		registTime:注册时间
 		userId:用户id
@@ -86,7 +87,7 @@
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 		
 	返回数据示例
-		{"data":{"comment":"abc","invalidTime":"2016-12-01","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
+		{"data":{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
 
 
 ##指令：GET /users/search/user 查询用户列表
