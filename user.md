@@ -83,7 +83,7 @@
 		registTime:注册时间
 		userId:用户id
 		username:真实名称
-		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
+		userStatus:用户状态（1：未激活，2：激活，3：认证，4：授权，5：冻结，7：账号销毁）
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 		
 	返回数据示例
@@ -116,7 +116,7 @@
 		registTime:注册时间
 		userId:用户id
 		username:真实名称
-		userStatus:用户状态（1：未激活，2：激活，3：失效，4：删除）
+		userStatus:用户状态（1：未激活，2：激活，3：认证，4：授权，5：冻结，7：账号销毁）
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 	返回数据示例
 		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
