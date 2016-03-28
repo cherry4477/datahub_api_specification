@@ -88,7 +88,7 @@
 
 输入样例：
 
-	GET /comments/repo1/item123?beforetime=2015-11-23T09:02:52Z HTTP/1.1 
+	GET /comments/repo1/item123 HTTP/1.1 
 	Accept: application/json
 
 输出样例：
