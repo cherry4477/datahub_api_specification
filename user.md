@@ -57,6 +57,33 @@
 
 - [GET] /broadcasts?Id=:broadcastId 查询群发任务
 
+- [POST] /users/:loginname/person 添加个人基本信息
+
+- [POST] /users/:loginname/company 添加企业基本信息
+
+- [PUT] /users/:loginname/person 修改个人基本信息
+
+- [PUT] /users/:loginname/company 修改企业基本信息
+
+- [GET] /users/:loginname/person 查询个人基本信息
+
+- [GET] /users/:loginname/company 查询企业基本信息
+
+- [POST] /users/:loginname/person/real 添加个人认证信息
+
+- [POST] /users/:loginname/company/real 添加企业认证信息
+
+- [PUT] /users/:loginname/person/real 修改个人认证信息
+
+- [PUT] /users/:loginname/company/real 添加企业认证信息
+
+- [GET] /users/:loginname/person/real 查询个人认证信息
+
+- [GET] /users/:loginname/company/real 查询企业认证信息
+
+- [PUT] /users/:loginname/inspect 审核
+
+- [GET] /users/inspect 查询审核信息列表
 
 	
 ----------
@@ -999,9 +1026,9 @@
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
 
-##指令：PUT /users/:loginname/company/real 添加企业认证信息
+##指令：PUT /users/:loginname/company/real 修改企业认证信息
     说明：
-		【自己】添加企业基本信息
+		【自己】修改企业基本信息
 	输入参数说明：
         name:企业名称
 		address:公司地址
