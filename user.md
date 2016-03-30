@@ -84,7 +84,6 @@
 - [PUT] /users/:loginname/inspect 审核
 
 - [GET] /users/inspect 查询审核信息列表
-
 	
 ----------
 
@@ -594,7 +593,7 @@
 			},
 		"code":0,"msg":"ok"
 		}
-#指令：GET /vip/:loginname/cost 查看用户要升级的会员所需金额(8k)
+##指令：GET /vip/:loginname/cost 查看用户要升级的会员所需金额(8k)
 	说明：
 		【自己活管理员】查看用户要升级的会员所需金额
 	输入参数说明：
@@ -613,7 +612,7 @@
 		"code":0,"msg":"ok"
 		}
 
-#指令：PUT /vip/:loginname 修改会员信息(8l)
+##指令：PUT /vip/:loginname 修改会员信息(8l)
 	说明：
 		【管理员】修改用户的会员信息,同时修改用户配额、以及扣取年费（管理员除外）
                1 会员续费 userType与以前不变，扣取对应的年费（整年）
@@ -668,7 +667,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok",data:{"broadcastId":"123456"}}
 		
-#指令：DELETE /broadcasts/:broadcastId 删除群发任务
+##指令：DELETE /broadcasts/:broadcastId 删除群发任务
 	说明：
 		【管理员角色】删除群发任务
 	输入参数说明：
@@ -683,7 +682,7 @@
 		正确 {"code":0,"msg":"ok"}
 		错误 {"code":8013,"msg":"This broadcasts can not be deleted"}
 
-#指令：PUT /broadcasts/:broadcastId 更新群发任务
+##指令：PUT /broadcasts/:broadcastId 更新群发任务
     说明：
 		【管理员角色】更新群发任务
 	输入参数说明：
@@ -711,7 +710,7 @@
 		正确 {"code":0,"msg":"ok"}
 		错误 {"code":8014,"msg":"This broadcasts can not be update"}
 		
-#指令：GET /broadcasts?Id=:broadcastId 查询群发任务
+##指令：GET /broadcasts?Id=:broadcastId 查询群发任务
     说明：
 		【管理员】 查询群发任务
 	输入参数说明：
