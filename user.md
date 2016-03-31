@@ -57,25 +57,13 @@
 
 - [GET] /broadcasts?Id=:broadcastId 查询群发任务
 
-- [POST] /users/:loginname/person 添加个人基本信息
-
-- [POST] /users/:loginname/company 添加企业基本信息
-
-- [PUT] /users/:loginname/person 修改个人基本信息
-
-- [PUT] /users/:loginname/company 修改企业基本信息
-
-- [GET] /users/:loginname/person 查询个人基本信息
-
-- [GET] /users/:loginname/company 查询企业基本信息
-
 - [POST] /users/:loginname/person/real 添加个人认证信息
 
 - [POST] /users/:loginname/company/real 添加企业认证信息
 
 - [PUT] /users/:loginname/person/real 修改个人认证信息
 
-- [PUT] /users/:loginname/company/real 添加企业认证信息
+- [PUT] /users/:loginname/company/real 修改企业认证信息
 
 - [GET] /users/:loginname/person/real 查询个人认证信息
 
@@ -112,8 +100,15 @@
 		userStatus:用户状态（1：未激活，2：激活，3：认证，4：等待审核，5：审核未通过，7：账号销毁）
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 		
+		tel:电话号码
+		type：种类（1：个人，2：企业）
+		headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+		homepage:个人主页
+		industry：所属行业
+		person:业务接口人
+		massage:审核不通过原因
 	返回数据示例
-		{"data":{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1},"code":0,"msg":"ok"}
+		{"data":{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1,"tel":"8008208820",type:"1","headPic":abc.jpg,"homepage":"https://www.baidu.com/","person":"郭立强","industry":"地产","massage":"bala bala"},"code":0,"msg":"ok"}
 
 
 ##指令：GET /users/search/user 查询用户列表
@@ -144,8 +139,15 @@
 		username:真实名称
 		userStatus:用户状态（1：未激活，2：激活，3：认证，4：等待审核，5：审核未通过，7：账号销毁）
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
+		tel:电话号码
+		type：种类（1：个人，2：企业）
+		headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+		homepage:个人主页
+		industry：所属行业
+		person:业务接口人
+		massage:审核不通过原因
 	返回数据示例
-		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1,"tel":"8008208820",type:"1","headPic":abc.jpg,"homepage":"https://www.baidu.com/","person":"郭立强","industry":"地产","massage":"bala bala"}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
@@ -222,7 +224,11 @@
 		username：真实名称
 		comments：描述信息
 		passwd：密码(MD5)
-
+		tel:电话号码
+		headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+		homepage:个人主页
+		industry：所属行业
+		person:业务接口人
 	【管理员角色】Example Request：
 		PUT /users/foo HTTP/1.1 
 		Content-Type: application/json;charset=UTF-8
@@ -234,6 +240,11 @@
 			"username":"FOO",
 			"comments":"测试用户",
 			"passwd":".........."
+        	"tel":"8008208820",
+        	"homepage":"https://www.baidu.com/",
+        	"headPic":abc.jpg,
+        	"person":"郭立强",
+			"industry":"地产"
 		}
 
 	【普通用户】 说明 ：
@@ -243,6 +254,11 @@
 		{
 			nickname：昵称
 			comments：描述信息
+			tel:电话号码
+			headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+			homepage:个人主页
+			industry：所属行业
+			person:业务接口人
 		}
 
 	【普通用户】Example Request：
@@ -253,6 +269,11 @@
 		{
 			"nickname":"foo",
 			"comments":"测试用户"
+			"tel":"8008208820",
+        	"homepage":"https://www.baidu.com/",
+        	"headPic":abc.jpg,
+        	"person":"郭立强",
+			"industry":"地产"
 		}
 	返回数据说明
 		code:状态码
@@ -742,164 +763,6 @@
 	返回数据示例
 		{"data":{"total":86,"results":[{"broadcastId":"1","title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"sendMode":1,"sendSuccess":"[]","sendFail":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
 
-##指令：POST /users/:loginname/person 添加个人基本信息
-    说明：
-		【自己】添加个人基本信息
-	输入参数说明：
-        name：姓名
-		tel：电话号码
-        homepage：个人主页
-        headPic:头像图片(照片大小500K以内，支持PNG/JPG/GIF格式)
-		info:个人简介
-	Example Request：
-		POST  /users/:loginname/person
-		Content-Type: application/json;charset=UTF-8
-		{
-			"name":"郭立强",
-			"tel":"8008208820",
-        	"homepage":"https://www.baidu.com/",
-        	"headPic":abc.jpg,
-			"info":"bala bala"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-
-##指令：POST /users/:loginname/company 添加企业基本信息
-    说明：
-		【自己】添加企业基本信息
-	输入参数说明：
-        name：公司名称
-		industry：所属行业
-        homepage：公司官网
-		person:业务接口人
-		tel:联系电话
-        logo:公司logo(照片大小500K以内，支持PNG/JPG/GIF格式)
-		info:公司简介
-	Example Request：
-		POST /users/:loginname/company
-		Content-Type: application/json;charset=UTF-8
-		{
-			"name":"强大大集团",
-			"industry":"地产",
-        	"homepage":"https://www.qiangdada.com/",
-			"person":"郭立强",
-			"tel":"8008208820"
-        	"logo":abc.jpg,
-			"info":"bala bala"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-
-##指令：PUT /users/:loginname/person 修改个人基本信息
-    说明：
-		【自己】修改个人基本信息
-	输入参数说明：
-        name：姓名
-		tel：电话号码
-        homepage：个人主页
-        headPic:头像图片(照片大小500K以内，支持PNG/JPG/GIF格式)
-		info:个人简介
-	Example Request：
-		PUT /users/:loginname/person
-		Content-Type: application/json;charset=UTF-8
-		{
-			"name":"郭立强",
-			"tel":"8008208820",
-        	"homepage":"https://www.baidu.com/",
-        	"headPic":abc.jpg,
-			"info":"bala bala"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		正确 {"code":0,"msg":"ok"}
-
-##指令：PUT /users/:loginname/company 修改企业基本信息
-    说明：
-		【自己】修改企业基本信息
-	输入参数说明：
-        name：公司名称
-		industry：所属行业
-        homepage：公司官网
-		person:业务接口人
-		tel:联系电话
-        logo:公司logo(照片大小500K以内，支持PNG/JPG/GIF格式)
-		info:公司简介
-	Example Request：
-		PUT /users/:loginname/company
-		Content-Type: application/json;charset=UTF-8
-		{
-			"name":"强大大集团",
-			"industry":"地产",
-        	"homepage":"https://www.qiangdada.com/",
-			"person":"郭立强",
-			"tel":"8008208820"
-        	"logo":abc.jpg,
-			"info":"bala bala"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		正确 {"code":0,"msg":"ok"}
-
-
-##指令：GET /users/:loginname/person 查询个人基本信息(81)
-	说明
-		【自己和管理员】查询个人基本信息
-	输入参数说明：
-		无
-	Example Request：
-		GET /users/:loginname/person
-		Accept: application/json;charset=UTF-8
-
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-		data：数据结果
-
-		name：姓名
-		tel:电话号码
-		loginname:登录名
-		homepage：个人主页
-		headPic	:头像
-		info:个人简介
-		
-	返回数据示例
-		{"data":{"name":"郭立强","tel":"8008208820","loginname":"foo","homepage":"https://www.baidu.com/","headPic":"abc.jpg","info":"bala,bala"},"code":0,"msg":"ok"}
-
-##指令：GET /users/:loginname/company 查询企业基本信息(81)
-	说明
-		【自己和管理员】查询企业基本信息
-	输入参数说明：
-		无
-	Example Request：
-		GET /users/:loginname/company
-		Accept: application/json;charset=UTF-8
-
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-		data：数据结果
-
-		name：公司名称
-		loginname:登录名
-		industry：所属行业
-        homepage：公司官网
-		person:业务接口人
-		tel:联系电话
-        logo:公司logo(照片大小500K以内，支持PNG/JPG/GIF格式)
-		info:公司简介
-		
-	返回数据示例
-		{"data":{"name":"强大大有限公司","loginname":"foo","industry":"地产","homepage":"https://www.baidu.com/","person":"郭立强","tel":"8008208820","logo":"abc.jpg","info":"balabala"},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname/person/real 添加个人认证信息
     说明：
