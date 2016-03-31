@@ -766,7 +766,7 @@
 
 ##指令：POST /users/:loginname/person/real 添加个人认证信息
     说明：
-		【自己】添加个人认证信息
+		【自己或管理员】添加个人认证信息
 	输入参数说明：
         name：姓名
 		tel：电话号码
@@ -799,7 +799,7 @@
 
 ##指令：POST /users/:loginname/company/real 添加企业认证信息
     说明：
-		【自己】添加企业认证信息
+		【自己或管理员】添加企业认证信息
 	输入参数说明：
         name:企业名称
 		address:公司地址
@@ -857,7 +857,7 @@
 
 ##指令：PUT /users/:loginname/person/real 修改个人认证信息
     说明：
-		【自己】修改个人基本信息
+		【自己或管理员】修改个人基本信息
 	输入参数说明：
         name：姓名
 		tel：电话号码
@@ -890,7 +890,7 @@
 
 ##指令：PUT /users/:loginname/company/real 修改企业认证信息
     说明：
-		【自己】修改企业基本信息
+		【自己或管理员】修改企业基本信息
 	输入参数说明：
         name:企业名称
 		address:公司地址
