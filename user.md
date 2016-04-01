@@ -810,8 +810,6 @@
         name：姓名
 		tel：电话号码
         idNum：身份证号
-        idPic1:身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		idPic2:身份证反面(照片大小1M以内，支持PNG/JPG格式)
 		bankName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -823,9 +821,7 @@
 			"name":"郭立强",
 			"tel":"8008208820",
         	"idNum":"110109198711222014",
-        	"idPic1":abc.jpg,
-        	"idPic2":abb.jpg,
-			"bankName":"郭立强"
+			"bankName":"郭立强",
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
 			"bankName":"xx路支行"
@@ -845,20 +841,14 @@
         name:企业名称
 		address:公司地址
 		kbisNum:营业执照编号
-        kbisPic：营业执照扫描件(照片大小1M以内，支持PNG/JPG格式)
 		org：组织结构代码
-        orgPic:组织结构代码扫描件(照片大小1M以内，支持PNG/JPG格式)
 		legalPerson：法人姓名
 		legalPersonAddress：法人归属地
 		legalPersonNum：法人身份证号
-		legalPersonPic1：法人身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		legalPersonPic2:法人身份证反面(照片大小1M以内，支持PNG/JPG格式)
 		person：联系人姓名
 		personTel：联系人电话
 		personEmail：联系人电子邮箱
 		personNum:联系人身份证号
-		personPic1：联系人身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		personPic2：联系人身份证反面(照片大小1M以内，支持PNG/JPG格式)
 		verityPic：授权证书扫描件
 		bankName：账户名称
 		bankNum:银行账号
@@ -871,20 +861,14 @@
 			"name":"强大大有限公司",
 			"address":"北京xxxx",
         	"kbisNum":"11010919871",
-        	"kbisPic":abc.jpg,
         	"org":"我是组织结构",
-			"orgPic":bcd.jpg,
 			"legalPerson":"张三",
 			"legalPersonAddress":"某个村子里",
 			"legalPersonNum":"230123285133458132",
-			"legalPersonPic1":abc.jpg,
-			"legalPersonPic2":abc.jpg,
 			"person":"郭立强",
 			"personTel":"80082052513",
 			"personEmail":"abc@abc.com",
 			"personNum":"230318132183218",
-			"personPic1":bcd.jpg,
-			"personPic2":bcd.jpg,
 			"bankName":"强大大有限公司"
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
@@ -1050,3 +1034,20 @@
 							"code":0,"msg":"ok"}
 		
 		
+##指令：PUT /certificate/upload/:loginname 上传图片
+    说明：
+		【所有人】审核实名认证
+	输入参数说明：
+		pic：图片
+		type：图片类型(1:个人头像/公司logo,2:身份证正面,3:身份证反面,4:法人身份证正面,5:法人身份证反面,6:联系人身份证正面,7:联系人身份证反面,8:营业执照扫描件,9:组织结构代码)
+	Example Request：
+		PUT /certificate/upload/:loginname?type=1
+		Content-Type: application/json;charset=UTF-8
+		{
+			pic:abc.jpg
+		}	
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		正确 {"code":0,"msg":"ok"}
