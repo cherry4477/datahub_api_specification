@@ -68,6 +68,8 @@
 - [PUT] /certificate/inspection/:loginname 审核
 
 - [GET] /certificate/inspections 查询审核信息列表
+
+- [PUT] /certificate/upload/:loginname 上传图片
 	
 ----------
 
@@ -1036,7 +1038,7 @@
 		
 ##指令：PUT /certificate/upload/:loginname 上传图片
     说明：
-		【所有人】审核实名认证
+		【所有人】上传图片
 	输入参数说明：
 		pic：图片
 		type：图片类型(1:个人头像/公司logo,2:身份证正面,3:身份证反面,4:法人身份证正面,5:法人身份证反面,6:联系人身份证正面,7:联系人身份证反面,8:营业执照扫描件,9:组织结构代码)
