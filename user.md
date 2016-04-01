@@ -57,19 +57,21 @@
 
 - [GET] /broadcasts?Id=:broadcastId 查询群发任务
 
-- [PUT] /certificate/person/:loginname 添加/修改个人认证信息
+- [PUT] /certification/person/:loginname 添加/修改个人认证信息
 
-- [PUT] /certificate/company/:loginname 增加/修改企业认证信息
+- [PUT] /certification/company/:loginname 增加/修改企业认证信息
 
-- [GET] /certificate/person/:loginname 查询个人认证信息
+- [GET] /certification/person/:loginname 查询个人认证信息
 
-- [GET] /certificate/company/:loginname 查询企业认证信息
+- [GET] /certification/company/:loginname 查询企业认证信息
 
-- [PUT] /certificate/inspection/:loginname 审核
+- [PUT] /certification/inspection/:loginname 审核
 
-- [GET] /certificate/inspections 查询审核信息列表
+- [GET] /certification/inspections 查询审核信息列表
 
-- [PUT] /certificate/upload 上传图片
+- [POST] /certification/upload 上传图片
+
+- [GET] /certification/download 查询图片
 	
 ----------
 
@@ -818,7 +820,7 @@
 		bank:银行名称
 		bankName:开户支行名称
 	Example Request：
-		PUT /certificate/person/:loginname
+		PUT /certification/person/:loginname
 		Content-Type: application/json;charset=UTF-8
 		{
 			"name":"郭立强",
@@ -866,7 +868,7 @@
 		bank:银行名称
 		bankName:开户支行名称
 	Example Request：
-		PUT /certificate/company/:loginname
+		PUT /certification/company/:loginname
 		Content-Type: application/json;charset=UTF-8
 		{
 			"name":"强大大有限公司",
@@ -905,7 +907,7 @@
 	输入参数说明：
 		无
 	Example Request：
-		GET /certificate/person/:loginname
+		GET /certification/person/:loginname
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
@@ -916,8 +918,8 @@
 		name：姓名
 		tel：电话号码
         idNum：身份证号
-        idPic1:身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		idPic2:身份证反面(照片大小1M以内，支持PNG/JPG格式)
+        idPic1:身份证正面id
+		idPic2:身份证反面id
 		bankName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -927,8 +929,8 @@
 		{"data":{"name":"郭立强",
 				"tel":"8008208820",
 				"idNum":"123131613215631",
-				"idPic2":"abc.jpg",
-				"idPic2":"abc.jpg",
+				"idPic2":"xxx",
+				"idPic2":"xxx",
 				"bankName":"郭立强",
 				"bankNum":"235315613",
 				"bank":"xx银行"，
@@ -940,7 +942,7 @@
 	输入参数说明：
 		无
 	Example Request：
-		GET /certificate/company/:loginname
+		GET /certification/company/:loginname
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
@@ -951,20 +953,20 @@
 		name:企业名称
 		address:公司地址
 		kbisNum:营业执照编号
-        kbisPic：营业执照扫描件(照片大小1M以内，支持PNG/JPG格式)
+        kbisPic：营业执照扫描件id
 		org：组织结构代码
-        orgPic:组织结构代码扫描件(照片大小1M以内，支持PNG/JPG格式)
+        orgPic:组织结构代码扫描件id
 		legalPerson：法人姓名
 		legalPersonAddress：法人归属地
 		legalPersonNum：法人身份证号
-		legalPersonPic1：法人身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		legalPersonPic2:法人身份证反面(照片大小1M以内，支持PNG/JPG格式)
+		legalPersonPic1：法人身份证正面id
+		legalPersonPic2:法人身份证反面id
 		person：联系人姓名
 		personTel：联系人电话
 		personEmail：联系人电子邮箱
 		personNum:联系人身份证号
-		personPic1：联系人身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		personPic2：联系人身份证反面(照片大小1M以内，支持PNG/JPG格式)
+		personPic1：联系人身份证正面id
+		personPic2：联系人身份证反面id
 		bankName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -974,20 +976,20 @@
 		{"data":{"name":"强大大有限公司",
 				"address":"xxxxx",
 				"kbisNum":"123131613215631",
-				"kbisPic":"abc.jpg",
+				"kbisPic":"xxx",
 				"org":"我是组织机构",
 				"orgPic":"abc.jpg",
 				"legalPerson":"zhangsan",
 				"legalPersonAddress":"xx",
 				"legalPersonNum":"111",
-				"legalPersonPic1":"abc.jpg",
-				"legalPersonPic2":"abc.jpg",
+				"legalPersonPic1":"xxx",
+				"legalPersonPic2":"xgx",
 				"person":"郭立强",
 				"personTel":"1232",
 				"personEmail":"abc@abc.com",
 				"personNum":"12315",
-				"personPic1":"abc.jpg",
-				"personPic2":"abc.jpg",
+				"personPic1":"xxx",
+				"personPic2":"xx",
 				"bankName":"强大大有限公司",
 				"bankNum":"235315613",
 				"bank":"xx银行",
@@ -997,11 +999,11 @@
     说明：
 		【管理员角色】审核实名认证
 	输入参数说明：
-		state：审核状态（1：审核通过，2：审核未通过，3：待审核）
+		state：审核状态（1：审核通过，2：审核未通过）
 		massage:审核不通过原因
 		time：审核时间
 	Example Request：
-		PUT /certificate/inspection/:loginname
+		PUT /certification/inspection/:loginname
 		Content-Type: application/json;charset=UTF-8
 		{
 			"state":2,
@@ -1026,7 +1028,7 @@
 		state：审核状态(1:审核通过，2：等待审核,3：审核不通过)
 		type:用户类型(1:个人,2:企业)
 	Example Request：
-		PUT /certificate/inspections?page=1&size=20&loginname=foo&state=3&type=2
+		PUT /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
@@ -1051,13 +1053,13 @@
 							"code":0,"msg":"ok"}
 		
 		
-##指令：PUT /certification/upload 上传图片
+##指令：POST /certification/upload 上传图片
     说明：
 		【所有人】上传图片
 	输入参数说明：
 		pic：图片
 	Example Request：
-		PUT /certificate/upload
+		POST /certificate/upload
 		Content-Type: application/json;charset=UTF-8
 		{
 			pic:abc.jpg
@@ -1075,7 +1077,7 @@
 	输入参数说明：
 		picId:图片id
 	Example Request：
-		GET /certificate/download?picId=xxx
+		GET /certification/download?picId=xxx
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
