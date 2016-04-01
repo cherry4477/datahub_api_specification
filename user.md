@@ -57,21 +57,17 @@
 
 - [GET] /broadcasts?Id=:broadcastId 查询群发任务
 
-- [POST] /users/:loginname/person/real 添加个人认证信息
+- [PUT] /certificate/person/:loginname 添加/修改个人认证信息
 
-- [POST] /users/:loginname/company/real 添加企业认证信息
+- [PUT] /certificate/company/:loginname 增加/修改企业认证信息
 
-- [PUT] /users/:loginname/person/real 修改个人认证信息
+- [GET] /certificate/person/:loginname 查询个人认证信息
 
-- [PUT] /users/:loginname/company/real 修改企业认证信息
+- [GET] /certificate/company/:loginname 查询企业认证信息
 
-- [GET] /users/:loginname/person/real 查询个人认证信息
+- [PUT] /certificate/inspection/:loginname 审核
 
-- [GET] /users/:loginname/company/real 查询企业认证信息
-
-- [PUT] /users/:loginname/inspect 审核
-
-- [GET] /users/inspect 查询审核信息列表
+- [GET] /certificate/inspections 查询审核信息列表
 	
 ----------
 
@@ -108,7 +104,22 @@
 		person:业务接口人
 		massage:审核不通过原因
 	返回数据示例
-		{"data":{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1015,"userName":"FOO","userStatus":2,"userType":1,"tel":"8008208820",type:"1","headPic":abc.jpg,"homepage":"https://www.baidu.com/","person":"郭立强","industry":"地产","massage":"bala bala"},"code":0,"msg":"ok"}
+		{"data":{"comment":"abc",
+				"invalidTime":"2016-12-01",
+				"loginname":"foo",
+				"nickName":"foo",
+				"registTime":"2015-12-01",
+				"userId":1015,
+				"userName":"FOO",
+				"userStatus":2,
+				"userType":1,
+				"tel":"8008208820",
+				"type":"1",
+				"headPic":abc.jpg,
+				"homepage":"https://www.baidu.com/",
+				"person":"郭立强",
+				"industry":"地产",
+				"massage":"bala bala"},"code":0,"msg":"ok"}
 
 
 ##指令：GET /users/search/user 查询用户列表
@@ -147,7 +158,23 @@
 		person:业务接口人
 		massage:审核不通过原因
 	返回数据示例
-		{"data":{"total":86,"results":[{"comment":"abc","invalidTime":"2016-12-01","loginname":"foo","nickName":"foo","registTime":"2015-12-01","userId":1025,"userName":"FOO","userStatus":2,"userType":1,"tel":"8008208820",type:"1","headPic":abc.jpg,"homepage":"https://www.baidu.com/","person":"郭立强","industry":"地产","massage":"bala bala"}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,
+				"results":[{"comment":"abc",
+							"invalidTime":"2016-12-01",
+							"loginname":"foo",
+							"nickName":"foo",
+							"registTime":"2015-12-01",
+							"userId":1025,
+							"userName":"FOO",
+							"userStatus":2,
+							"userType":1,
+							"tel":"8008208820",
+							"type":"1",
+							"headPic":abc.jpg,
+							"homepage":"https://www.baidu.com/",
+							"person":"郭立强",
+							"industry":"地产",
+							"massage":"bala bala"}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
@@ -761,13 +788,25 @@
 		  }
 		 }
 	返回数据示例
-		{"data":{"total":86,"results":[{"broadcastId":"1","title":"abc","content":"cde","users":["guolq3@asiainfo.com","771435128@qq.com"],"sendTime":"2015-12-01 13:22","massageType":1,"sendMode":1,"sendSuccess":"[]","sendFail":"[]","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
+		{"data":{"total":86,
+				"results":[{"broadcastId":"1",
+							"title":"abc",
+							"content":"cde",
+							"users":["guolq3@asiainfo.com","771435128@qq.com"],
+							"sendTime":"2015-12-01 13:22",
+							"massageType":1,
+							"sendMode":1,
+							"sendSuccess":"[]",
+							"sendFail":"[]",
+							"time":"2015-12-01 13:22"}]},
+				"code":0,"msg":"ok"}
 
 
-##指令：POST /users/:loginname/person/real 添加个人认证信息
+##指令：PUT /certificate/person/:loginname 添加/修改个人认证信息
     说明：
-		【自己或管理员】添加个人认证信息
+		【自己或管理员】添加/修改个人基本信息
 	输入参数说明：
+		loginname:登录名(可选参数管理员认证时)
         name：姓名
 		tel：电话号码
         idNum：身份证号
@@ -778,98 +817,7 @@
 		bank:银行名称
 		bankName:开户支行名称
 	Example Request：
-		POST  /users/:loginname/person/real
-		Content-Type: application/json;charset=UTF-8
-		{
-			"name":"郭立强",
-			"tel":"8008208820",
-        	"idNum":"110109198711222014",
-        	"idPic1":abc.jpg,
-        	"idPic2":abb.jpg,
-			"bankName":"郭立强"
-			"bankNum":"201324832186131156",
-			"bank":"xx银行",
-			"bankName":"xx路支行"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-
-##指令：POST /users/:loginname/company/real 添加企业认证信息
-    说明：
-		【自己或管理员】添加企业认证信息
-	输入参数说明：
-        name:企业名称
-		address:公司地址
-		kbisNum:营业执照编号
-        kbisPic：营业执照扫描件(照片大小1M以内，支持PNG/JPG格式)
-		org：组织结构代码
-        orgPic:组织结构代码扫描件(照片大小1M以内，支持PNG/JPG格式)
-		legalPerson：法人姓名
-		legalPersonAddress：法人归属地
-		legalPersonNum：法人身份证号
-		legalPersonPic1：法人身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		legalPersonPic2:法人身份证反面(照片大小1M以内，支持PNG/JPG格式)
-		person：联系人姓名
-		personTel：联系人电话
-		personEmail：联系人电子邮箱
-		personNum:联系人身份证号
-		personPic1：联系人身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		personPic2：联系人身份证反面(照片大小1M以内，支持PNG/JPG格式)
-		bankName：账户名称
-		bankNum:银行账号
-		bank:银行名称
-		bankName:开户支行名称
-	Example Request：
-		POST  /users/:loginname/company/real
-		Content-Type: application/json;charset=UTF-8
-		{
-			"name":"强大大有限公司",
-			"address":"北京xxxx",
-        	"kbisNum":"11010919871",
-        	"kbisPic":abc.jpg,
-        	"org":"我是组织结构",
-			"orgPic":bcd.jpg,
-			"legalPerson":"张三",
-			"legalPersonAddress":"某个村子里",
-			"legalPersonNum":"230123285133458132",
-			"legalPersonPic1":abc.jpg,
-			"legalPersonPic2":abc.jpg,
-
-			"person":"郭立强",
-			"personTel":"80082052513",
-			"personEmail":"abc@abc.com",
-			"personNum":"230318132183218",
-			"personPic1":bcd.jpg,
-			"personPic2":bcd.jpg,
-			"bankName":"强大大有限公司"
-			"bankNum":"201324832186131156",
-			"bank":"xx银行",
-			"bankName":"xx路支行"
-		}	
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例
-		{"code":0,"msg":"ok"}
-
-##指令：PUT /users/:loginname/person/real 修改个人认证信息
-    说明：
-		【自己或管理员】修改个人基本信息
-	输入参数说明：
-        name：姓名
-		tel：电话号码
-        idNum：身份证号
-        idPic1:身份证正面(照片大小1M以内，支持PNG/JPG格式)
-		idPic2:身份证反面(照片大小1M以内，支持PNG/JPG格式)
-		bankName：账户名称
-		bankNum:银行账号
-		bank:银行名称
-		bankName:开户支行名称
-	Example Request：
-		PUT /users/:loginname/person/real
+		PUT /certificate/person/:loginname
 		Content-Type: application/json;charset=UTF-8
 		{
 			"name":"郭立强",
@@ -887,10 +835,12 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
+		错误 {"code":1007,"msg":"invalid parameters"}
+		错误 {"code":8016,"msg":"The user has passed authentication"}
 
-##指令：PUT /users/:loginname/company/real 修改企业认证信息
+##指令：PUT /certificate/company/:loginname  添加/修改企业认证信息
     说明：
-		【自己或管理员】修改企业基本信息
+		【自己或管理员】添加/修改企业基本信息
 	输入参数说明：
         name:企业名称
 		address:公司地址
@@ -915,7 +865,7 @@
 		bank:银行名称
 		bankName:开户支行名称
 	Example Request：
-		PUT  /users/:loginname/company/real
+		PUT /certificate/company/:loginname
 		Content-Type: application/json;charset=UTF-8
 		{
 			"name":"强大大有限公司",
@@ -945,14 +895,16 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
+		错误 {"code":1007,"msg":"invalid parameters"}
+		错误 {"code":8016,"msg":"The user has passed authentication"}
 
-##指令：GET /users/:loginname/person/real 查询个人认证信息(81)
+##指令：GET /certificate/person/:loginname 查询个人认证信息(81)
 	说明
 		【自己和管理员】查询个人认证信息
 	输入参数说明：
 		无
 	Example Request：
-		GET /users/:loginname/person/real
+		GET /certificate/person/:loginname
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
@@ -971,15 +923,23 @@
 		bankName:开户支行名称
 		
 	返回数据示例
-		{"data":{"name":"郭立强","tel":"8008208820","idNum":"123131613215631","idPic2":"abc.jpg","idPic2":"abc.jpg","bankName":"郭立强","bankNum":"235315613","bank":"xx银行"，"bankName":"xx支行"},"code":0,"msg":"ok"}
+		{"data":{"name":"郭立强",
+				"tel":"8008208820",
+				"idNum":"123131613215631",
+				"idPic2":"abc.jpg",
+				"idPic2":"abc.jpg",
+				"bankName":"郭立强",
+				"bankNum":"235315613",
+				"bank":"xx银行"，
+				"bankName":"xx支行"},"code":0,"msg":"ok"}
 
-##指令：GET /users/:loginname/company/real 查询企业认证信息(81)
+##指令：GET /certificate/company/:loginname查询企业认证信息(81)
 	说明
 		【自己和管理员】查询企业认证信息
 	输入参数说明：
 		无
 	Example Request：
-		GET /users/:loginname/company/real
+		GET /certificate/company/:loginname
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
@@ -1010,9 +970,29 @@
 		bankName:开户支行名称
 		
 	返回数据示例
-		{"data":{"name":"强大大有限公司","address":"xxxxx","kbisNum":"123131613215631","kbisPic":"abc.jpg","org":"我是组织机构","orgPic":"abc.jpg","legalPerson":"zhangsan","legalPersonAddress":"xx"，"legalPersonNum":"111","legalPersonPic1":"abc.jpg","legalPersonPic2":"abc.jpg","person":"郭立强","personTel":"1232","personEmail":"abc@abc.com","personNum":"12315","personPic1":"abc.jpg","personPic2":"abc.jpg","bankName":"强大大有限公司","bankNum":"235315613","bank":"xx银行"，"bankName":"xx支行"},"code":0,"msg":"ok"}
+		{"data":{"name":"强大大有限公司",
+				"address":"xxxxx",
+				"kbisNum":"123131613215631",
+				"kbisPic":"abc.jpg",
+				"org":"我是组织机构",
+				"orgPic":"abc.jpg",
+				"legalPerson":"zhangsan",
+				"legalPersonAddress":"xx",
+				"legalPersonNum":"111",
+				"legalPersonPic1":"abc.jpg",
+				"legalPersonPic2":"abc.jpg",
+				"person":"郭立强",
+				"personTel":"1232",
+				"personEmail":"abc@abc.com",
+				"personNum":"12315",
+				"personPic1":"abc.jpg",
+				"personPic2":"abc.jpg",
+				"bankName":"强大大有限公司",
+				"bankNum":"235315613",
+				"bank":"xx银行",
+				"bankName":"xx支行"},"code":0,"msg":"ok"}
 
-##指令：PUT /users/:loginname/inspect 审核
+##指令：PUT /certificate/inspection/:loginname 审核
     说明：
 		【管理员角色】审核实名认证
 	输入参数说明：
@@ -1020,7 +1000,7 @@
 		massage:审核不通过原因
 		time：审核时间
 	Example Request：
-		PUT /users/:loginname/inspect
+		PUT /certificate/inspection/:loginname
 		Content-Type: application/json;charset=UTF-8
 		{
 			"state":2,
@@ -1032,10 +1012,9 @@
 		msg:操作信息，用来记录失败信息
 	返回数据示例
 		正确 {"code":0,"msg":"ok"}
-		错误 {"code":8014,"msg":"This can not be update"}
 
 
-##指令：GET /users/inspect 查询审核信息列表
+##指令：GET /certificate/inspections 查询审核信息列表
     说明：
 		【管理员角色】查询审核信息列表
 		可根据登录名查询
@@ -1046,7 +1025,7 @@
 		state：审核状态(1:审核通过，2：等待审核,3：审核不通过)
 		type:用户类型(1:个人,2:企业)
 	Example Request：
-		PUT /users/inspect?page=1&size=20&loginname=foo&state=3&type=2
+		PUT /certificate/inspections?page=1&size=20&loginname=foo&state=3&type=2
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
@@ -1062,6 +1041,12 @@
 		  }
 		 }
 	返回数据示例
-		{"data":{"total":10,"results":[{"loginname":"abc@abc.com","type":"1","state":"2","createtime":"2015-12-01 13:22","time":"2015-12-01 13:22"}]},"code":0,"msg":"ok"}
+		{"data":{"total":10,
+				"results":[{"loginname":"abc@abc.com",
+							"type":"1",
+							"state":"2",
+							"createtime":"2015-12-01 13:22",
+							"time":"2015-12-01 13:22"}]},
+							"code":0,"msg":"ok"}
 		
 		
