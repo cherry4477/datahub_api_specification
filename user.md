@@ -69,7 +69,7 @@
 
 - [GET] /certificate/inspections 查询审核信息列表
 
-- [PUT] /certificate/upload/:loginname 上传图片
+- [PUT] /certificate/upload 上传图片
 	
 ----------
 
@@ -100,7 +100,7 @@
 		
 		tel:电话号码
 		type：种类（1：个人，2：企业）
-		headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+		headPic：用户头像id
 		homepage:个人主页
 		industry：所属行业
 		person:业务接口人
@@ -117,7 +117,7 @@
 				"userType":1,
 				"tel":"8008208820",
 				"type":"1",
-				"headPic":abc.jpg,
+				"headPic":"xxxx",
 				"homepage":"https://www.baidu.com/",
 				"person":"郭立强",
 				"industry":"地产",
@@ -154,7 +154,7 @@
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
 		tel:电话号码
 		type：种类（1：个人，2：企业）
-		headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+		headPic：用户头像id
 		homepage:个人主页
 		industry：所属行业
 		person:业务接口人
@@ -172,7 +172,7 @@
 							"userType":1,
 							"tel":"8008208820",
 							"type":"1",
-							"headPic":abc.jpg,
+							"headPic":"xxxx",
 							"homepage":"https://www.baidu.com/",
 							"person":"郭立强",
 							"industry":"地产",
@@ -254,7 +254,7 @@
 		comments：描述信息
 		passwd：密码(MD5)
 		tel:电话号码
-		headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+		headPic：用户头像id
 		homepage:个人主页
 		industry：所属行业
 		person:业务接口人
@@ -271,7 +271,7 @@
 			"passwd":".........."
         	"tel":"8008208820",
         	"homepage":"https://www.baidu.com/",
-        	"headPic":abc.jpg,
+        	"headPic":"xxx",
         	"person":"郭立强",
 			"industry":"地产"
 		}
@@ -284,7 +284,7 @@
 			nickname：昵称
 			comments：描述信息
 			tel:电话号码
-			headPic：用户头像(照片大小500K以内，支持PNG/JPG/GIF格式)
+			headPic：用户头像id
 			homepage:个人主页
 			industry：所属行业
 			person:业务接口人
@@ -300,7 +300,7 @@
 			"comments":"测试用户"
 			"tel":"8008208820",
         	"homepage":"https://www.baidu.com/",
-        	"headPic":abc.jpg,
+        	"headPic":"xxxx",
         	"person":"郭立强",
 			"industry":"地产"
 		}
@@ -804,14 +804,15 @@
 				"code":0,"msg":"ok"}
 
 
-##指令：PUT /certificate/person/:loginname 添加/修改个人认证信息
+##指令：PUT /certification/person/:loginname 添加/修改个人认证信息
     说明：
 		【自己或管理员】添加/修改个人基本信息
 	输入参数说明：
-		loginname:登录名(可选参数管理员认证时)
         name：姓名
 		tel：电话号码
         idNum：身份证号
+		idPic1:身份证正面(图片的id)
+		idPic2:身份证正面(图片的id)
 		bankName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -823,6 +824,8 @@
 			"name":"郭立强",
 			"tel":"8008208820",
         	"idNum":"110109198711222014",
+			"idPic1":"xxx",
+			"idPic2":"xxx",
 			"bankName":"郭立强",
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
@@ -836,22 +839,28 @@
 		错误 {"code":1007,"msg":"invalid parameters"}
 		错误 {"code":8016,"msg":"The user has passed authentication"}
 
-##指令：PUT /certificate/company/:loginname  添加/修改企业认证信息
+##指令：PUT /certification/company/:loginname  添加/修改企业认证信息
     说明：
 		【自己或管理员】添加/修改企业基本信息
 	输入参数说明：
         name:企业名称
 		address:公司地址
 		kbisNum:营业执照编号
+		kbisPic:营业执照扫描件(图片id)
 		org：组织结构代码
+		orgPiv:组织结构代码扫描件(图片id)
 		legalPerson：法人姓名
+		legalPersonPic1：法人身份证正面(图片id)
+		legalPersonPic2：法人身份证反面(图片id)
 		legalPersonAddress：法人归属地
 		legalPersonNum：法人身份证号
 		person：联系人姓名
+		personPic1：联系人身份证正面(图片id)
+		personPic2：联系人身份证反面(图片id)
 		personTel：联系人电话
 		personEmail：联系人电子邮箱
 		personNum:联系人身份证号
-		verityPic：授权证书扫描件
+		verityPic：授权证书扫描件(图片id)
 		bankName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -863,14 +872,20 @@
 			"name":"强大大有限公司",
 			"address":"北京xxxx",
         	"kbisNum":"11010919871",
+			"kbisPic":"xxx",
         	"org":"我是组织结构",
 			"legalPerson":"张三",
+			"legalPersonPic1":"zxx",
+			"legalPersonPic2":"zxx",
 			"legalPersonAddress":"某个村子里",
 			"legalPersonNum":"230123285133458132",
 			"person":"郭立强",
+			"personPic1":"xxx",
+			"personPic2":"xxx",
 			"personTel":"80082052513",
 			"personEmail":"abc@abc.com",
 			"personNum":"230318132183218",
+			"verityPic":"xxx",
 			"bankName":"强大大有限公司"
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
@@ -884,7 +899,7 @@
 		错误 {"code":1007,"msg":"invalid parameters"}
 		错误 {"code":8016,"msg":"The user has passed authentication"}
 
-##指令：GET /certificate/person/:loginname 查询个人认证信息(81)
+##指令：GET /certification/person/:loginname 查询个人认证信息(81)
 	说明
 		【自己和管理员】查询个人认证信息
 	输入参数说明：
@@ -919,7 +934,7 @@
 				"bank":"xx银行"，
 				"bankName":"xx支行"},"code":0,"msg":"ok"}
 
-##指令：GET /certificate/company/:loginname查询企业认证信息(81)
+##指令：GET /certification/company/:loginname查询企业认证信息(81)
 	说明
 		【自己和管理员】查询企业认证信息
 	输入参数说明：
@@ -978,7 +993,7 @@
 				"bank":"xx银行",
 				"bankName":"xx支行"},"code":0,"msg":"ok"}
 
-##指令：PUT /certificate/inspection/:loginname 审核
+##指令：PUT /certification/inspection/:loginname 审核
     说明：
 		【管理员角色】审核实名认证
 	输入参数说明：
@@ -1000,7 +1015,7 @@
 		正确 {"code":0,"msg":"ok"}
 
 
-##指令：GET /certificate/inspections 查询审核信息列表
+##指令：GET /certification/inspections 查询审核信息列表
     说明：
 		【管理员角色】查询审核信息列表
 		可根据登录名查询
@@ -1036,14 +1051,13 @@
 							"code":0,"msg":"ok"}
 		
 		
-##指令：PUT /certificate/upload/:loginname 上传图片
+##指令：PUT /certification/upload 上传图片
     说明：
 		【所有人】上传图片
 	输入参数说明：
 		pic：图片
-		type：图片类型(1:个人头像/公司logo,2:身份证正面,3:身份证反面,4:法人身份证正面,5:法人身份证反面,6:联系人身份证正面,7:联系人身份证反面,8:营业执照扫描件,9:组织结构代码)
 	Example Request：
-		PUT /certificate/upload/:loginname?type=1
+		PUT /certificate/upload
 		Content-Type: application/json;charset=UTF-8
 		{
 			pic:abc.jpg
@@ -1051,5 +1065,20 @@
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
+		picId:图片的id
 	返回数据示例
-		正确 {"code":0,"msg":"ok"}
+		正确 {"code":0,"msg":"ok","pic":"xxx"}
+
+##指令：GET /certification/download 查询图片
+    说明：
+		【所有人】查询图片
+	输入参数说明：
+		picId:图片id
+	Example Request：
+		GET /certificate/download?picId=xxx
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		pic:图片字节流
+	返回数据示例
+		正确 {"code":0,"msg":"ok","pic":"我是一个字节流"}
