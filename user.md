@@ -815,7 +815,7 @@
         idNum：身份证号
 		idPic1:身份证正面(图片的id)
 		idPic2:身份证正面(图片的id)
-		bankName：账户名称
+		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
@@ -828,7 +828,7 @@
         	"idNum":"110109198711222014",
 			"idPic1":"xxx",
 			"idPic2":"xxx",
-			"bankName":"郭立强",
+			"accountName":"郭立强",
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
 			"bankName":"xx路支行"
@@ -863,7 +863,7 @@
 		personEmail：联系人电子邮箱
 		personNum:联系人身份证号
 		verityPic：授权证书扫描件(图片id)
-		bankName：账户名称
+		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
@@ -888,7 +888,7 @@
 			"personEmail":"abc@abc.com",
 			"personNum":"230318132183218",
 			"verityPic":"xxx",
-			"bankName":"强大大有限公司"
+			"accountName":"强大大有限公司"
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
 			"bankName":"xx路支行"
@@ -920,7 +920,7 @@
         idNum：身份证号
         idPic1:身份证正面id
 		idPic2:身份证反面id
-		bankName：账户名称
+		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
@@ -931,7 +931,7 @@
 				"idNum":"123131613215631",
 				"idPic2":"xxx",
 				"idPic2":"xxx",
-				"bankName":"郭立强",
+				"accountName":"郭立强",
 				"bankNum":"235315613",
 				"bank":"xx银行"，
 				"bankName":"xx支行"},"code":0,"msg":"ok"}
@@ -967,7 +967,7 @@
 		personNum:联系人身份证号
 		personPic1：联系人身份证正面id
 		personPic2：联系人身份证反面id
-		bankName：账户名称
+		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
@@ -990,7 +990,7 @@
 				"personNum":"12315",
 				"personPic1":"xxx",
 				"personPic2":"xx",
-				"bankName":"强大大有限公司",
+				"accountName":"强大大有限公司",
 				"bankNum":"235315613",
 				"bank":"xx银行",
 				"bankName":"xx支行"},"code":0,"msg":"ok"}
