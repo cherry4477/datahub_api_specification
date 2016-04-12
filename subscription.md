@@ -114,6 +114,7 @@
 
 返回数据说明：
 
+	subscriptionid: 订单号
 	sellername: 数据提供者
 	repname: repository name
 	itemname: data item name
