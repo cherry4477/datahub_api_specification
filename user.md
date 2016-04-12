@@ -255,6 +255,7 @@
 		username：真实名称
 		comments：描述信息
 		passwd：密码(MD5)
+
 		tel:电话号码
 		headPic：用户头像id
 		homepage:个人主页
@@ -813,8 +814,8 @@
         name：姓名
 		tel：电话号码
         idNum：身份证号
-		idPic1:身份证正面(图片的id)
-		idPic2:身份证正面(图片的id)
+		idPicUp:身份证正面(图片的id)
+		idPicDown:身份证正面(图片的id)
 		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -826,8 +827,8 @@
 			"name":"郭立强",
 			"tel":"8008208820",
         	"idNum":"110109198711222014",
-			"idPic1":"xxx",
-			"idPic2":"xxx",
+			"idPicUp":"xxx",
+			"idPicDown":"xxx",
 			"accountName":"郭立强",
 			"bankNum":"201324832186131156",
 			"bank":"xx银行",
@@ -852,13 +853,13 @@
 		org：组织结构代码
 		orgPiv:组织结构代码扫描件(图片id)
 		legalPerson：法人姓名
-		legalPersonPic1：法人身份证正面(图片id)
-		legalPersonPic2：法人身份证反面(图片id)
+		legalPersonPicUp：法人身份证正面(图片id)
+		legalPersonPicDown：法人身份证反面(图片id)
 		legalPersonAddress：法人归属地
 		legalPersonNum：法人身份证号
 		person：联系人姓名
-		personPic1：联系人身份证正面(图片id)
-		personPic2：联系人身份证反面(图片id)
+		personPicUp：联系人身份证正面(图片id)
+		personPicDown：联系人身份证反面(图片id)
 		personTel：联系人电话
 		personEmail：联系人电子邮箱
 		personNum:联系人身份证号
@@ -877,13 +878,13 @@
 			"kbisPic":"xxx",
         	"org":"我是组织结构",
 			"legalPerson":"张三",
-			"legalPersonPic1":"zxx",
-			"legalPersonPic2":"zxx",
+			"legalPersonPicUp":"zxx",
+			"legalPersonPicDown":"zxx",
 			"legalPersonAddress":"某个村子里",
 			"legalPersonNum":"230123285133458132",
 			"person":"郭立强",
-			"personPic1":"xxx",
-			"personPic2":"xxx",
+			"personPicUp":"xxx",
+			"personPicDown":"xxx",
 			"personTel":"80082052513",
 			"personEmail":"abc@abc.com",
 			"personNum":"230318132183218",
@@ -918,8 +919,8 @@
 		name：姓名
 		tel：电话号码
         idNum：身份证号
-        idPic1:身份证正面id
-		idPic2:身份证反面id
+        idPicUp:身份证正面id
+		idPicDown:身份证反面id
 		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -929,8 +930,8 @@
 		{"data":{"name":"郭立强",
 				"tel":"8008208820",
 				"idNum":"123131613215631",
-				"idPic2":"xxx",
-				"idPic2":"xxx",
+				"idPicUp":"xxx",
+				"idPicDown":"xxx",
 				"accountName":"郭立强",
 				"bankNum":"235315613",
 				"bank":"xx银行"，
@@ -959,14 +960,14 @@
 		legalPerson：法人姓名
 		legalPersonAddress：法人归属地
 		legalPersonNum：法人身份证号
-		legalPersonPic1：法人身份证正面id
-		legalPersonPic2:法人身份证反面id
+		legalPersonPicUp：法人身份证正面id
+		legalPersonPicDown:法人身份证反面id
 		person：联系人姓名
 		personTel：联系人电话
 		personEmail：联系人电子邮箱
 		personNum:联系人身份证号
-		personPic1：联系人身份证正面id
-		personPic2：联系人身份证反面id
+		personPicUp：联系人身份证正面id
+		personPicDown：联系人身份证反面id
 		accountName：账户名称
 		bankNum:银行账号
 		bank:银行名称
@@ -982,14 +983,14 @@
 				"legalPerson":"zhangsan",
 				"legalPersonAddress":"xx",
 				"legalPersonNum":"111",
-				"legalPersonPic1":"xxx",
-				"legalPersonPic2":"xgx",
+				"legalPersonPicUp":"xxx",
+				"legalPersonPicDown":"xgx",
 				"person":"郭立强",
 				"personTel":"1232",
 				"personEmail":"abc@abc.com",
 				"personNum":"12315",
-				"personPic1":"xxx",
-				"personPic2":"xx",
+				"personPicUp":"xxx",
+				"personPicDown":"xx",
 				"accountName":"强大大有限公司",
 				"bankNum":"235315613",
 				"bank":"xx银行",
@@ -1059,17 +1060,15 @@
 	输入参数说明：
 		pic：图片
 	Example Request：
-		POST /certificate/upload
+		POST /certification/upload
 		Content-Type: application/json;charset=UTF-8
-		{
-			pic:abc.jpg
-		}	
+		pic:图片文件	
 	返回数据说明：
 		code:状态码
 		msg:操作信息，用来记录失败信息
 		picId:图片的id
 	返回数据示例
-		正确 {"code":0,"msg":"ok","pic":"xxx"}
+		正确 {"code":0,"msg":"ok","picId":"xxx"}
 
 ##指令：GET /certification/download 查询图片
     说明：
@@ -1083,4 +1082,5 @@
 		msg:操作信息，用来记录失败信息
 		pic:图片字节流
 	返回数据示例
-		正确 {"code":0,"msg":"ok","pic":"我是一个字节流"}
+		图片文件
+		正确 {"code":0,"msg":"ok"}
