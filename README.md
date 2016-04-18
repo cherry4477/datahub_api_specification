@@ -129,10 +129,27 @@ Connection: keep-alive
 ####Token认证模式利用上一步获取的token来对需要认证的API提交####
 #####请求报文的header#####
 ```Authorization: Token xa12344a```
+####微服务组件校验Token ####
+请求报文
 
+	GET /valid
+	Authorization: Token xa12344a
+	User: xxx@aaa.com
 
+正确回复
 
+```
+HTTP/1.1 200 OK
 
+{"code": 0,"msg": "OK","data": {}}
+```
+错误回复
+
+```
+HTTP/1.1 403 OK
+
+{"code": 1403,"msg": "not valid","data": {}}
+```
 
 ## DataHub API内容 ##
 ### repositories ###
