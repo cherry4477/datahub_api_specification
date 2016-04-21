@@ -699,7 +699,7 @@
 说明
 
 	【API网关】同步某个订购的已使用量 (action=set_plan_used)
-	【API网关】回应已经成功取走了某个订购
+	【API网关】回应已经成功取走了某个订购 (action=set_retrieved)
 	
 	注意：此api需要API网关传递自己的auth token
 
@@ -707,6 +707,9 @@
 	
 	action: set_plan_used｜set_retrieved
 	used: 新的使用量 (在action=set_used的情况下需要)
+	repname: 订购的repname, 供校验用
+	itemname: 订购的itemname, 供校验用
+	username: 订购的需求者, 供校验用
 
 输入样例1：
 
@@ -716,7 +719,10 @@
 	
 	{
 		"action": "set_plan_used",
-		"used": 123
+		"used": 123,
+		"repname": "repo001",
+		"itemname": "item002",
+		"username": "zhang3@example.com"
 	}
 
 输入样例2：
@@ -726,7 +732,10 @@
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"action": "set_retrieved"
+		"action": "set_retrieved",
+		"repname": "repo001",
+		"itemname": "item002",
+		"username": "zhang3@example.com"
 	}
 
 输出样例：
