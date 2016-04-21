@@ -212,19 +212,23 @@
 		]
 	}
 
-### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
+### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&username={username}
 
 说明
 
 	【需求者】查询在某个dataitem上的所有订购
+	【API网关】查询在某个用户(通过username指定)在某个dataitem上的所有尚未发送给api网关的phase=1的订购
+	
+	注意：当username参数不为空时候，需要传递API网关自己的auth token
 
 输入参数说明：
 	
 	groupbydate: (可选，默认为0) 是否按日期分组。
-	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2和3)。如果指定，将压制phase参数。
+	legal: (可选) 整数(1表示正式签署的订购，等价于phase为1,2或3。0表示未正式签订的订购，等价于phase不等于1,2或3)。如果指定，将压制phase参数。
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
+	username: (可选)，若值不为空, 其它参数将被忽略, 此API将发送所有未发送给api网关的phase=1的用户username的订购列表。
 
 输入样例：
 
@@ -239,7 +243,7 @@
 		"results": [
 			{
 				"subscriptionid": 1234567,
-				"sellername": "li4@example.com",
+				"sellername": "zhang3@example.com",
 				"supply_style":"batch",
 				"sorttime":"2015-11-10T15:04:05Z",
 				"signtime":"2015-11-10T15:04:05Z",
@@ -684,26 +688,39 @@
 		}
 	}
 
-### (49) PUT /subscription/:subscriptionid (已废弃，请用api#48 with action=accept_complain instead)
+### (49) PUT /subscription/:subscriptionid
 
 说明
 
-	【管理员】取消订购action=remove
+	【API网关】同步某个订购的已使用量 (action=set_plan_used)
+	【API网关】回应已经成功取走了某个订购
+	
+	注意：此api需要API网关传递自己的auth token
 
 输入参数说明：
 	
-	action: remove
-	reason: 一段文本描述原因(<256个字符)
+	action: set_plan_used｜set_retrieved
+	used: 新的使用量 (在action=set_used的情况下)
 
-输入样例：
+输入样例1：
 
 	PUT /subscription/1234567 HTTP/1.1 
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	
 	{
-		"action": "remove",
-		"reason": "bla bla ..."
+		"action": "set_plan_used",
+		"used": 123
+	}
+
+输入样例2：
+
+	PUT /subscription/1234567 HTTP/1.1 
+	Accept: application/json
+	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
+	
+	{
+		"action": "set_retrieved"
 	}
 
 输出样例：
