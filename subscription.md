@@ -2,43 +2,49 @@
 
 ## Errors
 
-	ErrorCodeUnkown                 = 5000
-	ErrorCodeJsonBuilding           = 5001
-	ErrorCodeUrlNotSupported        = 5002
-	ErrorCodeDbNotInitlized         = 5003
-	ErrorCodeAuthFailed             = 5004
-	ErrorCodePermissionDenied       = 5005
-	ErrorCodeInvalidParameters      = 5006
-	ErrorCodeGetDataItem            = 5007
-	ErrorCodeCreateSubscription     = 5008
-	ErrorCodeGetSubscription        = 5009
-	ErrorCodeRemoveSubscription     = 5010
-	ErrorCodeQuerySubscription      = 5011
-	ErrorCodeSubscriptionNotFound   = 5012
-	ErrorCodeCreateTransaction      = 5013
-	ErrorCodeGetTransaction         = 5014
-	ErrorCodeQueryTransaction       = 5015
-	ErrorCodeGetStatistics          = 5016
-	ErrorCodeParseJsonFailed        = 5017
-	ErrorCodeFailedToConnectRemote  = 5018
-	ErrorCodeNotOkRemoteResponse    = 5019
-	ErrorCodeInvalidRemoteResponse  = 5020
-	ErrorCodeTokenNotFound          = 5021
-	ErrorCodeTokenExpired           = 5022
-	ErrorCodeInvalidEntryPoints     = 5023
-	ErrorCodeInsufficientBalance    = 5024
-	ErrorCodeFailedToInitUserTrade  = 5025
-	ErrorCodeGetUserBillInfo        = 5026
-	ErrorCodeModifyUserUsedPullNum  = 5027
-	ErrorCodeSignSubscription       = 5028
-	ErrorCodeComsumeSubscription    = 5029
-	ErrorCodeGetUserPullNumInfo     = 5030
-	ErrorCodeCreateTdoken           = 5031
-	ErrorCodeGetPlanSigningTimes    = 5032
-	ErrorCodeUpdatePlanSigningTimes = 5033
-	ErrorCodeGetSubscriptionApply    = 5034
-	ErrorCodeCreateSubscriptionApply = 5035
-	ErrorCodeModifySubscriptionApply = 5036
+	ErrorCodeUnkown                     = 5000
+	ErrorCodeJsonBuilding               = 5001
+	ErrorCodeUrlNotSupported            = 5002
+	ErrorCodeDbNotInitlized             = 5003
+	ErrorCodeAuthFailed                 = 5004
+	ErrorCodePermissionDenied           = 5005
+	ErrorCodeInvalidParameters          = 5006
+	ErrorCodeGetDataItem                = 5007
+	ErrorCodeCreateSubscription         = 5008
+	ErrorCodeGetSubscription            = 5009
+	ErrorCodeRemoveSubscription         = 5010
+	ErrorCodeQuerySubscription          = 5011
+	ErrorCodeSubscriptionNotFound       = 5012
+	ErrorCodeCreateTransaction          = 5013
+	ErrorCodeGetTransaction             = 5014
+	ErrorCodeQueryTransaction           = 5015
+	ErrorCodeGetStatistics              = 5016
+	ErrorCodeParseJsonFailed            = 5017
+	ErrorCodeFailedToConnectRemote      = 5018
+	ErrorCodeNotOkRemoteResponse        = 5019
+	ErrorCodeInvalidRemoteResponse      = 5020
+	ErrorCodeTokenNotFound              = 5021
+	ErrorCodeTokenExpired               = 5022
+	ErrorCodeInvalidEntryPoints         = 5023
+	ErrorCodeInsufficientBalance        = 5024
+	ErrorCodeFailedToInitUserTrade      = 5025
+	ErrorCodeGetUserBillInfo            = 5026
+	ErrorCodeModifyUserUsedPullNum      = 5027
+	ErrorCodeSignSubscription           = 5028
+	ErrorCodeComsumeSubscription        = 5029
+	ErrorCodeGetUserPullNumInfo         = 5030
+	ErrorCodeCreateTdoken               = 5031
+	ErrorCodeGetPlanSigningTimes        = 5032
+	ErrorCodeUpdatePlanSigningTimes     = 5033
+	ErrorCodeGetSubscriptionApply       = 5034
+	ErrorCodeCreateSubscriptionApply    = 5035
+	ErrorCodeModifySubscriptionApply    = 5036
+	ErrorCodeComplainSubscription       = 5037
+	ErrorCodeDenyComplainSubscription   = 5038
+	ErrorCodeAcceptComplainSubscription = 5039
+	ErrorCodeTooManySubscriptionsOnPlan = 5040
+	ErrorCodeMetDailyFreePullQuota      = 5041
+	ErrorCodeResUnavaliable             = 5042
 
 ## APIs
 
@@ -700,7 +706,7 @@
 输入参数说明：
 	
 	action: set_plan_used｜set_retrieved
-	used: 新的使用量 (在action=set_used的情况下)
+	used: 新的使用量 (在action=set_used的情况下需要)
 
 输入样例1：
 
