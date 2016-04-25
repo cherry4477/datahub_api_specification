@@ -137,7 +137,7 @@ Connection: keep-alive
 
 	GET /valid
 	Authorization: Token xa12344a
-	Authser: xxx@aaa.com
+	Authuser: xxx@aaa.com
 
 正确回复
 
