@@ -36,7 +36,8 @@ HTTP状态码
     "data": {具体返回信息}
 }
 
-code 及 msg 	
+code 及 msg 
+	
 	0				OK								            成功
 	1001			unknown error					            未知错误
 	1002			json building error				            json解释失败
@@ -74,7 +75,7 @@ code 及 msg
 
 
 ### 认证方式 ###
-####Basic认证模式通过用户名和md5(密码获取token)，访问的url为／####
+####Basic认证模式通过用户名和md5(密码获取token)，访问的url为/####
 #####请求报文的header#####
 
 ```
@@ -129,6 +130,8 @@ Connection: keep-alive
 ####Token认证模式利用上一步获取的token来对需要认证的API提交####
 #####请求报文的header#####
 ```Authorization: Token xa12344a```
+
+
 ####微服务组件校验Token ####
 请求报文
 
