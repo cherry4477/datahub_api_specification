@@ -182,12 +182,12 @@
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
-		【任意】创建一个用户
+		【非管理员】创建一个用户
 		【管理员】创建一个激活用户
 	输入参数说明：
 		passwd：MD5以后的密码
 	Example Request：
-		POST /users/foo?passwd=abc
+		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifas
 	
 	返回数据说明：
 		code:状态码
