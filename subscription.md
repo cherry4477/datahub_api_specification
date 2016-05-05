@@ -134,7 +134,6 @@
 	plan.units: 最大下载次数（supply_style=batch）,最大下载天数（supply_style=flow)
 	plan.used: 已经使用量　
 	plan.limit: 最多可以订购次数
-	plan.subs: 当前订购次数
 	plan.expire: 交易有效期（天数）
 	
 	不同的时间只在特定phase有效。sorttime在所有phase有效，但在不同的phase有不同的含义。
@@ -641,7 +640,6 @@
 			"units":3,
 			"used":0,
 			"limit":0,
-			"subs":1,
 			"expire":30
 		}
 	}
@@ -689,7 +687,6 @@
 			"units":3,
 			"used":0,
 			"limit":0,
-			"subs":1,
 			"expire":30
 		}
 	}
