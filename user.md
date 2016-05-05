@@ -186,8 +186,9 @@
 		【管理员】创建一个激活用户
 	输入参数说明：
 		passwd：MD5以后的密码
+		region: 用户登录来源
 	Example Request：
-		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifas
+		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifX11&region=datahub
 	
 	返回数据说明：
 		code:状态码
