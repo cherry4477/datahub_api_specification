@@ -29,13 +29,13 @@ Example Request：
 	{
 	    [
             {
-                "labelname": "CHINA3", "icon":"path1"
+                "labelname": "CHINA3", "icon":"path1", "icon_hover":"path1_hover",
             },
             {
-                "labelname": "CHINA2", "icon":"path2"
+                "labelname": "CHINA2", "icon":"path2", "icon_hover":"path2_hover",
             },
             {
-                "labelname": "CHINA", "icon":"path3"
+                "labelname": "CHINA", "icon":"path3", "icon_hover":"path2_hover",
             }
         ]
 	}
@@ -50,6 +50,7 @@ Example Request：
 	
 	order	  精选栏目排序（1-100， 排序越大越靠前）
 	icon	  精选栏目图片路径
+	icon_hover     精选栏目hover图片路径
 		
 Example Request：
 	
@@ -76,6 +77,7 @@ Example Response：
 	 newlabelname 	要改成的名字
 	 order	  		精选栏目排序（1-100， 排序越大越靠前）
 	 icon			精选栏目图片路径
+	 icon_hover     精选栏目hover图片路径
 	
 输入参数说明：
 	
