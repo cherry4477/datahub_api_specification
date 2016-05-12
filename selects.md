@@ -29,13 +29,13 @@ Example Request：
 	{
 	    [
             {
-                "labelname": "CHINA3", "icon":"path1", "icon_hover":"path1_hover",
+                "labelname": "CHINA1", "icon":"path1", "icon_web": "path1_web", icon_web_hover": "path1_web__hover",
             },
             {
-                "labelname": "CHINA2", "icon":"path2", "icon_hover":"path2_hover",
+                "labelname": "CHINA2", "icon":"path2", "icon_web": "path2_web", icon_web_hover": "path2_web__hover",
             },
             {
-                "labelname": "CHINA", "icon":"path3", "icon_hover":"path2_hover",
+                "labelname": "CHINA3", "icon":"path3", "icon_web": "path3_web", icon_web_hover": "path3_web__hover",
             }
         ]
 	}
@@ -48,10 +48,11 @@ Example Request：
 
 输入参数说明：
 	
-	order	  精选栏目排序（1-100， 排序越大越靠前）
-	icon	  精选栏目图片路径
-	icon_hover     精选栏目hover图片路径
-		
+	order	            精选栏目排序（1-100， 排序越大越靠前）
+	icon	            精选栏目手机端图片路径
+	icon_web            精选栏目web端图片路径
+    icon_web_hover      精选栏目web端hover图片路径
+    		
 Example Request：
 	
 	POST /select_labels/股市行情 HTTP/1.1 
@@ -60,7 +61,9 @@ Example Request：
 	[
 		{
 			"order": 1,
-			"icon":"path1"
+			"icon": "path1"
+			"icon_web": "path2",
+			"icon_web_hover": "path3"
 		}
 	]
 
@@ -73,16 +76,15 @@ Example Response：
 说明
 	
 	【管理员】更新现有精选栏目的名称
-	 	
-	 newlabelname 	要改成的名字
-	 order	  		精选栏目排序（1-100， 排序越大越靠前）
-	 icon			精选栏目图片路径
-	 icon_hover     精选栏目hover图片路径
+
 	
 输入参数说明：
 	
-	newlabelname 新精选栏目条目名称
-	[URL]中labelname 为需要修改的名字
+	 newlabelname 	    [可选]要改成的名字
+	 order	  		    [可选]精选栏目排序（1-100， 排序越大越靠前）
+	 icon	            [可选]精选栏目手机端图片路径
+     icon_web           [可选]精选栏目web端图片路径
+     icon_web_hover     [可选]精选栏目web端hover图片路径
 		
 Example Request：
 	
@@ -94,6 +96,8 @@ Example Request：
 		{
 			"order": 1,
 			"icon":"path1"
+			"icon_web": "path2",
+            "icon_web_hover": "path3",
 			"newlabelname":"2015股市"
 		}
 	
