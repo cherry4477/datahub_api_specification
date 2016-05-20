@@ -17,7 +17,7 @@
 
 - [GET] /users/:loginname/pwd/validate 验证密码是否正确
 
-- [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
+- [PUT] /users/:loginname/forget/pwd 忘记密码发邮件
 
 - [GET] /users/:loginname/validateLink  验证连接是否有效
 
