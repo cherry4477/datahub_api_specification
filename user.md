@@ -1028,10 +1028,10 @@
 		loginname:登录名
 		page:页码
 		size：每页数量
-		state：审核状态(1:审核通过，2：等待审核,3：审核不通过)
+		state：审核状态(3:审核通过，4：等待审核,5：审核不通过)
 		type:用户类型(1:个人,2:企业)
 	Example Request：
-		PUT /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
+		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
