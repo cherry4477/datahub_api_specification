@@ -927,6 +927,7 @@
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
+		verifyPerson:审核人
 		
 	返回数据示例
 		{"data":{"name":"郭立强",
@@ -974,6 +975,7 @@
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
+		verifyPerson:审核人
 		
 	返回数据示例
 		{"data":{"name":"强大大有限公司",
