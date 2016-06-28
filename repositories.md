@@ -30,7 +30,7 @@
 	page (分页页数) : 			1 - N，  默认=1（page=1可以不传）
 	size（页面大小）: 			1 - N，  默认=6 (-1 返回全部)
 	username: 					数据提供者username（header 中为登录用户的username）
-
+    myRelease:                  1 我的发布条件查询
 Example Request：
 
 	GET /repositories?page=5&size=8 HTTP/1.1 
