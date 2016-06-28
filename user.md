@@ -17,7 +17,7 @@
 
 - [GET] /users/:loginname/pwd/validate 验证密码是否正确
 
-- [PU]T /users/:loginname/forget/pwd 忘记密码发邮件
+- [PUT] /users/:loginname/forget/pwd 忘记密码发邮件
 
 - [GET] /users/:loginname/validateLink  验证连接是否有效
 
@@ -927,6 +927,7 @@
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
+		verifyPerson:审核人
 		
 	返回数据示例
 		{"data":{"name":"郭立强",
@@ -974,6 +975,7 @@
 		bankNum:银行账号
 		bank:银行名称
 		bankName:开户支行名称
+		verifyPerson:审核人
 		
 	返回数据示例
 		{"data":{"name":"强大大有限公司",
@@ -1028,10 +1030,10 @@
 		loginname:登录名
 		page:页码
 		size：每页数量
-		state：审核状态(1:审核通过，2：等待审核,3：审核不通过)
+		state：审核状态(3:审核通过，4：等待审核,5：审核不通过)
 		type:用户类型(1:个人,2:企业)
 	Example Request：
-		PUT /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
+		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
