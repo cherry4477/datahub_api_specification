@@ -135,8 +135,9 @@
 		loginName:登录名，（模糊匹配）
 		userName:真实名称，（模糊匹配）
 		nickName:昵称，（模糊匹配）
+		sregion: 用户登录来源
 	Example Request：
-		GET /users/search/user?page=1&size=20&loginName=a&userName=b&nickName=c HTTP/1.1 
+		GET /users/search/user?page=1&size=20&loginName=a&userName=b&nickName=c &sregion=dHTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 
@@ -161,8 +162,10 @@
 		industry：所属行业
 		person:业务接口人
 		massage:审核不通过原因
+		sregion: 用户登录来源
 	返回数据示例
 		{"data":{"total":86,
+
 				"results":[{"comment":"abc",
 							"invalidTime":"2016-12-01",
 							"loginname":"foo",
@@ -178,7 +181,8 @@
 							"homepage":"https://www.baidu.com/",
 							"person":"郭立强",
 							"industry":"地产",
-							"massage":"bala bala"}]},"code":0,"msg":"ok"}
+							"massage":"bala bala",
+							"sregion":"GZ"}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
 	说明：
@@ -621,9 +625,9 @@
 	说明：
 		【任意】查看用户会员的相关信息
 	输入参数说明：
-		无
+		region: 用户登录来源
 	Example Request：
-		GET /vip/foo HTTP/1.1 
+		GET /vip/foo&sregion=a HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 
@@ -635,6 +639,7 @@
 		payWay:pull付费方式 (1:预付费，2后付费)
 		deposit：托管配额
 		fee:年费
+		sregion: 用户登录来源
 	返回数据示例：
 
 		{"data":	{
@@ -644,7 +649,8 @@
 			"pullNum":100,
 			"repoPri":10,
 			"repoPub":20,
-			"userType":0
+			"userType":0,
+			"sregion":"GZ"
 			},
 		"code":0,"msg":"ok"
 		}
@@ -1032,8 +1038,9 @@
 		size：每页数量
 		state：审核状态(3:审核通过，4：等待审核,5：审核不通过)
 		type:用户类型(1:个人,2:企业)
+		region: 用户登录来源
 	Example Request：
-		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
+		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2&sregion=a
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
@@ -1046,6 +1053,7 @@
 		    state：认证状态
     	    createtime:提交时间
     	    time:审核时间
+			sregion: 用户登录来源
 		  }
 		 }
 	返回数据示例
@@ -1054,7 +1062,8 @@
 							"type":"1",
 							"state":"2",
 							"createtime":"2015-12-01 13:22",
-							"time":"2015-12-01 13:22"}]},
+							"time":"2015-12-01 13:22",
+							"sregion":"GZ"}]},
 							"code":0,"msg":"ok"}
 		
 		
