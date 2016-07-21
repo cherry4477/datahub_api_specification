@@ -13,6 +13,11 @@
 
 - PUT /bill/:loginname/trade/cancel 取消交易
 
+- PUT /bill/:loginname/refund 充值退款
+
+- GET /bill/recharge 充值状态查询
+
+- PUT /bill/message 接收回复报文
 
 ##指令：GET /bill/:loginname/info 查看用户账单信息
 	说明：
@@ -45,7 +50,7 @@
 		end_time:账单结束时间
 		order:订单号
 		trade_user:交易对方
-		op_type:类型，-1:所有；1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
+		op_type:类型，-1:所有；1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款；11：充值退款；12：充值退款处理中；13：充值退款请求失败；14：充值退款失败
 		page:页码
 		size：每页显示的记录数量
 		
@@ -59,7 +64,7 @@
 		planId:套餐计划ID
 		opTime:时间
 		tradeItem:交易的item
-		opType:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款，8：售出交易成功；9：售出交易生效；10：售出退款
+		opType:类型，1：充值；2：提现；3：扣年费；4：购买待生效；5：购买生效；6：购买失效；7：购买后退款；8：售出交易成功；9：售出交易生效；10：售出退款；11：充值退款；12：充值退款处理中；13：充值退款请求失败；14：充值退款失败
 		tradeAmount:金额
 		channel:渠道
 		tradeUser:交易用户
@@ -94,23 +99,42 @@
 	说明：
 		【管理员】充值
 	输入参数说明：
+		sregion:用户登陆地
 		order_id:订单
 		amount:金额
 		type:类型，1：充值；2：提现; 3：扣年费
 		channel:渠道
+		returnUrl:页面返回url
 	Example Request：
-		PUT /bill/foo/recharge HTTP/1.1 
+		PUT /bill/foo/recharge?sregion=GZ HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 		{
 			"order_id":"recharge_11",
 			"amount":"100",
 			"type":1,
-			"channel":"支付宝"
-		}
+			"channel":"支付宝",
+			"returnUrl":"balabala"		}
 
 	返回数据说明：
 		code:状态码（8007：余额不足）
+		msg:操作信息，用来记录失败信息
+	返回数据示例：
+		{"code":0,"msg":"ok"}
+#指令：PUT /bill/:loginname/creditLimit
+	说明：
+		【管理员】修改用户信用额度
+	输入参数说明：
+		creditLimit:信用额度（可透支金额）
+	Example Request：
+		PUT /bill/foo/creditLimit HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+		Authorization: token
+		{
+			"creditLimit":"1000"
+		}
+	返回数据说明：
+		code:状态码
 		msg:操作信息，用来记录失败信息
 	返回数据示例：
 		{"code":0,"msg":"ok"}
@@ -202,3 +226,56 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 		
+#指令：PUT /bill/:loginname/refund 充值退款
+	说明：
+		【用户自己】退还充值的金额
+	输入参数说明：
+		order_id:取消交易的订单ID
+		returnUrl:返回url
+		sregion:用户登录地
+	Example Request：
+		PUT /bill/foo/refund?sregion=GZ HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+		Authorization: token
+		{
+			"order_id":"110",
+			"returnUrl":"balabala",
+			"sregion":"GZ"
+		}
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例：
+		{"code":0,"msg":"ok"}
+
+		
+#指令：GET /bill/recharge 充值状态查询
+	说明：
+		【用户自己】
+	输入参数说明：
+		order_id:取消交易的订单ID
+		
+	Example Request：
+		PUT /bill/recharge?order_id=110 HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+		Authorization: token
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		result:充值状态（1:支付成功 2：查询失败 3：转账交易已受理 4：支付处理中 5：支付失败）
+	返回数据示例：
+		{"code":0,"msg":"ok","result":""}
+		
+#指令：PUT /bill/message 接收回复报文
+	说明：
+		【鸿支付】
+	输入参数说明：
+	Example Request：
+		PUT /bill/message HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+		Authorization: token
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例：
+		{"code":0,"msg":"ok"}
