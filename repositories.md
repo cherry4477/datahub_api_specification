@@ -118,6 +118,7 @@ Example Request：
 
    	repaccesstype       		访问权限[public(默认), private]
     comment 					详情
+    ch_repname                  中文repository名字
 	label						label自定义json标签。
 	label[sys,opt,owner,other]	如果为空可以不传
 	label.sys					系统自定义label参数
@@ -166,6 +167,7 @@ Example Request：
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	{
+	    "ch_repname": "中文repository名字",
         "repaccesstype": "public",
         "comment": "中国移动北京终端详情",      
     }
@@ -303,7 +305,8 @@ Example Request：
 	【拥有者】发布DataItem
 
 输入参数说明
-	
+
+	ch_itemname                     dataitem中文名称
 	itemaccesstype  				访问权限[public(默认), private]
 	meta							元数据
 	sample							样例数据
@@ -365,7 +368,8 @@ Example Request：
 	【拥有者】更新DataItem
 
 输入参数说明
-	
+
+	ch_itemname                     dataitem中文名称
 	itemaccesstype  				访问权限[public(默认), private]
 	meta							元数据
 	sample							样例数据
