@@ -80,9 +80,9 @@
 		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如何是其他人，获得基本情况
 		loginname可以传入昵称
 	输入参数说明：
-		无
+		sregion:用户登陆来源
 	Example Request：
-		GET /users/foo HTTP/1.1 
+		GET /users/foo?sregion=GZ HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
@@ -107,6 +107,7 @@
 		industry：所属行业
 		person:业务接口人
 		massage:审核不通过原因
+		sregion:用户登录来源
 	返回数据示例
 		{"data":{"comment":"abc",
 				"invalidTime":"2016-12-01",
@@ -123,7 +124,8 @@
 				"homepage":"https://www.baidu.com/",
 				"person":"郭立强",
 				"industry":"地产",
-				"massage":"bala bala"},"code":0,"msg":"ok"}
+				"massage":"bala bala"
+				"sregion":"GZ"},"code":0,"msg":"ok"}
 
 
 ##指令：GET /users/search/user 查询用户列表
