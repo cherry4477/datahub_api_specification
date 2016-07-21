@@ -61,6 +61,7 @@
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
+	sortorder: (可选, asc | desc, 默认为desc) 时间排序顺序，asc（升序），desc(降序)。
 
 输入样例：
 
@@ -162,6 +163,7 @@
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
+	sortorder: (可选, asc | desc, 默认为desc) 时间排序顺序，asc（升序），desc(降序)。
 
 输入样例：
 
@@ -234,6 +236,7 @@
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
 	username: (可选)，若值不为空, 其它参数将被忽略, 此API将发送所有未发送给api网关的phase=1的用户username的订购列表。
+	sortorder: (可选, asc | desc, 默认为desc) 时间排序顺序，asc（升序），desc(降序)。
 
 输入样例：
 
@@ -300,6 +303,7 @@
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
+	sortorder: (可选, asc | desc, 默认为desc) 时间排序顺序，asc（升序），desc(降序)。
 
 输入样例：
 
@@ -374,6 +378,7 @@
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
+	sortorder: (可选, asc | desc, 默认为desc) 时间排序顺序，asc（升序），desc(降序)。
 
 输入样例：
 
@@ -442,6 +447,7 @@
 	phase: (可选) 整数(consuming: 1, freezed: 2, finished: 3, cancelled: 5, removed: 6, applying: 7, wthdrawn: 8, denied: 9, agreed_but_insufficient_balance: 10)。如果此参数未指定或者legal参数被指定，此参数将被忽略。
 	page: (可选, 默认为1) 第几页，最小值为1。
 	size: (可选, 默认为30) 每页最多返回多少条数据, 最小值为1, 最大值为100。
+	sortorder: (可选, asc | desc, 默认为desc) 时间排序顺序，asc（升序），desc(降序)。
 
 输入样例：
 
