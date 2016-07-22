@@ -256,7 +256,7 @@
 		order_id:取消交易的订单ID
 		
 	Example Request：
-		PUT /bill/recharge?order_id=110 HTTP/1.1 
+		GET /bill/recharge?order_id=110 HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 	返回数据说明：
