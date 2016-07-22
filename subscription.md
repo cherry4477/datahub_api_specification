@@ -76,7 +76,7 @@
 		"results": [
 			{
 				"subscriptionid": 1234567,
-				"sellername": "li4@example.com"
+				"sellername": "li4@example.com",
 				"repname":"NBA",
 				"itemname":"bear",
 				"supply_style":"batch",
@@ -97,7 +97,7 @@
 			},
 			{
 				"subscriptionid": 1234568,
-				"sellername": "zhang3@example.com"
+				"sellername": "zhang3@example.com",
 				"repname":"CBA",
 				"itemname":"triger",
 				"supply_style":"batch",
