@@ -119,8 +119,9 @@
 	返回数据说明：
 		code:状态码（8007：余额不足）
 		msg:操作信息，用来记录失败信息
+		reqSignMsg:充值报文
 	返回数据示例：
-		{"code":0,"msg":"ok"}
+		{"code":0,"msg":"ok","reqSignMsg":"balabala"}
 #指令：PUT /bill/:loginname/creditLimit
 	说明：
 		【管理员】修改用户信用额度
