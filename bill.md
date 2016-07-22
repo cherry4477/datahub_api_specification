@@ -231,7 +231,7 @@
 	说明：
 		【用户自己】退还充值的金额
 	输入参数说明：
-		order_id:取消交易的订单ID
+		order_id:订单ID
 		returnUrl:返回url
 		sregion:用户登录地
 	Example Request：
@@ -254,7 +254,7 @@
 	说明：
 		【用户自己】
 	输入参数说明：
-		order_id:取消交易的订单ID
+		order_id:订单ID
 		
 	Example Request：
 		GET /bill/recharge?order_id=110 HTTP/1.1 
