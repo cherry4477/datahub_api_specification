@@ -48,7 +48,7 @@
 
 ## APIs
 
-### (40) GET /subscriptions/pull?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
+### (40) GET /subscriptions/pull?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&sortorder={asc|desc}
 
 说明
 
@@ -150,7 +150,7 @@
 	agreed_but_insufficient_balance, 10: applytime, agreetime 有效。 (sorttime==agreetime)
 	
 
-### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
+### (41) GET /subscriptions/pull/:repname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&sortorder={asc|desc}
 
 说明
 
@@ -219,7 +219,7 @@
 		]
 	}
 
-### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&username={username}
+### (42) GET /subscriptions/pull/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&sortorder={asc|desc}&username={username}
 
 说明
 
@@ -290,7 +290,7 @@
 		]
 	}
 
-### (43) GET /subscriptions/push?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
+### (43) GET /subscriptions/push?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&sortorder={asc|desc}
 
 说明
 
@@ -365,7 +365,7 @@
 
 	buyername: 数据消费者
 
-### (44) GET /subscriptions/push/:repname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
+### (44) GET /subscriptions/push/:repname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&sortorder={asc|desc}
 
 说明
 
@@ -434,7 +434,7 @@
 		]
 	}
 
-### (45) GET /subscriptions/push/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}
+### (45) GET /subscriptions/push/:repname/:itemname?groupbydate=[0|1]&legal=[0|1]&phase={phase}&page={page}&size={size}&sortorder={asc|desc}
 
 说明
 
