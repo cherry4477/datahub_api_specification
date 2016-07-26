@@ -15,7 +15,7 @@
 
 - PUT /bill/:loginname/refund 充值退款
 
-- GET /bill/recharge 充值状态查询
+- GET /bill/:loginname/recharge 充值状态查询
 
 - PUT /bill/message 接收回复报文
 
@@ -250,14 +250,14 @@
 		{"code":0,"msg":"ok"}
 
 		
-#指令：GET /bill/recharge 充值状态查询
+#指令：GET /bill/:loginname/recharge 充值状态查询
 	说明：
 		【用户自己】
 	输入参数说明：
 		order_id:订单ID
 		
 	Example Request：
-		GET /bill/recharge?order_id=110 HTTP/1.1 
+		GET /bill/foo/recharge?order_id=110 HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 	返回数据说明：
