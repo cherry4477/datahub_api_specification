@@ -19,6 +19,8 @@
 
 - PUT /bill/message 接收回复报文
 
+- PUT /bill/refundMessage 接收退款回复报文
+
 ##指令：GET /bill/:loginname/info 查看用户账单信息
 	说明：
 		【自己，管理员】查看用户会员的相关信息
@@ -273,6 +275,20 @@
 	输入参数说明：
 	Example Request：
 		PUT /bill/message HTTP/1.1 
+		Accept: application/json;charset=UTF-8
+		Authorization: token
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例：
+		{"code":0,"msg":"ok"}
+		
+#指令：PUT /bill/refundMessage 接收退款回复报文
+	说明：
+		【鸿支付】
+	输入参数说明：
+	Example Request：
+		PUT /bill/refundMessage HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 	返回数据说明：
