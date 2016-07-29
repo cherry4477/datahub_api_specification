@@ -28,8 +28,10 @@
 	ErrorCodeInvalidEntryPoints    = 5023
 
 ## APIs
+<p style="color:red">此时需求者用户名，增加前面两位字母sregion。需要同步user中的username信息。</p>
 
 ### POST /transaction/:repname/:itemname/:tag (50)
+sellername
 
 说明
 

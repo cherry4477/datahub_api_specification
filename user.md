@@ -73,7 +73,11 @@
 
 - [GET] /certification/download 查询图片
 	
-----------
+----------  
+datahub srigion 信息为dh
+广州交易市场 srigion 信息为gz
+哈尔滨市场的 srigion 信息为ha
+武汉交易市场的 srigion 信息为wh
 
 ##指令：GET /users/:loginname 查询用户(81)
 <p style="color:red">需要修改的地方：sregion 合并到loginname中， so 输入信息中取消sregion，返回信息不变。</p>
@@ -130,7 +134,7 @@
 
 
 ##指令：GET /users/search/user 查询用户列表
-<p style="color:red">需要修改的地方：增加查询各个sregion的输入参数。需要区分管理员角色，比如gz的管理员，仅能查询gz的用户列表。</p>
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能查询gz的用户列表。</p>
 	说明
 		【管理员】 分页查询用户列表（查询条件可选）
 	输入参数说明：

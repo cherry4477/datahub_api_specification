@@ -123,6 +123,7 @@
 
 ### (A5) GET /stars/pull/:repname?page={page}&size={size}&sortorder={asc|desc}
 
+
 说明
 
 	【需求者】查询在某个respository中的所有stars

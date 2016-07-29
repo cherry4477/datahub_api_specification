@@ -22,6 +22,7 @@
 - PUT /bill/refundMessage 接收退款回复报文
 
 ##指令：GET /bill/:loginname/info 查看用户账单信息
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能查询gz的用户列表。</p>
 	说明：
 		【自己，管理员】查看用户会员的相关信息
 	输入参数说明：
@@ -45,6 +46,7 @@
 		"code":0,"msg":"ok"
 		}
 ##指令：GET /bill/:loginname/detail 查看用户账单流水
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能查询gz的用户。</p>
 	说明：
 		【自己，管理员】查看用户会员的相关信息
 	输入参数说明：
@@ -98,6 +100,7 @@
 		}
 
 #指令：PUT /bill/:loginname/recharge 充值，提现
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能处理gz的用户。</p>
 	说明：
 		【管理员】充值
 	输入参数说明：
@@ -125,6 +128,7 @@
 	返回数据示例：
 		{"code":0,"msg":"ok","reqSignMsg":"balabala"}
 #指令：PUT /bill/:loginname/creditLimit
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能查询gz的用户。</p>
 	说明：
 		【管理员】修改用户信用额度
 	输入参数说明：
@@ -142,6 +146,7 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 #指令：PUT /bill/:loginname/creditLimit
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能修改z的用户。</p>
 	说明：
 		【管理员】修改用户信用额度
 	输入参数说明：
@@ -159,6 +164,7 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 #指令：PUT /bill/:loginname/trade/init 发起购买交易
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能发起gz的用户。</p>
 	说明：
 		【管理员】购买交易，执行操作成功后，会生成一条记录，消费用户的消费记录，会扣取消费用户的可用余额
 				如果购买金额不足，会提示余额不足，交易失败
@@ -187,6 +193,7 @@
 		{"code":0,"msg":"ok"}
 
 #指令：PUT /bill/:loginname/trade/commit 提交交易（交易结束）
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能提高gz的用户。</p>
 	说明：
 		【管理员】购买交易
 			   如果交易成功（status=1），会扣取消费用户的实际余额，并增加销售用户的实际余额，等30天后自动将销售用户的可用余额增加
@@ -211,6 +218,7 @@
 		{"code":0,"msg":"ok"}
 		
 #指令：PUT /bill/:loginname/trade/cancel 取消交易
+<p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能处理gz的用户。</p>
 	说明：
 		【管理员】取消交易，（交易成功30天内）会产生退款记录，将消费用户的可用余额和实际余额退还，销售用户的实际余额扣减
 			     loginname：购买方

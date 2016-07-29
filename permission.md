@@ -47,7 +47,7 @@ Example Response：
 ----------
 
 ## 2 指令：PUT /permission/:repname
-	
+
 说明：
 	
 	【rep拥有者】将某用户（非自己）加入或更新rep白名单中
