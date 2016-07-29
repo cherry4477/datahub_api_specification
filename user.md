@@ -72,6 +72,8 @@
 - [POST] /certification/upload 上传图片
 
 - [GET] /certification/download 查询图片
+
+- [GET] /user/menu/:loginName 查询图片
 	
 ----------  
 datahub srigion 信息为dh
@@ -1140,3 +1142,19 @@ datahub srigion 信息为dh
 	返回数据示例
 		图片文件
 		正确 {"code":0,"msg":"ok"}
+		
+##指令：GET /user/menu/:loginName 查询图片
+    说明：
+		【所有人】查询图片
+	输入参数说明：
+		picId:图片id
+	Example Request：
+		GET/user/menu/foo
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+		menus:菜单
+	返回数据示例
+		图片文件
+		正确 {"code":0,"msg":"ok","menus":[{"menuName": "首页", "menuUrl": "/", "menuImg": "<i class=\"icon-home\"></i>",}]}
+
