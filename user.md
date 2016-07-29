@@ -77,7 +77,7 @@
 
 ##指令：GET /users/:loginname 查询用户(81)
 <p style="color:red">需要修改的地方：sregion 合并到loginname中， so 输入信息中取消sregion，返回信息不变。</p>
-需要修改的地方：sregion 合并到loginname中， so 输入信息中取消sregion，返回信息不变。
+
 	说明
 		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如果是其他人，获得基本情况
 		loginname可以传入昵称
