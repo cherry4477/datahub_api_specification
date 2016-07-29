@@ -76,8 +76,10 @@
 ----------
 
 ##指令：GET /users/:loginname 查询用户(81)
+<p style="color:red">需要修改的地方：sregion 合并到loginname中， so 输入信息中取消sregion，返回信息不变。</p>
+需要修改的地方：sregion 合并到loginname中， so 输入信息中取消sregion，返回信息不变。
 	说明
-		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如何是其他人，获得基本情况
+		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如果是其他人，获得基本情况
 		loginname可以传入昵称
 	输入参数说明：
 		sregion:用户登陆来源
@@ -99,7 +101,6 @@
 		username:真实名称
 		userStatus:用户状态（1：未激活，2：激活，3：认证，4：等待审核，5：审核未通过，7：账号销毁）
 		usertype：用户类型(1：普通用户，2：管理员用户,3:认证会员,4：金卡会员，5钻石会员)
-		
 		tel:电话号码
 		type：种类（1：个人，2：企业）
 		headPic：用户头像id
@@ -129,6 +130,7 @@
 
 
 ##指令：GET /users/search/user 查询用户列表
+<p style="color:red">需要修改的地方：增加查询各个sregion的输入参数。需要区分管理员角色，比如gz的管理员，仅能查询gz的用户列表。</p>
 	说明
 		【管理员】 分页查询用户列表（查询条件可选）
 	输入参数说明：
@@ -140,7 +142,7 @@
 		sregion: 用户登录来源
 	Example Request：
 		GET /users/search/user?page=1&size=20&loginName=a&userName=b&nickName=c &sregion=dHTTP/1.1 
-		Accept: application/json;charset=UTF-8
+		Accept: application/json;charset=UTF-8Th
 		Authorization: token
 
 	返回数据说明：
@@ -187,6 +189,7 @@
 							"sregion":"GZ"}]},"code":0,"msg":"ok"}
 
 ##指令：POST /users/:loginname 创建用户(82)
+<p style="color:red">需要修改的地方：loginname的前两位字母为region值，由前端一起写入。前端生成passwd的方式为“取消loginname的前两个字母”md5写入。</p>
 	说明：
 		【非管理员】创建一个用户
 		【管理员】创建一个激活用户
@@ -203,6 +206,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：PUT /users/:loginname/active 激活用户(83)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。由前端一起写入。</p>
 	说明：
 		【任意】激活用户
 	输入参数说明：
@@ -219,6 +223,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：PUT /users/:loginname/pwd 修改密码(84)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。新密码由loginname去掉前面2位字母后生成。需要区分管理员角色，gz管理员仅能修改gz用户的密码。</p>
 	说明：
 		【自己或管理员】修改用户密码
 		输入参数说明：
@@ -237,6 +242,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：PUT /users/:loginname/pwd/reset 重置密码
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。修改后密码由loginname去掉前面2位字母后生成。</p>
 	说明：
 		【任意】重置密码
 		输入参数说明：
@@ -255,6 +261,7 @@
 
 
 ##指令：PUT /users/:loginname 修改用户(85)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。新密码由loginname去掉前面2位字母后生成。需要区分管理员橘色，如gz管理员仅能修改gz用户的信息。</p>
 	【管理员角色】 说明 ：
 		修改一个用户
 	【管理员角色】输入参数说明：
@@ -322,6 +329,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：DELETE /users/:loginname 删除用户(86)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz的用户。</p>
 	说明：
 		【管理员角色】删除一个用户
 		注：本操作不是真的删除一条数据，是将用户状态改成 注销状态（user_status:7）
@@ -338,6 +346,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：GET /users/:loginname/pwd/validate 验证密码是否正确(86.5)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。</p>
 	说明：
 		【任意】验证密码是否正确
 	输入参数说明：
@@ -352,6 +361,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：PUT /users/:loginname/forget/pwd 忘记密码发邮件
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。</p>
 	说明：
 		【任意】忘记密码发邮件
 	输入参数说明：
@@ -368,6 +378,7 @@
 		
 
 ##指令：PUT /users/:loginname/resend/active 重新发送激活邮件
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。</p>
 	说明：
 		【任意】忘记密码发邮件
 	输入参数说明：
@@ -383,6 +394,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：GET /users/:loginname/validateLink 查询连接是否有效(81)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。</p>
 	说明
 		【任意】 返回测试连接是否还有效
 	输入参数说明：
@@ -402,6 +414,7 @@
 
 
 ##指令：GET /quota/:loginname/repository 获取用户的repo配额（87）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的配额。dh管理员仅能修改dh用户的配额。</p>
 	说明：
 		【自己或者管理员】获取用户的配额信息
 	输入参数说明：
@@ -425,6 +438,7 @@
 				}
 		}
 ##指令：POST /quota/:loginname/repository 增加用户的repo配额（88）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的配额。dh管理员仅能修改dh用户的配额。</p>
 	说明：
 		【管理员角色】添加用户的repo配额信息
 	输入参数说明：
@@ -445,6 +459,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：PUT /quota/:loginname/repository 修改用户的repo配额（89）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的配额。dh管理员仅能修改dh用户的配额。</p>
 	说明：
 		【管理员角色】修改用户的repo的配额
 	输入参数说明：
@@ -465,6 +480,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：POST /quota/:loginname/repository/use 修改用户的repo使用量（8a）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的使用量。dh管理员仅能修改dh用户使用量。</p>
 	说明：
 		【管理员】修改用户的repo的使用量
 		注：只允许本人或者管理员修改
@@ -488,6 +504,7 @@
 
 
 ##指令：GET /quota/:loginname/deposit 获取用户的托管信息（8b）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的信息。dh管理员仅能修改dh用户信息。</p>
 	说明：
 		【自己或者管理员】获取用户的托管的配额信息
 	输入参数说明：
@@ -509,6 +526,7 @@
 				}
 		}
 ##指令：POST /quota/:loginname/deposit 增加用户的托管配额（8c）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的配额。dh管理员仅能修改dh用户配额。</p>
 	说明：
 		【管理员】添加用户的托管配额信息 
 	输入参数说明：
@@ -530,6 +548,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：PUT /quota/:loginname/deposit 修改用户的托管配额（8d）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的配额。dh管理员仅能修改dh用户配额。</p>
 	说明：
 		【管理员】修改用户的托管的配额 
 	输入参数说明：
@@ -549,6 +568,7 @@
 
 
 ##指令：GET /quota/:loginname/pullnum 获取用户的下载量信息（8f）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。</p>
 	说明：
 		【自己或者管理员】获取用户的下载量信息
 	输入参数说明：
@@ -569,6 +589,7 @@
 				}
 		}
 ##指令：POST /quota/:loginname/pullnum 增加用户的下载量配额信息（8g）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的配额信息。dh管理员仅能修改dh用户的配额信息。</p>
 	说明：
 		【管理员】添加用户的托管配额信息 
 	输入参数说明：
@@ -588,6 +609,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：POST /quota/:loginname/pullnum/use 修改用户的已下载量（8h）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的下载量。dh管理员仅能修改dh用户的下载量。</p>
 
 	说明：
  	   【管理员】修改用户的已下载量
@@ -607,6 +629,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：PUT /quota/:loginname/pullnum 修改用户的下载量配额（8i）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能修改gz用户的下载量。dh管理员仅能修改dh用户的下载量。</p>
 	说明：
 		【管理员】修改用户的下载量的配额 
 	输入参数说明：
@@ -624,6 +647,7 @@
 	返回数据示例
 		{"code":0,"msg":"ok"}
 ##指令：GET /vip/:loginname 查询用户会员信息（8j）
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分来源返回，如gz来源的仅能查看广州用户会员信息。</p>
 	说明：
 		【任意】查看用户会员的相关信息
 	输入参数说明：
@@ -657,8 +681,9 @@
 		"code":0,"msg":"ok"
 		}
 ##指令：GET /vip/:loginname/cost 查看用户要升级的会员所需金额(8k)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。需要区分管理员角色，如gz管理员仅能查看gz用户的信息。dh管理员仅能查看dh用户信息。</p>
 	说明：
-		【自己活管理员】查看用户要升级的会员所需金额
+		【自己或管理员】查看用户要升级的会员所需金额
 	输入参数说明：
 		type：会员级别
 	Example Request：
@@ -676,6 +701,7 @@
 		}
 
 ##指令：PUT /vip/:loginname 修改会员信息(8l)
+<p style="color:red">需要修改的地方：loginname前两位字母为sregion值。区分管理员角色，如gz管理员仅能修改gz会员信息。</p>
 	说明：
 		【管理员】修改用户的会员信息,同时修改用户配额、以及扣取年费（管理员除外）
                1 会员续费 userType与以前不变，扣取对应的年费（整年）
@@ -703,6 +729,7 @@
 		{"code":0,"msg":"ok"}
 
 ##指令：POST /broadcasts 创建群发任务
+<p style="color:red">需要修改的地方：user 无sregion值。创建群发任务时需要前端带入sregion值。</p>
     说明：
 		【管理员角色】创建群发任务
 	输入参数说明：
@@ -730,7 +757,8 @@
 	返回数据示例
 		{"code":0,"msg":"ok",data:{"broadcastId":"123456"}}
 		
-##指令：DELETE /broadcasts/:broadcastId 删除群发任务
+##指令：DELETE /broadcasts/:broadcastId 删除群发任务  
+<p style="color:red">需要修改的地方：区分管理员角色，如gz的管理员仅能删除gz的任务。</p>
 	说明：
 		【管理员角色】删除群发任务
 	输入参数说明：
@@ -746,6 +774,7 @@
 		错误 {"code":8013,"msg":"This broadcasts can not be deleted"}
 
 ##指令：PUT /broadcasts/:broadcastId 更新群发任务
+<p style="color:red">需要修改的地方：区分管理员角色，如gz的管理员仅能更新gz的任务。</p>
     说明：
 		【管理员角色】更新群发任务
 	输入参数说明：
@@ -774,6 +803,7 @@
 		错误 {"code":8014,"msg":"This broadcasts can not be update"}
 		
 ##指令：GET /broadcasts?Id=:broadcastId 查询群发任务
+<p style="color:red">需要修改的地方：区分管理员角色，如gz的管理员仅能查询gz的任务。</p>
     说明：
 		【管理员】 查询群发任务
 	输入参数说明：
@@ -818,6 +848,7 @@
 
 
 ##指令：PUT /certification/person/:loginname 添加/修改个人认证信息
+<p style="color:red">需要修改的地方：loginname强两位字母为region值。管理员区分角色，如gz管理员仅能修改gz用户的认证信息。</p>
     说明：
 		【自己或管理员】添加/修改个人基本信息
 	输入参数说明：
@@ -853,6 +884,7 @@
 		错误 {"code":8016,"msg":"The user has passed authentication"}
 
 ##指令：PUT /certification/company/:loginname  添加/修改企业认证信息
+<p style="color:red">需要修改的地方：loginname强两位字母为region值。管理员区分角色，如gz管理员仅能修改gz用户的认证信息。</p>
     说明：
 		【自己或管理员】添加/修改企业基本信息
 	输入参数说明：
@@ -913,6 +945,7 @@
 		错误 {"code":8016,"msg":"The user has passed authentication"}
 
 ##指令：GET /certification/person/:loginname 查询个人认证信息(81)
+<p style="color:red">需要修改的地方：loginname强两位字母为region值。管理员区分角色，如gz管理员仅能查询gz用户的认证信息。</p>
 	说明
 		【自己和管理员】查询个人认证信息
 	输入参数说明：
@@ -949,6 +982,7 @@
 				"bankName":"xx支行"},"code":0,"msg":"ok"}
 
 ##指令：GET /certification/company/:loginname查询企业认证信息(81)
+<p style="color:red">需要修改的地方：loginname强两位字母为region值。管理员区分角色，如gz管理员仅能查询gz用户的认证信息。</p>
 	说明
 		【自己和管理员】查询企业认证信息
 	输入参数说明：
@@ -1009,6 +1043,7 @@
 				"bankName":"xx支行"},"code":0,"msg":"ok"}
 
 ##指令：PUT /certification/inspection/:loginname 审核
+<p style="color:red">需要修改的地方：loginname强两位字母为region值。管理员区分角色，如gz管理员仅能审核gz用户的认证信息。</p>
     说明：
 		【管理员角色】审核实名认证
 	输入参数说明：
@@ -1031,6 +1066,7 @@
 
 
 ##指令：GET /certification/inspections 查询审核信息列表
+<p style="color:red">需要修改的地方：loginname强两位字母为region值。管理员区分角色，如gz管理员仅能查询gz用户的审核列表。</p>
     说明：
 		【管理员角色】查询审核信息列表
 		可根据登录名查询
@@ -1070,6 +1106,7 @@
 		
 		
 ##指令：POST /certification/upload 上传图片
+
     说明：
 		【所有人】上传图片
 	输入参数说明：
