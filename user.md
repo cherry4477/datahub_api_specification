@@ -73,7 +73,7 @@
 
 - [GET] /certification/download 查询图片
 
-- [GET] /user/menu/:loginName 查询菜单
+- [GET] /users/menu/:loginName 查询菜单
 	
 ----------  
 datahub srigion 信息为dh
@@ -1143,11 +1143,11 @@ datahub srigion 信息为dh
 		图片文件
 		正确 {"code":0,"msg":"ok"}
 		
-##指令：GET /user/menu/:loginName 查询菜单
+##指令：GET /users/menu/:loginName 查询菜单
     说明：
 		【所有人】查询菜单
 	输入参数说明：
-		picId:图片id
+	
 	Example Request：
 		GET/user/menu/foo
 	返回数据说明：
