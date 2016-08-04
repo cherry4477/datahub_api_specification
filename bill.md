@@ -110,6 +110,11 @@
 		type:类型，1：充值；2：提现; 3：扣年费
 		channel:渠道
 		returnUrl:页面返回url
+		opTime：交易时间
+		operator:操作人员
+		method:交易方式，1：线上；2：线下
+		tradeUser:交易用户
+		remark:备注
 	Example Request：
 		PUT /bill/foo/recharge?sregion=GZ HTTP/1.1 
 		Accept: application/json;charset=UTF-8
