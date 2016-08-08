@@ -84,6 +84,7 @@ Example Request：
 返回数据说明：
 	
 	create_user			创建者
+	ch_repname          repo中文名称
    	repaccesstype       对外开放类型[public(默认), private]
     comment 			详情
 	optime				更新时间
@@ -96,6 +97,7 @@ Example Request：
 
 	{
 	    "create_user": "panxy3@asiainfo.com",
+	    "ch_repname":  "中文名称",
 	    "repaccesstype": "public",
 	    "comment": "详情",
 	    "optime": "2015-10.1122: 10: 20",
@@ -116,6 +118,7 @@ Example Request：
 
 输入参数说明：
 
+    ch_repname                  repo中文名称
    	repaccesstype       		访问权限[public(默认), private]
     comment 					详情
     ch_repname                  中文repository名字
@@ -132,6 +135,7 @@ Example Request：
 	Accept: application/json
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	{
+	    "ch_repname": "repo中文名称",                  
         "repaccesstype": "public",
         "comment": "中国移动北京终端详情",
         "label": {
@@ -158,6 +162,7 @@ Example Request：
 
 输入参数说明：
 
+    ch_repname                  repo中文名称
    	repaccesstype       		访问权限[public(默认), private]
     comment 					详情
     			
@@ -214,6 +219,7 @@ Example Request：
 返回数据说明：
 	
 	create_user 			Dataitem创建者
+	ch_itemname             Dataitem中文名称
 	itemaccesstype  		访问权限[public(默认), private]
 	optime   				更新时间
 	meta					元数据
@@ -239,6 +245,7 @@ Example Request：
         
 	{
 	    "create_user": "panxy3",
+	    "ch_itemname": "Dataitem中文名称",
 	    "itemaccesstype": "private",
 	    "optime": "2015-08-0100: 00: 00",
 	    "meta": {},
@@ -305,7 +312,7 @@ Example Request：
 	【拥有者】发布DataItem
 
 输入参数说明
-
+    
 	ch_itemname                     dataitem中文名称
 	itemaccesstype  				访问权限[public(默认), private]
 	meta							元数据
@@ -325,7 +332,8 @@ Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	{
+	{   
+	    "ch_itemname": "Dataitem中文名称",
         "itemaccesstype": "private",
         "meta": "{}",
         "sample": "{}",
@@ -385,6 +393,7 @@ Example Request：
 	PUT /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	{
+	    "ch_itemname": "Dataitem中文名称",
         "itemaccesstype": "private",
         "meta": "{}",
         "sample": "{}",
