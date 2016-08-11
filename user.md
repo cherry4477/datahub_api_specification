@@ -88,9 +88,8 @@ datahub srigion 信息为dh
 		【任意】 返回一个用户的详细情况，如果是自己，可以获得更详细的情况，如果是其他人，获得基本情况
 		loginname可以传入昵称
 	输入参数说明：
-		sregion:用户登陆来源
 	Example Request：
-		GET /users/foo?sregion=GZ HTTP/1.1 
+		GET /users/foo HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 
 	返回数据说明：
@@ -145,9 +144,8 @@ datahub srigion 信息为dh
 		loginName:登录名，（模糊匹配）
 		userName:真实名称，（模糊匹配）
 		nickName:昵称，（模糊匹配）
-		sregion: 用户登录来源
 	Example Request：
-		GET /users/search/user?page=1&size=20&loginName=a&userName=b&nickName=c &sregion=dHTTP/1.1 
+		GET /users/search/user?page=1&size=20&loginName=a&userName=b&nickName=c HTTP/1.1 
 		Accept: application/json;charset=UTF-8Th
 		Authorization: token
 
@@ -203,7 +201,7 @@ datahub srigion 信息为dh
 		passwd：MD5以后的密码
 		sregion: 用户登录来源
 	Example Request：
-		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifX11&sregion=datahub
+		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifX11
 	
 	返回数据说明：
 		code:状态码
@@ -659,7 +657,7 @@ datahub srigion 信息为dh
 	输入参数说明：
 		region: 用户登录来源
 	Example Request：
-		GET /vip/foo&sregion=a HTTP/1.1 
+		GET /vip/foo HTTP/1.1 
 		Accept: application/json;charset=UTF-8
 		Authorization: token
 
@@ -1082,9 +1080,8 @@ datahub srigion 信息为dh
 		size：每页数量
 		state：审核状态(3:审核通过，4：等待审核,5：审核不通过)
 		type:用户类型(1:个人,2:企业)
-		region: 用户登录来源
 	Example Request：
-		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2&sregion=a
+		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
