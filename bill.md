@@ -104,16 +104,12 @@
 	说明：
 		【管理员】充值
 	输入参数说明：
-		sregion:用户登陆地
 		order_id:订单
 		amount:金额
 		type:类型，1：充值；2：提现; 3：扣年费
 		channel:渠道
 		returnUrl:页面返回url
-		opTime：交易时间
-		operator:操作人员
 		method:交易方式，1：线上；2：线下
-		tradeUser:交易用户
 		remark:备注
 	Example Request：
 		PUT /bill/foo/recharge?sregion=GZ HTTP/1.1 
@@ -124,7 +120,9 @@
 			"amount":"100",
 			"type":1,
 			"channel":"支付宝",
-			"returnUrl":"balabala"		}
+			"returnUrl":"https://www.baidu.com/",
+			"method":"1",
+			"remark":"balbalbal"		}
 
 	返回数据说明：
 		code:状态码（8007：余额不足）
@@ -255,7 +253,7 @@
 		Authorization: token
 		{
 			"order_id":"110",
-			"returnUrl":"balabala",
+			"returnUrl":"https://www.baidu.com/",
 			"sregion":"GZ"
 		}
 	返回数据说明：
