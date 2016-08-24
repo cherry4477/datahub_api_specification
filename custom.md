@@ -20,16 +20,16 @@
       
 Example Request：
 
-            POST /custom/datahub HTTP/1.1 
+        POST /custom/datahub HTTP/1.1
 	    Accept: application/json 
-	    Content-Type: application/json 
+		Content-Type: application/json 
 	    
 	    {
-	      "name":"张三",
-              "phone":"13838385438",
-              "email": "zhangsan@163.com",
-              "company":"asiainfo",
-              "requirementContent": "test"
+            "name":"张三",
+            "phone":"13838385438",
+            "email": "zhangsan@163.com",
+            "company":"asiainfo",
+            "requirementContent": "test"
 	    }
 	    
 返回数据说明：
@@ -38,12 +38,12 @@ Example Request：
       
 返回数据示例
 
-      HTTP/1.1 200 OK
-	    Accept: application/json 
-	    Content-Type: application/json
-      {
+    HTTP/1.1 200 OK
+    Accept: application/json 
+    Content-Type: application/json
+    {
         "code": 0,
         "msg": "OK.",
         "data": null
-      } 
+    } 
 	          
