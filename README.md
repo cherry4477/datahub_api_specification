@@ -144,7 +144,7 @@ Connection: keep-alive
 ```
 HTTP/1.1 200 OK
 
-{"code": 0,"msg": "OK","data": {}}
+{"code": 0,"msg": "OK","data": {"sregion":"datahub"}}
 ```
 错误回复
 
