@@ -17,9 +17,9 @@
 
 - GET /bill/recharge 充值状态查询
 
-- PUT /bill/message 接收回复报文
+- GET /bill/message 接收回复报文
 
-- PUT /bill/refundMessage 接收退款回复报文
+- GET /bill/refundMessage 接收退款回复报文
 
 ##指令：GET /bill/:loginname/info 查看用户账单信息
 <p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能查询gz的用户列表。</p>
@@ -280,7 +280,7 @@
 	返回数据示例：
 		{"code":0,"msg":"ok","result":""}
 		
-#指令：PUT /bill/message 接收回复报文
+#指令：GET /bill/message 接收回复报文
 	说明：
 		【鸿支付】
 	输入参数说明：
@@ -294,7 +294,7 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 		
-#指令：PUT /bill/refundMessage 接收退款回复报文
+#指令：GET /bill/refundMessage 接收退款回复报文
 	说明：
 		【鸿支付】
 	输入参数说明：
