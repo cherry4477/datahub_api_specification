@@ -75,12 +75,14 @@ code 及 msg
 
 
 ### 认证方式 ###
-####Basic认证模式通过用户名和md5(密码获取token)，访问的url为/####
+####Basic认证模式通过用户名和md5(密码）获取token，访问的url为/####
 #####请求报文的header#####
 
 ```
 Authorization: Basic akmklmasadalkm==
 ```
+
+**Basic模式下认证串的规则为 base64(datahub+用户名:md5(密码))**
 #####正常情况下返回#####
 ```
 HTTP/1.1 200 OK
