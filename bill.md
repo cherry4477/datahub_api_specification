@@ -13,13 +13,9 @@
 
 - PUT /bill/:loginname/trade/cancel 取消交易
 
-- PUT /bill/:loginname/refund 充值退款
-
 - GET /bill/recharge 充值状态查询
 
 - GET /bill/message 接收回复报文
-
-- GET /bill/refundMessage 接收退款回复报文
 
 ##指令：GET /bill/:loginname/info 查看用户账单信息
 <p style="color:red">需要修改的地方：需要区分管理员角色，比如gz的管理员，仅能查询gz的用户列表。</p>
@@ -240,28 +236,6 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 		
-#指令：PUT /bill/:loginname/refund 充值退款
-	说明：
-		【用户自己】退还充值的金额
-	输入参数说明：
-		order_id:订单ID
-		returnUrl:返回url
-		sregion:用户登录地
-	Example Request：
-		PUT /bill/foo/refund?sregion=GZ HTTP/1.1 
-		Accept: application/json;charset=UTF-8
-		Authorization: token
-		{
-			"order_id":"110",
-			"returnUrl":"https://www.baidu.com/",
-			"sregion":"GZ"
-		}
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例：
-		{"code":0,"msg":"ok"}
-
 		
 #指令：GET /bill/recharge 充值状态查询
 	说明：
@@ -294,16 +268,3 @@
 	返回数据示例：
 		{"code":0,"msg":"ok"}
 		
-#指令：GET /bill/refundMessage 接收退款回复报文
-	说明：
-		【鸿支付】
-	输入参数说明：
-	Example Request：
-		PUT /bill/refundMessage HTTP/1.1 
-		Accept: application/json;charset=UTF-8
-		Authorization: token
-	返回数据说明：
-		code:状态码
-		msg:操作信息，用来记录失败信息
-	返回数据示例：
-		{"code":0,"msg":"ok"}
