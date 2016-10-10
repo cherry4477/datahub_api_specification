@@ -74,7 +74,14 @@
 - [GET] /certification/download 查询图片
 
 - [GET] /users/menu/:loginName 查询菜单
+
+- [POST] /channel 添加渠道信息
+
+- [PUT] /channel 修改渠道信息
+
+- [GET] /channel 查询渠道
 	
+- [GET] /search/channel 查询渠道列表
 ----------  
 datahub srigion 信息为dh
 广州交易市场 srigion 信息为gz
@@ -199,9 +206,9 @@ datahub srigion 信息为dh
 		【管理员】创建一个激活用户
 	输入参数说明：
 		passwd：MD5以后的密码
-		sregion: 用户登录来源
+		channelId:渠道id(可选参数)
 	Example Request：
-		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifX11
+		POST /users/foo@163.com?passwd=x1abcy2z3xdfpqghqpowifX11&channelId=1
 	
 	返回数据说明：
 		code:状态码
@@ -1080,8 +1087,9 @@ datahub srigion 信息为dh
 		size：每页数量
 		state：审核状态(3:审核通过，4：等待审核,5：审核不通过)
 		type:用户类型(1:个人,2:企业)
+		mode:查询类型(不填查询审核列表，填任意值查询渠道列表)
 	Example Request：
-		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2
+		GET /certification/inspections?page=1&size=20&loginname=foo&state=3&type=2&mode=1
 		Content-Type: application/json;charset=UTF-8
 	返回数据说明：
 		code:状态码
@@ -1155,3 +1163,101 @@ datahub srigion 信息为dh
 		图片文件
 		正确 {"code":0,"msg":"ok","menus":[{"menuName": "首页", "menuUrl": "/", "menuImg": "<i class=\"icon-home\"></i>",}]}
 
+##指令：POST /channel 添加渠道信息
+    说明：
+		【管理员】提交渠道信息
+	输入参数说明：
+		name:渠道名称
+		brokerage:佣金
+		Commission:提成
+		status:有效性(1:有效　2:失效)
+	Example Request：
+		POST /channel
+		Content-Type: application/json;charset=UTF-8
+		Authorization: token
+		{
+			"name":"aaaa",
+			"brokerage":111,
+			"Commission":2,
+			"status":1
+		}
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		正确 {"code":0,"msg":"ok"}
+		
+##指令：PUT /channel 修改渠道信息
+    说明：
+		【管理员】修改渠道信息
+	输入参数说明：
+		id:渠道id
+		brokerage:佣金
+		Commission:提成
+		status:有效性(1:有效　2:失效)
+	Example Request：
+		PUT /channel
+		Content-Type: application/json;charset=UTF-8
+		Authorization: token
+		{
+			"id":1,
+			"brokerage":111,
+			"Commission":2,
+			"status":1
+		}
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		正确 {"code":0,"msg":"ok"}
+		
+##指令：GET /channel 查询渠道
+    说明：
+		【管理员】查询渠道
+	输入参数说明：
+		id:渠道id
+	Example Request：
+		GET /channel?id=１
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		正确 {
+			"msg": "ok",
+			"code": 0,
+			"data":{
+				"id": 1,
+				"name": "aaaaa",
+				"link": "aaaaa",
+				"brokerage": 50,
+				"status": 1,
+				"commission": 4
+				}
+			}
+
+		
+##指令：GET /search/channel 查询渠道列表
+    说明：
+		【管理员】查询渠道列表
+	输入参数说明：
+		page:页码
+		size:数量
+	Example Request：
+		GET /search/channel?page=1&size=10
+	返回数据说明：
+		code:状态码
+		msg:操作信息，用来记录失败信息
+	返回数据示例
+		正确{ "msg": "ok",
+		     "code": 0,
+		     "data":[
+				{
+				"id": 1,
+				"name": "aaaaa",
+				"link": "aaaaa",
+				"brokerage": 50,
+				"status": 1,
+				"commission": 4
+				}
+			     ]
+		   }
