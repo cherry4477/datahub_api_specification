@@ -14,7 +14,7 @@
 
 
 - [POST]   /custom/datahub
-- [GET]    /custom/datahub/requirement?name={name}&phone={phone}&email={email}&company={company}&content={content}
+- [GET]    /custom/datahub/requirement?page={page}&size={size}&name={name}&phone={phone}&email={email}&company=                         {company}&content={content}
 - [POST]   /custom/operation
 - [GET]    /custom/operation/requirement?name={name}&phone={phone}&email={email}&company={company}&content={content}
 - [GET]    /custom/operation
