@@ -327,6 +327,18 @@ Example Request：
 	label.sys.supply_style.api	实时单条
 	label.sys.supply_style.batch	批量
 	label.sys.supply_style.flow	流式
+	metadata.isrelational		是否是关系型数据［1，是；2，不是］
+	metadata.datasplit		数据分隔符，例如：“\n”，按行分隔
+	metadata.fieldsplit		字段分隔符，例如：“,”，逗号分隔
+	metadata.metafields		元数据字段[当数据为关系型结构化数据时，需填此字段]
+	metadata.metafields.id		元数据字段id
+	metadata.metafields.name	元数据字段英文名
+	metadata.metafields.chname	元数据字段中文名
+	metadata.metafields.instruction 元数据字段说明
+	metadata.metacontent		元数据字段内容［当数据为非关系型数据时，需填此字段］
+	sampledata			样例数据［新版本］
+	datause				数据用途
+	usecases			应用场景［最多三个］
 			
 Example Request：
 
@@ -377,12 +389,16 @@ Example Request：
                 "chname": "天气",
                 "instruction": "天气信息，例如：晴转多云"
             }
-        ]
+        ],
+	"metacontent": ""
     },
     "sampledata":"1,北京市西城区，晴转多云\n 2,北京市昌平区，多云",
     "datause": "统计各地区的天气信息",
-    "usecasefirst": "",
-    "usecasesecond": ""
+    "usecases" : [
+         "",
+	 "",
+	 ""
+    ]
  }
 	
 
