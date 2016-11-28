@@ -330,14 +330,14 @@ Example Request：
 			
 Example Request：
 
-	POST /repositories/chinamobile/beijingphone HTTP/1.1 
+	POST /repositories/Weather/Beijing_historical_weather HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
 	{
     "ch_itemname": "Dataitem中文名称",
     "itemaccesstype": "private",
     "meta": "{}",
     "sample": "{}",
-    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+    "comment": "北京历史天气信息 包括标题、时间、天气状况、气温、风力风向等属性字段。",
     "price": [
         {
             "units": 30,
@@ -369,7 +369,7 @@ Example Request：
                 "id": 1,
                 "name": "location",
                 "chname": "位置",
-                "instruction": "地理位置，例如：北京西城区木樨地"
+                "instruction": "地理位置，例如：北京西城区"
             },
             {
                 "id": 2,
@@ -378,7 +378,11 @@ Example Request：
                 "instruction": "天气信息，例如：晴转多云"
             }
         ]
-    }
+    },
+    "sampledata":"1,北京市西城区，晴转多云\n 2,北京市昌平区，多云",
+    "datause": "统计各地区的天气信息",
+    "usecasefirst": "",
+    "usecasesecond": ""
  }
 	
 
