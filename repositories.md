@@ -314,53 +314,72 @@ Example Request：
 输入参数说明
     
 	ch_itemname                     dataitem中文名称
-	itemaccesstype  				访问权限[public(默认), private]
-	meta							元数据
-	sample							样例数据
-	comment							详情
-	price					        计费计划
-    price.units                     购买数量
-    price.money                     价格
-    price.expire                    有效期(天)
-    price.limit                     限购次数【可选】
-	label.sys.supply_style			服务形式[api；batch；flow]【必选】
-	label.sys.supply_style.api		实时单条
+	itemaccesstype  		访问权限[public(默认), private]
+	meta				元数据
+	sample				样例数据
+	comment				详情
+	price	                        计费计划
+	price.units                     购买数量
+	price.money                     价格
+	price.expire                    有效期(天)
+	price.limit                     限购次数【可选】
+	label.sys.supply_style		服务形式[api；batch；flow]【必选】
+	label.sys.supply_style.api	实时单条
 	label.sys.supply_style.batch	批量
-	label.sys.supply_style.flow		流式
+	label.sys.supply_style.flow	流式
 			
 Example Request：
 
 	POST /repositories/chinamobile/beijingphone HTTP/1.1 
 	Authorization: Token dcabfefb6ad8feb68e6fbce876fbfe778fb
-	{   
-	    "ch_itemname": "Dataitem中文名称",
-        "itemaccesstype": "private",
-        "meta": "{}",
-        "sample": "{}",
-        "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
-		"price":[
-					{
-						"units": 30,
-                        "money": 5,
-                        "expire":30,
-                        "limit":1,
-					},
-					{
-						"units": 30,
-                        "money": 5,
-                        "expire":30,
-                        "limit":1,
-					}
-				],
-        "label": {
-            "sys": {
-                "supply_style": "flow"
-            },
-            "opt": {},
-            "owner": {},
-            "other": {}
+	{
+    "ch_itemname": "Dataitem中文名称",
+    "itemaccesstype": "private",
+    "meta": "{}",
+    "sample": "{}",
+    "comment": "对终端使用情况、变化情况进行了全方面的分析。包括分品牌统计市场存量、新增、机型、数量、换机等情况。终端与ARPU、DOU、网龄的映射关系。终端的APP安装情况等。",
+    "price": [
+        {
+            "units": 30,
+            "money": 5,
+            "expire": 30,
+            "limit": 1
+        },
+        {
+            "units": 30,
+            "money": 5,
+            "expire": 30,
+            "limit": 1
         }
+    ],
+    "label": {
+        "sys": {
+            "supply_style": "flow"
+        },
+        "opt": {},
+        "owner": {},
+        "other": {}
+    },
+    "metadata": {
+        "isrelational": 1,
+        "datasplit": "\n",
+        "fieldsplit": ",",
+        "metafields": [
+            {
+                "id": 1,
+                "name": "location",
+                "chname": "位置",
+                "instruction": "地理位置，例如：北京西城区木樨地"
+            },
+            {
+                "id": 2,
+                "name": "weather",
+                "chname": "天气",
+                "instruction": "天气信息，例如：晴转多云"
+            }
+        ]
     }
+ }
 	
 
 返回值示例
