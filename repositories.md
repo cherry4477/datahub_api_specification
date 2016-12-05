@@ -109,6 +109,7 @@ Example Request：
 	    ]
 	}
 
+----------
 
 ## 3 指令：POST /repositories/:repname
 	
@@ -154,6 +155,8 @@ Example Request：
         }
     }
 
+----------
+
 ## 4 指令：PUT /repositories/:repname
 	
 说明：
@@ -177,6 +180,7 @@ Example Request：
         "comment": "中国移动北京终端详情",      
     }
 
+----------
 
 ## 5 指令：DELETE /repositories/:repname
 	
@@ -197,6 +201,8 @@ Example Request：
 Example Response：
 
 	无
+
+----------
 
 ## 6 指令：GET /repositories/:repname/:itemname
 	
@@ -339,6 +345,24 @@ Example Request：
 	sampledata                      样例数据［新版本］
 	datause                         数据用途
 	usecases                        应用场景［最多三个］
+	apidata 						创建apiDataItem[当label.sys.supply_style为api时使用]			
+	apidata.method 					请求方式,	 例如：get,post	
+	apidata.address					接口地址
+	apidata.key						密钥apikey
+	apidata.returned				返回类型 [json/xml]
+	apidata.iparam					输入参数 [一个或多个]
+	apidata.iparam.name				输入参数名称
+	apidata.iparam.required			是否必选 [是:"true":否:"false"]
+	apidata.iparam.example			参数示例值
+	apidata.iparam.comment			参数描述
+	apidata.oparam					输出参数 [一个或多个]
+	apidata.oparam.name				输出参数名称
+	apidata.oparam.comment			输出参数描述
+	apidata.errcode					错误代码 [一个或多个]
+	apidata.errcode.name			错误代码名称
+	apidata.errcode.comment			错误代码说明
+	apidata.reqexample				请求示例
+	apidata.resexample				返回示例
 			
 Example Request：
 
@@ -398,7 +422,18 @@ Example Request：
          "",
 	 "",
 	 ""
-    ]
+    ],
+    "apidata":{
+		"method":"get",
+		"address":"http://www.asiainfo.com",
+		"key":"adf232nrk2lr4f2lknf4k24aklf23fkka0aof",
+		"returned":"",
+		"iparam":[{"name":"location","required":true,"example":"北京西城区","comment":"地理位置"}],
+		"oparam":[{"name":"weather","comment":"输出天气情况"}],
+		"errcode":[{"name":"5001","comment":"输入参数不合法"}],
+		"reqexample":"",
+		"resexample":""
+	}
  }
 	
 
@@ -485,6 +520,7 @@ Example Request：
 返回值示例
 	
 	无
+
 ----------
 
 ## 10 GET /repositories/:repname/:itemname/:tag
@@ -513,6 +549,8 @@ Example Request：
 	    "comment": "50M",
 	    "optime": "2015-08-03 00:00:00|6天以前"
 	}
+
+----------
 
 ## 11 POST /repositories/:repname/:itemname/:tag
 
@@ -544,6 +582,8 @@ Example Response：
 
 	msg：可选，具体出错信息描述
 
+----------
+
 ## 12 PUT /repositories/:repname/:itemname/:tag
 
 说明
@@ -573,6 +613,8 @@ Example Response：
 
 	msg：可选，具体出错信息描述
 
+----------
+
 ## 13 DELETE /repositories/:repname/:itemname/:tag
 
 说明
@@ -593,6 +635,8 @@ Example Response：
 	HTTP/1.1 200 
 	Vary: Accept 
 	Content-Type: application/json
+
+----------
 
 ## 14 [GET] /repositories/:repname/:itemname/subpermission
 
@@ -635,6 +679,8 @@ Example Response：
 	HTTP/1.1 200 
 	Vary: Accept 
 	Content-Type: application/json
+
+----------
 
 ## 14 [GET] /repositories/deleted
 
