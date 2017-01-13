@@ -371,8 +371,8 @@ Example Request：
 	{
     "ch_itemname": "Dataitem中文名称",
     "itemaccesstype": "private",
-    "meta": "{}",
-    "sample": "{}",
+    "meta": "",
+    "sample": "",
     "comment": "北京历史天气信息 包括标题、时间、天气状况、气温、风力风向等属性字段。",
     "price": [
         {
@@ -469,8 +469,8 @@ Example Request：
 	{
 	    "ch_itemname": "Dataitem中文名称",
         "itemaccesstype": "private",
-        "meta": "{}",
-        "sample": "{}",
+        "meta": "",
+        "sample": "",
 		"price":[
 					{
                     	"units": 30,
